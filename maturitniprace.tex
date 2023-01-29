@@ -1,16 +1,20 @@
 \documentclass[12pt,oneside]{report}
+\usepackage[a4paper,margin=25mm]{geometry}
 \usepackage[utf8]{inputenc}
 
-\usepackage[a4paper,margin=25mm]{geometry}
 
+% Importing pictures
 \usepackage{graphicx}
 \graphicspath{{images/}}
 
 
+% Title sequences for the document
+\usepackage{titling}
 \title{Vizualizace étendue planárního optického systému}
 \author{Bronislav Růžička}
 
 
+% Export to PDF/A
 \usepackage{colorprofiles}
 \usepackage[a-2b,mathxmp]{pdfx}[2019/02/27]
 \begin{filecontents*}[overwrite]{\jobname.xmpdata}
@@ -19,6 +23,7 @@
 \end{filecontents*}
 
 
+% The document core structure
 \begin{document}
 
 
@@ -35,10 +40,12 @@
 \setcounter{page}{1}
 \tableofcontents
 
+
 \chapter{Abstrakt}
 \input{chapters/abstrakt.tex}
 
 \chapter{Úvod}
 \input{chapters/uvod.tex}
+
 
 \end{document}
