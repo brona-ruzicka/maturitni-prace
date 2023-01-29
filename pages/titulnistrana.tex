@@ -1,17 +1,27 @@
+
+\newcommand{\withfontsettings}[5]{ {
+    \fontfamily{#1}
+    \fontsize{#2pt}{1}
+    \fontseries{#3}
+    \fontshape{#4}
+    \selectfont
+    #5
+} }
+
 \begin{titlepage}
     \centering
 
-    \newcommand{\changefontsettings}[3]{\fontsize{#1pt}{1}\fontseries{#2}\fontshape{#3}\selectfont}
-
     \vspace*{0.3mm}
 
-    \changefontsettings{18}{m}{n}
-    GYMNÁZIUM A STŘEDNÍ ODBORNÁ ŠKOLA
+    \withfontsettings{\sfdefault}{18}{m}{n} {
+        GYMNÁZIUM A STŘEDNÍ ODBORNÁ ŠKOLA
+    }
 
     \vspace*{6.7mm}
 
-    \changefontsettings{14}{m}{n}
-    ul. Mládežníků 1115, Rokycany
+    \withfontsettings{\sfdefault}{14}{m}{n} {
+        ul. Mládežníků 1115, Rokycany
+    }
 
     \vspace*{14.6mm}
 
@@ -19,23 +29,28 @@
 
     \vspace*{22.5mm}
 
-    \changefontsettings{21}{b}{n}
-    \expandafter \uppercase \expandafter{\thetitle}
+    \withfontsettings{\sfdefault}{21}{b}{n} {
+        \expandafter \uppercase \expandafter{\thetitle}
+    }
 
     \vspace*{4mm}
 
-    \changefontsettings{12}{m}{n}
-    MATURITNÍ PRÁCE
+    \withfontsettings{\sfdefault}{12}{m}{n} {
+        MATURITNÍ PRÁCE
+    }
 
     \vspace*{49.1mm}
 
-    \changefontsettings{12}{b}{n}
-    Autor Práce: \theauthor \hfill Konzultant: Ing. Petr Lobaz, Ph.D.
+    \withfontsettings{\sfdefault}{12}{b}{n} {
+        Autor Práce: \theauthor
+        \hfill
+        Vedoucí práce: Mgr. Helena Čížková
+    }
 
     \vspace*{30mm}
 
-    \changefontsettings{12}{m}{it}
-    Rokycany 2023
-
+    \withfontsettings{\sfdefault}{12}{m}{it} {
+        Rokycany 2023
+    }
 
 \end{titlepage}
