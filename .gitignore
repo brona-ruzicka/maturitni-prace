@@ -1,0 +1,10 @@
+
+# Ignore everything
+/*
+
+# Except the two only root files we want to include
+!/.gitignore
+!/maturitniprace.tex
+
+# Include all files in all subdirectories
+!/**/
