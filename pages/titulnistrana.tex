@@ -1,11 +1,41 @@
 \begin{titlepage}
     \centering
 
-    \thetitle
+    \newcommand{\changefontsettings}[3]{\fontsize{#1pt}{1}\fontseries{#2}\fontshape{#3}\selectfont}
 
-    \vspace*{1em}
+    \vspace*{0.3mm}
 
-    \theauthor
+    \changefontsettings{18}{m}{n}
+    GYMNÁZIUM A STŘEDNÍ ODBORNÁ ŠKOLA
+
+    \vspace*{6.7mm}
+
+    \changefontsettings{14}{m}{n}
+    ul. Mládežníků 1115, Rokycany
+
+    \vspace*{14.6mm}
+
+    \includegraphics[width=283.42pt,height=166.95pt]{gasos_logo.png}
+
+    \vspace*{22.5mm}
+
+    \changefontsettings{21}{b}{n}
+    \expandafter \uppercase \expandafter{\thetitle}
+
+    \vspace*{4mm}
+
+    \changefontsettings{12}{m}{n}
+    MATURITNÍ PRÁCE
+
+    \vspace*{49.1mm}
+
+    \changefontsettings{12}{b}{n}
+    Autor Práce: \theauthor \hfill Konzultant: Ing. Petr Lobaz, Ph.D.
+
+    \vspace*{30mm}
+
+    \changefontsettings{12}{m}{it}
+    Rokycany 2023
 
 
 \end{titlepage}
