@@ -1,7 +1,9 @@
-name: Build LaTeX document
+name: Build and Release
 
 on: 
-  push
+  push:
+    branches:
+      - main
 
 jobs:
   build:
