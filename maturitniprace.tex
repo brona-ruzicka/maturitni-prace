@@ -20,12 +20,14 @@
 
 % Headings
 \usepackage{titlesec}
-\titleformat{\chapter}[display]{\Large\sffamily}{\thechapter}{0pt}{\Huge} % TODO INLINE
+\renewcommand{\chaptername}{}
+\titleformat{\chapter}[hang]{\Large\sffamily}{\chaptertitlename\thechapter\ }{0pt}{}
 \titleformat*{\section}{\large\sffamily}
 \titleformat*{\subsection}{\normalsize\sffamily}
 
-% Headers and footers
-\usepackage{fancyhdr} %TODO PAGE NUMBERING
+
+% Force empty style in table of contents
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}} 
 
 
 % Export to PDF/A
@@ -40,6 +42,8 @@
 % The document core structure
 \begin{document}
 
+\pagenumbering{roman}
+\pagestyle{empty}
 
 \input{pages/titulnistrana.tex}
 \newpage
@@ -50,8 +54,12 @@
 \input{pages/podekovani.tex}
 \newpage
 
+
+\pagenumbering{arabic}
 \tableofcontents
 \newpage
+
+\pagestyle{plain}
 
 
 \chapter{Abstrakt}
