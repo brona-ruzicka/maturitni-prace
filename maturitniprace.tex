@@ -18,12 +18,24 @@
 \usepackage[sfdefault,lf]{carlito}
 \usepackage[default]{sourceserifpro}
 
+% Main text format
+\usepackage{setspace}
+\usepackage{ragged2e}
+\usepackage{parskip}
+\renewcommand{\baselinestretch}{1.5}
+\justifying
+\setlength{\parindent}{0pt}
+
+
 % Headings
 \usepackage{titlesec}
 \renewcommand{\chaptername}{}
-\titleformat{\chapter}[hang]{\Large\sffamily}{\chaptertitlename\thechapter\ }{0pt}{}
-\titleformat*{\section}{\large\sffamily}
-\titleformat*{\subsection}{\normalsize\sffamily}
+\titleformat{\chapter}[block]{\large\sffamily\bfseries}{\chaptertitlename\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+\titleformat*{\section}{\large\sffamily\bfseries}
+\titlespacing*{\section}{0pt}{15pt}{7.5pt}
+\titleformat*{\subsection}{\large\sffamily\bfseries}
+\titlespacing*{\subsection}{0pt}{15pt}{7.5pt}
 
 
 % Table of contents styling
@@ -43,7 +55,7 @@
 % The document core structure
 \begin{document}
 
-\pagenumbering{roman}
+\pagenumbering{gobble}
 \pagestyle{empty}
 
 \input{pages/titulnistrana.tex}
