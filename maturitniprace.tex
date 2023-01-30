@@ -55,30 +55,29 @@
 % Core document structure
 \begin{document}
 
-% No page numbering
-\newpage
-\pagenumbering{gobble}
-\pagestyle{empty}
+    % No page numbering
+    \newpage
+    \pagenumbering{gobble}
+    \pagestyle{empty}
 
-\input{pages/titulnistrana.tex}
+    \input{pages/titulnistrana.tex}
 
-\input{pages/prohlaseni.tex}
+    \input{pages/prohlaseni.tex}
 
-\input{pages/podekovani.tex}
+    \input{pages/podekovani.tex}
 
-% Start page numbering, don't show
-\newpage
-\pagenumbering{arabic}
+    % Start page numbering, don't show
+    \newpage
+    \pagenumbering{arabic}
 
-\tableofcontents
+    \tableofcontents
 
-% Show page numbering
-\newpage
-\pagestyle{plain}
+    % Show page numbering
+    \newpage
+    \pagestyle{plain}
 
-\input{chapters/abstrakt.tex}
+    \input{chapters/abstrakt.tex}
 
-\input{chapters/uvod.tex}
-
+    \input{chapters/uvod.tex}
 
 \end{document}
