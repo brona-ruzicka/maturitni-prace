@@ -52,28 +52,29 @@
 \end{filecontents*}
 
 
-% The document core structure
+% Core document structure
 \begin{document}
 
+% No page numbering
+\newpage
 \pagenumbering{gobble}
 \pagestyle{empty}
 
 \input{pages/titulnistrana.tex}
-\newpage
 
 \input{pages/prohlaseni.tex}
-\newpage
 
 \input{pages/podekovani.tex}
+
+% Start page numbering, don't show
 \newpage
-
-
 \pagenumbering{arabic}
+
 \tableofcontents
+
+% Show page numbering
 \newpage
-
 \pagestyle{plain}
-
 
 \input{chapters/abstrakt.tex}
 
