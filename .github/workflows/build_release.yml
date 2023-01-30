@@ -16,7 +16,9 @@ jobs:
         with:
           root_file: maturitniprace.tex
       - run: |
-          mkdir .github_pages && cp maturitniprace.pdf .github_pages/index.pdf
+          mkdir .github_pages |
+          && cp maturitniprace.pdf .github_pages/index.pdf |
+          && cp .github/pages/* .github_pages/
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v1.0.7
         with:
