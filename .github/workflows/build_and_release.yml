@@ -14,13 +14,13 @@ jobs:
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@latest
         with:
-          root_file: maturitniprace.tex
+          root_file: main.tex
       - run: |
-          mkdir .github_pages && cp maturitniprace.pdf .github_pages/index.pdf
+          cp main.pdf .github/pages/
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v1.0.7
         with:
-          path: .github_pages/
+          path: .github/pages/
          
   deploy:
     needs: build
