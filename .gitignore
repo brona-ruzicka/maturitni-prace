@@ -4,7 +4,7 @@
 
 # Except the two only root files we want to include
 !/.gitignore
-!/maturitniprace.tex
+!/*.tex
 
 # Include all files in all subdirectories
 !/**/
