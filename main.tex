@@ -3,59 +3,23 @@
 \usepackage[utf8]{inputenc}
 
 
-% Importing pictures
-\usepackage{graphicx}
-\graphicspath{{images/}}
-
-
-% Title sequences for the document
-\usepackage{titling}
+\input{util/titling.tex}
 \title{Vizualizace étendue planárního optického systému}
 \author{Bronislav Růžička}
 
-% Fonts
-\usepackage[T1]{fontenc}
-\usepackage[sfdefault,lf]{carlito}
-\usepackage[default]{sourceserifpro}
 
-% Main text format
-\usepackage{setspace}
-\usepackage{ragged2e}
-\usepackage{parskip}
-\renewcommand{\baselinestretch}{1.5}
-\justifying
-\setlength{\parindent}{0pt}
+\input{util/fonts.tex}
+\input{util/textformat.tex}
+\input{util/headings.tex}
+\input{util/tableofcontents.tex}
 
-% Headings
-\usepackage{titlesec}
-\renewcommand{\chaptername}{}
-\titleformat{\chapter}[block]{\large\sffamily\bfseries}{\chaptertitlename\thechapter}{1em}{}
-\titlespacing*{\chapter}{0pt}{0pt}{0pt}
-\titleformat*{\section}{\large\sffamily\bfseries}
-\titlespacing*{\section}{0pt}{15pt}{7.5pt}
-\titleformat*{\subsection}{\large\sffamily\bfseries}
-\titlespacing*{\subsection}{0pt}{15pt}{7.5pt}
+\input{util/images.tex}
+\input{util/pdfa.tex}
 
-% Table of contents styling
-\renewcommand*{\contentsname}{Obsah}
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}} 
-
-
-% Export to PDF/A
-\usepackage{colorprofiles}
-\usepackage[a-2b,mathxmp]{pdfx}[2019/02/27]
-\begin{filecontents*}[overwrite]{\jobname.xmpdata}
-    \Title{\@title}
-    \Author{\@author}
-\end{filecontents*}
-
-
-% Todos -- TODO remove
-\input{todo/todo.tex}
+\input{util/todo.tex}
 % \disabletodo
 
 
-% Core document structure
 \begin{document}
 
     % No page numbering
@@ -64,9 +28,7 @@
     \pagestyle{empty}
 
     \input{pages/titulnistrana.tex}
-
     \input{pages/prohlaseni.tex}
-
     \input{pages/podekovani.tex}
 
     % Start page numbering, don't show
@@ -80,7 +42,6 @@
     \pagestyle{plain}
 
     \input{chapters/abstrakt.tex}
-
     \input{chapters/uvod.tex}
 
 \end{document}
