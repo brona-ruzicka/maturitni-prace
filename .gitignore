@@ -8,3 +8,6 @@
 
 # Include all files in all subdirectories
 !/**/
+
+# But exclude local vscode settings
+.vscode/
