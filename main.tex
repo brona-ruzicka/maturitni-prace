@@ -25,23 +25,19 @@
 \begin{document}
 
     % No page numbering
-    \newpage
     \pagenumbering{gobble}
-    \pagestyle{empty}
 
     \input{pages/titulnistrana.tex}
     \input{pages/prohlaseni.tex}
     \input{pages/podekovani.tex}
 
-    % Start page numbering, don't show
+    % Show page numbering
     \newpage
     \pagenumbering{arabic}
+    \setcounter{page}{4}
 
     \tableofcontents
 
-    % Show page numbering
-    \newpage
-    \pagestyle{plain}
 
     \input{chapters/abstrakt.tex}
     \input{chapters/uvod.tex}
