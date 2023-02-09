@@ -24,22 +24,18 @@
 
 \begin{document}
 
-    % No page numbering
     \pagenumbering{gobble}
 
     \input{pages/titulnistrana.tex}
     \input{pages/prohlaseni.tex}
     \input{pages/podekovani.tex}
+    \tableofcontents
+    \input{pages/abstrakt.tex}
 
-    % Show page numbering
     \newpage
     \pagenumbering{arabic}
-    \setcounter{page}{4}
+    \setcounter{page}{6}
 
-    \tableofcontents
-
-
-    \input{chapters/abstrakt.tex}
     \input{chapters/uvod.tex}
     \input{chapters/materialametody.tex}
     \input{chapters/vysledky.tex}
