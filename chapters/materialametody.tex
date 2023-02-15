@@ -2,108 +2,63 @@
 
 \section{Vymezení problému}
 
-Jako vzorový příklad si můžeme vzít zrcadlový světlovod -- plášť
-komolého jehlanu s odříznutou špičkou a podstavou; v limitním případě
-může jít o hranol. Ze strany odříznuté špičky svítí plošný zdroj světla.
-Světlo se šíří ve směru k odříznuté podstavě, a to jak přímo, tak odrazy
-od stěn. Naším cílem je pochopit nejenom celkovou funkci této optické
-soustavy, ale i detaily o vystupujícím světle.
+\fixme{Vlastními slovy}
 
-Tato práce je pracovním pokusem ověřujícím jistou myšlenku. Proto je
-vhodné nejprve problém zásadně zjednodušit a až poté uvažovat o zobecnění.
+Jako vzorový příklad si můžeme vzít tento zrcadlový světlovod - plášť komolého jehlanu s odříznutou špičkou a podstavou; v limitním případě může jít o hranol. Ze strany odříznuté špičky svítí plošný zdroj světla. Paprsky se šíří ve směru k odříznuté podstavě, a to jak přímo, tak i odrazy od stěn. Naším cílem je pochopit nejenom celkovou funkci této optické soustavy, ale i detaily o vystupujícím světle.
 
-V této fázi je proto na místě omezit se nejprve na 2-D řez, respektive
-na 2-D optický systém. Naše optická soustava se tedy zjednoduší na zdroj
-světla v podobě úsečky a světlovod ve formě lichoběžníku (limitně
-obdélníku) s odříznutými čely, tj. de facto dvěma úsečkami
-představujícími zrcadla:
+Tato práce je pouze pokusem demonstrujícím jistou myšlenku. Proto je vhodné nejprve problém co nejvíce zjednodušit, a až pokud se naše hypotéza ověří, uvažovat o zobecnění.
 
+Omezíme se tedy nejprve na 2D řez, respektive na 2D optický systém. Náš příklad se tudíž zjednoduší na zdroj světla v podobě úsečky a světlovod ve formě lichoběžníku (limitně obdélníku) s odříznutými čely, tj. de facto dvěma úsečkami představujícími zrcadla.
 
-                     ----
-         zrcadlo    /
-                ----
-               /
-          ----
-         /
+\begin{center}
+    \includegraphics[scale=0.7]{2.1_priklad.png}\\
+    \todo{Popisek obrázku; formát popisku}\\
+\end{center}
 
-         S
-světlo  S
-         S
+Naopak nebudeme zavádět zjednodušení typické u zobrazovací optiky - náhradu plošného (lineárního) zdroje světla bodovým. Nezobrazovací optika je typická právě prací se světelnými zdroji, jejichž velikost je nezanedbatelná vzhledem k velikosti optického systému.
 
-         \
-          ----
-              \
-               ----
-         zrcadlo   \
-                    ----
-
-(v obrázku by měla být zrcadla skoro rovnoběžná, "lomenou čarou" jsem se
-snažil napodobit rovnou čáru malého sklonu)
-
-Nebudeme zavádět zjednodušení typické u zobrazovací optiky -- náhradu
-plošného (lineárního) zdroje světla bodovým. Nezobrazovací optika je
-typická právě prací se světelnými zdroji, jejichž velikost je
-nezanedbatelná vzhledem k velikosti optického systému.
-
-Dále budeme pracovat čistě s paprskovou představou světla, tj. nebudeme
-uvažovat jeho vlnové vlastnosti. To je adekvátní u makroskopických
-optických soustav (např. světlomety), naopak neadekvátní např. u studia
-optických vláken. Takové typy nezobrazovací optiky tedy z analýzy vědomě
+Dále budeme pracovat čistě s paprskovou představou světla, tj. nebudeme uvažovat jeho vlnové vlastnosti. To je adekvátní u makroskopických optických soustav (např. světlomety), naopak neadekvátní např. při studiu optických vláken. Takové typy nezobrazovací optiky tedy z analýzy vědomě
 vypouštíme.
 
-Budeme uvažovat pouze dokonalý zrcadlový odraz nebo dokonalou absorpci
-světla. V praxi by bylo třeba též zahrnout lom světla, rozptyl (odraz od
-matného povrchu), částečný odraz, případně další jevy. Nebudeme uvažovat
-závislost optické interakce na barvě (vlnové délce) světla nebo jeho
-polarizaci. Budeme předpokládat, že každý paprsek nese stejný
-elementární optický výkon. Optický výkon (světelný tok) celého
-světelného zdroje je pak dán prostým součtem elementárních optických výkonů.
+Budeme uvažovat pouze dokonalý zrcadlový odraz nebo dokonalou absorpci světla. V praxi by bylo třeba též zahrnout lom světla, rozptyl (odraz od matného povrchu), částečný odraz, případně další jevy. Nebudeme uvažovat závislost optické interakce na barvě (vlnové délce) světla nebo jeho polarizaci. Budeme předpokládat, že každý paprsek nese stejný elementární optický výkon. Optický výkon (světelný tok) celého světelného zdroje je pak dán prostým součtem elementárních optických výkonů.
 
-Obrázky - odraz na lineárním zrcadlu, absorpce, případně další.
+\pic{Odraz na lineárním zrcadlu, absorbce, další}
 
-Sledovaná optická soustava může být velmi jednoduchá jako v uvedeném
-případě, ale může také obsahovat neomezené množství lineárních zrcadel
-(k aproximaci křivých povrchů), lineárních světelných zdrojů a
-lineárních absorbérů (clon). Důležité je, že předem není známo, jak bude
-paprsek optickou soustavou postupovat. To je zásadní rozdíl oproti
-zobrazovací optice, např. teleskopu se dvěma čočkami, kde je předem
-zřejmé, že paprsek světla se nejdřív lomí na přední ploše první čočky,
-pak na zadní ploše první čočky, pak na přední ploše druhé čočky a
-nakonec na zadní ploše druhé čočky. Tato apriorní znalost podstatně
-zjednodušuje analýzu zobrazovací optiky -- a neznalost komplikuje
-analýzu nezobrazovací optiky.
+
+Sledovaná optická soustava může být velmi jednoduchá jako v uvedeném případě, ale může také obsahovat neomezené množství lineárních zrcadel (k aproximaci křivých povrchů), lineárních světelných zdrojů a
+lineárních absorbérů (clon). Důležité je, že předem není známo, jak bude paprsek optickou soustavou postupovat. To je zásadní rozdíl oproti zobrazovací optice, např. teleskopu se dvěma čočkami, kde je předem zřejmé, že paprsek světla se nejdřív lomí na přední ploše první čočky, pak na zadní ploše první čočky, pak na přední ploše druhé čočky a nakonec na zadní ploše druhé čočky. Tato apriorní znalost podstatně zjednodušuje analýzu zobrazovací optiky -- a neznalost komplikuje analýzu nezobrazovací optiky.
 
 
 
 \section{Analýza systému}
 
-Budeme předpokládat kartézský souřadný systém Oxy, kde počátek O můžeme
-umístit kamkoliv. Budeme předpokládat, že světlo se primárně šíří ve
-směru osy +x.
+Budeme používat dvourozměrný kartézský souřadný systém (systém $Oxy$), 
+přičemž počátek soustavy $O$ můžeme umístit kamkoliv. Předpokládáme, že světlo
+se primárně šíří ve směru $+x$, světelný paprsek tak můžeme
+popsat rovnicí: 
 
-Světelný paprsek tak můžeme v souřadném systému Oxy popsat rovnicí
-   y = kx + q.
+$$y = kx + q$$
 
-K analýze paprsků v místech, kde protínají osu y souřadného systému Oxy,
-slouží prostorovo-fázový diagram. Vysvětlení a obrázky: jeden paprsek,
+K analýze paprsků v místech, kde protínají osu $y$ systému $Oxy$,
+slouží \emph{prostorovo-fázový diagram}. 
+
+
+\todo{Vysvětlení a obrázky: jeden paprsek,
 vějíř paprsků vycházejících z jednoho bodu, svazek rovnoběžných paprsků,
 plošný zdroj světla. Vysvětlení může být na diagramu úhel-místo,
 případně směrnice-místo; uvést, že nejpraktičtější je diagram "sinus
-úhlu"-místo, resp. "y složka směrového vektoru paprsku"-místo.
+úhlu"-místo, resp. "y složka směrového vektoru paprsku"-místo.}
 
-Možno vysvětlit, že v případě 3-D geometrie je prostorovo-fázový diagram
+\todo{Možno vysvětlit, že v případě 3D geometrie je prostorovo-fázový diagram
 čtyřrozměrný (dvě prostorové, dvě úhlové veličiny), což významně
-komplikuje vizualizaci. I proto omezení na 2-D: pokud bude 2-D analýza
-neužitečná, tím spíš bude neužitečná analýza 3-D.
+komplikuje vizualizaci. I proto omezení na 2D; pokud bude 2D analýza
+neužitečná, tím spíš bude neužitečná analýza 3D.}
 
-Ukázat, co se děje, pokud počátek souřadného systému Oxy posuneme
+\todo{Ukázat, co se děje, pokud počátek systému $Oxy$ posuneme
 doprava nebo doleva -- vodorovné nebo svislé "zkosení" obrazce v
 prostorovo-fázovém diagramu. Pozn.: opravdové zkosení je to v případě
 diagramu směrnice-místo; v případě "sinus úhlu"-místo se do zkosení
-přidává i nelineární zkřivení.
-
-(Škoda, že jste neimplementoval tenkou čočku - mohl jste ukázat, co se
-děje na ní. Ale svět se tím neboří.)
+přidává i nelineární zkřivení.}
 
 Ukázat, co se děje při odrazu na zrcadle, a to jak v případě, že je
 odražen kompletní svazek, tak v případě, že je zrcadlo malé a je
@@ -112,7 +67,7 @@ odražena pouze část svazku.
 Dokud platí, že při interakci s optickým povrchem jeden vstupní paprsek
 vytváří jeden výstupní paprsek, je plocha obrazce tvořeného všemi
 paprsky v prostorovo-fázovém diagramu konstantní nezávisle na volbě
-počátku souřadného systému Oxy. To je zákon zachování étendue; étendue
+počátku systému $Oxy$. To je zákon zachování étendue; étendue
 je plocha obrazce v prostorovo-fázovém diagramu.
 
 Zjednodušeně lze říct, že součin prostorového a úhlového rozsahu je
@@ -120,10 +75,12 @@ konstantní. Přesněji řečeno to platí jen pro svazek paprsků
 diferenciální velikosti (nekonečně malý rozsah v úhlové i prostorové
 souřadnici), ale jelikož celé étendue je složeno z nekonečně mnoha
 svazků diferenciální velikosti, platí to integrálně (v sumě) i pro celý
-svazek paprsků. [Možno dovysvětlit obrázkem -- těsně u světelného zdroje
+svazek paprsků.
+
+\pic{Možno dovysvětlit obrázkem -- těsně u světelného zdroje
 je prostorový rozsah světelného svazku malý a úhlový velký; daleko od
 světelného zdroje se světlo hodně roztáhne, tj. prostorový rozsah je
-velký, ale lokálně je úhlový rozsah malý.]
+velký, ale lokálně je úhlový rozsah malý.}
 
 Z toho se dá například pro náš jednoduchý světlovod odhadnout, že čím
 bude výstupní otvor větší, tím bude mít vystupující světlo menší úhlový
@@ -149,8 +106,8 @@ na lumeny [$lm$]. V případě aproximace světla konečným množstvím paprsk�
 můžeme říkat, že paprsek nese elementární optický výkon ve wattech resp.
 lumenech.
 - Jelikož je étendue součinem prostorového a úhlového rozsahu, často se
-za jednotku étendue bere metr čtverečný krát steradián [$m^2 . sr$]. Při
-přechodu na 2-D optický systém bude jednotkou metr krát radián [m . rad].
+za jednotku étendue bere metr čtverečný krát steradián [$m^2 \cdot sr$]. Při
+přechodu na 2-D optický systém bude jednotkou metr krát radián [$m \cdot rad$].
 Pozorný čtenář by mohl namítnout, že prostorovo-fázový diagram,
 kde se étendue počítá, má osu "sinus úhlu" a nikoliv "úhel". To na věci
 nic nemění, jen je třeba pečlivě formulovat, jak se má jednotka "radián"
@@ -172,6 +129,8 @@ pro 3-D systémy.
 
 \section{Implementační prostředky}
 
+\fixme{Vlastními slovy}
+
 Tady bych se moc nerozepisoval. Java + Swing proto, že Javu znáte a na
 Swing existuje dobrá dokumentace a je ve standardním SDK. Ad IDE - není
 důležité, můžete zmínit; jediný důvod pro výběr asi je, že jej znáte.
@@ -181,6 +140,8 @@ produkční software.
 
 
 \section{Architektura aplikace}
+
+\fixme{Vlastními slovy}
 
 Popis by měl být přizpůsobený Vaší implementaci; níže je, jak bych to
 implementoval já. Pokud to uznáte za vhodné, můžete jít až na
@@ -222,15 +183,20 @@ musíte posoudit sám, jestli je tam něco mimořádně zajímavého.
 
 
 
-\section{Testování aplikace}
-
-Tato kapitolka jen pokud na ni zbyde dost času. Mohli bychom něco
-odsimulovat třeba v TracePro. Také by šlo vymodelovat jednoduché
-případy, na kterých bude zřejmé, že výsledek je správně.
+% \section{Testování aplikace}
+%
+% \fixme{Vlastními slovy}
+%
+% Tato kapitolka jen pokud na ni zbyde dost času. Mohli bychom něco
+% odsimulovat třeba v TracePro. Také by šlo vymodelovat jednoduché
+% případy, na kterých bude zřejmé, že výsledek je správně.
 
 
 
 \section{Ovládání aplikace}
 
-Hlavně napsat, jak se definuje scéna. Pak případně popsat GUI.
+\todo{Hlavně napsat, jak se definuje scéna. Pak případně popsat GUI.}
+
+
+
 

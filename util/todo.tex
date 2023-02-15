@@ -1,7 +1,9 @@
 \usepackage{xcolor}
+\definecolor{darkgreen}{HTML}{008800}
 
 \newcommand{\todo}[1]{}
 \newcommand{\fixme}[1]{}
+\newcommand{\pic}[1]{}
 
 \newcommand{\enabletodo}{
     \renewcommand{\todo}[1]{ {
@@ -23,11 +25,22 @@
             FIXME
         } ##1
     } }
+
+    \renewcommand{\pic}[1]{ {
+        {   
+            \color{darkgreen}
+            \fontfamily{\sfdefault}
+            \fontseries{b}
+            \selectfont
+            PICTURE
+        } ##1
+    } }
 }
 
 \newcommand{\disabletodo}[0]{
     \renewcommand{\todo}[1]{}
     \renewcommand{\fixme}[1]{}
+    \renewcommand{\pic}[1]{}
 }
 
 \enabletodo
