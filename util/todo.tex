@@ -4,9 +4,10 @@
 \newcommand{\todo}[1]{}
 \newcommand{\fixme}[1]{}
 \newcommand{\pic}[1]{}
+\newcommand{\src}[0]{}
 
 \newcommand{\enabletodo}{
-    \renewcommand{\todo}[1]{ {
+    \renewcommand{\todo}[1]{{
         {   
             \color{blue}
             \fontfamily{\sfdefault}
@@ -14,9 +15,9 @@
             \selectfont
             TODO
         } ##1
-    } }
+    }}
 
-    \renewcommand{\fixme}[1]{ {
+    \renewcommand{\fixme}[1]{{
         {   
             \color{red}
             \fontfamily{\sfdefault}
@@ -24,9 +25,9 @@
             \selectfont
             FIXME
         } ##1
-    } }
+    }}
 
-    \renewcommand{\pic}[1]{ {
+    \renewcommand{\pic}[1]{{
         {   
             \color{darkgreen}
             \fontfamily{\sfdefault}
@@ -34,13 +35,19 @@
             \selectfont
             PICTURE
         } ##1
-    } }
+    }}
+
+    \renewcommand{\src}[0]{{
+        \color{red}\fontfamily{\sfdefault}\fontseries{b}\selectfont
+        \textsuperscript{SOURCE}
+    }}
 }
 
 \newcommand{\disabletodo}[0]{
     \renewcommand{\todo}[1]{}
     \renewcommand{\fixme}[1]{}
     \renewcommand{\pic}[1]{}
+    \renewcommand{\src}[0]{}
 }
 
 \enabletodo
