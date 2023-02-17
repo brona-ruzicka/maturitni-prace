@@ -1,36 +1,12 @@
 \chapter{Materiál a metody}
 
-\section{Vymezení problému}
-
-\fixme{Vlastními slovy}
-
-Jako vzorový příklad si můžeme vzít tento zrcadlový světlovod; plášť komolého jehlanu s odříznutou špičkou a podstavou, v limitním případě může jít o hranol. Ze strany odříznuté špičky svítí plošný zdroj světla. Paprsky se šíří ve směru k odříznuté podstavě, a to jak přímo, tak i odrazy od stěn. Naším cílem je pochopit nejen celkovou funkci této optické soustavy, ale i detaily o vystupujícím světle.
-
-Tato práce je pouze pokusem demonstrujícím jistou myšlenku. Proto je vhodné nejprve problém co nejvíce zjednodušit, a až pokud se naše hypotéza ověří, uvažovat o zobecnění.
-
-Omezíme se tedy nejprve na 2D řez, respektive na 2D optický systém. Náš příklad se tudíž zjednoduší na zdroj světla v podobě úsečky a světlovod ve formě lichoběžníku (limitně obdélníku) s odříznutými čely, tj. de facto dvěma úsečkami představujícími zrcadla.
-
-\begin{center}
-    \includegraphics[scale=0.7]{2.1_priklad.png}\\
-    \todo{Popisek obrázku; formát popisku}
-\end{center}
-
-Naopak nebudeme zavádět zjednodušení typické u zobrazovací optiky - náhradu plošného (lineárního) zdroje světla bodovým. Nezobrazovací optika je typická právě prací se světelnými zdroji, jejichž velikost je nezanedbatelná vzhledem k velikosti optického systému.
-
-Dále budeme pracovat čistě s paprskovou představou světla, tj. nebudeme uvažovat jeho vlnové vlastnosti. To je adekvátní u makroskopických optických soustav (např. světlomety), naopak neadekvátní např. při studiu optických vláken. Takové typy nezobrazovací optiky tedy z analýzy vědomě
-vypouštíme.
-
-Budeme uvažovat pouze dokonalý zrcadlový odraz nebo dokonalou absorpci světla. V praxi by bylo třeba též zahrnout lom světla, rozptyl (odraz od matného povrchu), částečný odraz, případně další jevy. Nebudeme uvažovat závislost optické interakce na barvě (vlnové délce) světla nebo jeho polarizaci. Budeme předpokládat, že každý paprsek nese stejný elementární optický výkon. Optický výkon (světelný tok) celého světelného zdroje je pak dán prostým součtem elementárních optických výkonů.
-
-\pic{Odraz na lineárním zrcadlu, absorbce, další}
-
-
-Sledovaná optická soustava může být velmi jednoduchá jako v uvedeném případě, ale může také obsahovat neomezené množství lineárních zrcadel (k aproximaci křivých povrchů), lineárních světelných zdrojů a
-lineárních absorbérů (clon). Důležité je, že předem není známo, jak bude paprsek optickou soustavou postupovat. To je zásadní rozdíl oproti zobrazovací optice, např. teleskopu se dvěma čočkami, kde je předem zřejmé, že paprsek světla se nejdřív lomí na přední ploše první čočky, pak na zadní ploše první čočky, pak na přední ploše druhé čočky a nakonec na zadní ploše druhé čočky. Tato apriorní znalost podstatně zjednodušuje analýzu zobrazovací optiky -- a neznalost komplikuje analýzu nezobrazovací optiky.
+\input{chapters/materialametody/vymezeniproblemu.tex}
 
 
 
 \section{Analýza systému}
+
+\fixme{Vlastními slovy}
 
 Budeme používat dvourozměrný kartézský souřadný systém (systém $Oxy$), 
 přičemž počátek soustavy $O$ můžeme umístit kamkoliv. Předpokládáme, že světlo
@@ -40,7 +16,7 @@ popsat rovnicí:
 $$y = kx + q$$
 
 K analýze paprsků v místech, kde protínají osu $y$ systému $Oxy$,
-slouží \emph{prostorovo-fázový diagram}. 
+slouží \emph{prostorovo-fázový diagram} (\emph{pf-diagram}).
 
 
 \todo{Vysvětlení a obrázky: jeden paprsek,

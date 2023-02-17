@@ -1,2 +1,22 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
+
+\newcommand{\image}[3][\@nil]{
+    \vspace{\parskip}
+    \begin{minipage}{\textwidth} {
+        \small
+        \setstretch{1.2}
+        \begin{quote}       
+            \begin{center} {
+                    \def\tmp{#1}
+                    \ifx\tmp\@nnil
+                        \includegraphics{#2}
+                    \else
+                        \includegraphics[#1]{#2}
+                    \fi
+            } \end{center}
+            #3
+        \end{quote}
+    } \end{minipage}
+    \vspace{\parskip}
+}
