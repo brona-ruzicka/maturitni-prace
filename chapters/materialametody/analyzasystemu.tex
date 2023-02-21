@@ -1,0 +1,63 @@
+\section{Analýza systému}
+
+\subsection{Vztažná soustava}
+
+Nejprve je nutné si zvolit vztažnou soustavu pro analýzu systému. Použijeme \emph{kartézskou soustavu souřadnic} s počátkem $O$ a osami $x$ a $y$ (soustava $Oxy$). Optický systém do ní umístíme tak, aby se většina paprsků šířila ve směru $+x$. Poté lze (téměř) libovolný paprsek $p$ \emph{jednoznačně} popsat následující rovnicí:
+
+\[ p:\ \ y = k \cdot x + q \]
+
+Přičemž $x$ a $y$ jsou souřadnice bodů, jimiž paprsek prochází, $q$ je $y$-souřadnice průsečíku paprsku se zvolenou osou $y$ a $k$ je směrnice paprsku. Ta se dá definovat i v závislosti na úhlu $\alpha$ mezi paprskem a osou $x$:
+
+\[ k = tan\ \alpha \]
+
+Problémy s nejednoznačností nastávají, když se některé paprsky šíří ve směru $-x$. Zároveň paprsky rovnoběžné s osou $y$ nelze pomocí výše uvedené rovnice definovat. Tyto případy však zpravidla nehrají velkou roli v nezobrazovacích optických systémech, proto je z analýzy vypouštíme.
+
+
+\subsection{Definice prostorovo-fázového diagramu}
+
+\emph{Prostorovo-fázový diagram} (\emph{pf-diagram}) zkoumá chování paprsků v blízkém okolí osy $y$. Tento diagram je tvořen body, které reprezentují jednotlivé paprsky.
+
+Souřadnice $y$ těchto bodů je rovna hodnotě $q$ z předchozí definice, neboli souřadnici průsečíku paprsku s osou $y$. Z toho vyplývá, že jednotky (a pro uživatelskou přívětivost často i měřítko) osy $y$ pf-diagramu budou shodné jako u osy $y$ systému $Oxy$.
+
+Naproti tomu, souřadnice $x$ vyjadřuje sklon paprsku, ať už ve formě úhlu $\alpha$, směrnice $k$, nebo sinu úhlu $sin\ \alpha$ apod.
+
+V této části práce budeme využívat diagramy, které na ose $x$ zobrazují směrnici $k$. Jinými slovy, pro $n$-tý paprsek $p_n$, definovaný jako:
+
+\[ p_n:\ \ y = k_n \cdot x + q_n \]
+
+zakreslíme do pf-diagramu bod $X_n$: 
+
+\[ X_n\ [\ k_n,\ q_n\ ] \]
+
+Příklad takového pf-diagramu je znázorněn na následujících obrázcích:
+
+\todo{Obrázky vedle sebe}
+
+\image[scale=0.6]{analyzasystemu_p1_scena.png}{Scéna s několika barevně označenými paprsky}
+
+\image[scale=0.6]{analyzasystemu_p1_etendue.png}{Vizualizace paprsků z předchozího obrázku v pf-diagramu}
+
+Všimněme si, že modrý paprsek je rovnoběžný s paprskem fialovým. To má za následek shodnost $x$-souřadnic bodů, jež tyto paprsky reprezentují v pf-diagramu. Podobně, průsečík červeného paprsku s osou $y$ je totožný s průsečíkem modrého paprsku s osou $y$. To způsobuje, že odpovídající body mají stejnou $y$-souřadnici.
+
+Pro lepší pochopení optických systémů se hodí možnost odpoutat pf-diagram od osy $y$ a místo ní jej vypočítávat pro libovolnou rovnoběžnou přímku. Takovouto \emph{detekční přímku} $d$ lze definovat:
+
+\[ d:\ \ x = c \]
+
+kde $c$ je konstanta, o kterou je přímka posunutá od osy $y$. Bod tohoto pf-diagramu pak má souřadnice:
+
+\[ X_n\ [\ k_n,\ p_n(\ c\ )\ ] \]
+
+Příkladem bude tatáž scéna jako výše, ovšem s detekční přímkou pro $x = 1$:
+
+\todo{Obrázky vedle sebe}
+
+\image[scale=0.6]{analyzasystemu_p2_scena.png}{Scéna s několika barevně označenými paprsky, s detekční přímkou (zelená) pro $x = 1$}
+
+\image[scale=0.6]{analyzasystemu_p2_etendue.png}{Vizualizace paprsků z předchozího obrázku v pf-diagramu}
+
+V diagramu samozřejmě zobrazujeme pouze sekce paprsků, které protínají detekční přímku.
+
+\subsection{Vlastnosti prostorovo-fázového diagramu}
+
+Z důvodu přehlednosti budeme osu $x$ popisovat pomocí stupňů $^{\circ}$. Ovšem, abychom dosáhli zobrazení sin $\alpha$, použité měřítko nebude lineární.
+
