@@ -31,15 +31,15 @@ zakreslíme do pf-diagramu bod $X_n$:
 
 Příklad takového pf-diagramu je znázorněn na následujících obrázcích:
 
-\todo{Obrázky vedle sebe}
-
-\image[scale=0.6]{analyzasystemu_p1_scena.png}{Scéna s několika barevně označenými paprsky}
-
-\image[scale=0.6]{analyzasystemu_p1_etendue.png}{Vizualizace paprsků z předchozího obrázku v pf-diagramu}
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_p1_scena.png}{Scéna s několika barevně označenými paprsky}
+}{
+    \image[scale=0.15]{analyzasystemu_p1_etendue.png}{Vizualizace paprsků z předchozího obrázku v pf-diagramu}
+}
 
 Všimněme si, že modrý paprsek je rovnoběžný s paprskem fialovým. To má za následek shodnost $x$-souřadnic bodů, jež tyto paprsky reprezentují v pf-diagramu. Podobně, průsečík červeného paprsku s osou $y$ je totožný s průsečíkem modrého paprsku s osou $y$. To způsobuje, že odpovídající body mají stejnou $y$-souřadnici.
 
-Pro lepší pochopení optických systémů se hodí možnost odpoutat pf-diagram od osy $y$ a místo ní jej vypočítávat pro libovolnou rovnoběžnou přímku. Takovouto \emph{detekční přímku} $d$ lze definovat:
+Pro lepší pochopení optických systémů se hodí možnost odpoutat pf-diagram od osy $y$ a vypočítávat jej pro libovolnou s ní rovnoběžnou přímku. Takovouto \emph{detekční přímku} $d$ lze definovat:
 
 \[ d:\ \ x = c \]
 
@@ -47,17 +47,74 @@ kde $c$ je konstanta, o kterou je přímka posunutá od osy $y$. Bod tohoto pf-d
 
 \[ X_n\ [\ k_n,\ p_n(\ c\ )\ ] \]
 
-Příkladem bude tatáž scéna jako výše, ovšem s detekční přímkou pro $x = 1$:
+Příkladem bude tatáž scéna jako výše, ovšem s detekční přímkou pro $x = 1\ \mathrm{m}$:
 
-\todo{Obrázky vedle sebe}
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_p2_scena.png}{Scéna s několika barevně označenými paprsky a detekční přímkou (zelená) pro $x = 1\ \mathrm{m}$}
+}{
+    \image[scale=0.15]{analyzasystemu_p2_etendue.png}{Vizualizace paprsků z předchozího obrázku v pf-diagramu pro přímku $x = 1\ \mathrm{m}$}
+}
 
-\image[scale=0.6]{analyzasystemu_p2_scena.png}{Scéna s několika barevně označenými paprsky, s detekční přímkou (zelená) pro $x = 1$}
-
-\image[scale=0.6]{analyzasystemu_p2_etendue.png}{Vizualizace paprsků z předchozího obrázku v pf-diagramu}
-
-V diagramu samozřejmě zobrazujeme pouze sekce paprsků, které protínají detekční přímku.
+V diagramu samozřejmě zobrazujeme pouze ty sekce paprsků, které opravu protínají detekční přímku.
 
 \subsection{Vlastnosti prostorovo-fázového diagramu}
+
+
+
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_p3_scena.png}{Vějířovitý zdroj světla s několika znázorněnými paprsky (červená) a tři vyznačené detekční přímky, pro $x = 0\ \mathrm{m}$, $x = 2\ \mathrm{m}$ a $x = 4\ \mathrm{m}$ (zelená)}
+}{
+    \image[scale=0.15]{analyzasystemu_p3_etendue1.png}{Vizualizace pf-diagramu pro levou detekční přímku $x = 0\ \mathrm{m}$ v předchozím obrázku}
+}
+
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_p3_etendue2.png}{Vizualizace pf-diagramu pro prostřední detekční přímku $x = 2\ \mathrm{m}$ v předchozím obrázku}
+}{
+    \image[scale=0.15]{analyzasystemu_p3_etendue3.png}{Vizualizace pf-diagramu pro pravou detekční přímku $x = 4\ \mathrm{m}$ v předchozím obrázku}
+}
+
+
+
+\singleimage{
+    \image[scale=0.15]{analyzasystemu_p4_scena.png}{Zdroj rozvnoběžného svazku paprsků, z nichž některé jsou znázorněny (červená) a dvě vyznačené detekční přímky, pro $x = 0\ \mathrm{m}$ a $x = 4\ \mathrm{m}$ (zelená)}
+}
+
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_p4_etendue1.png}{Vizualizace pf-diagramu pro levou detekční přímku $x = 0\ \mathrm{m}$ v předchozím obrázku}
+}{
+    \image[scale=0.15]{analyzasystemu_p4_etendue2.png}{Vizualizace pf-diagramu pro pravou detekční přímku $x = 4\ \mathrm{m}$ v předchozím obrázku}
+}
+
+
+
+\singleimage{
+    \image[scale=0.15]{analyzasystemu_p5_scena.png}{Úsečkový zdroj světla s několika znázorněnými paprsky (červená) a dvě vyznačené detekční přímky, pro $x = 0\ \mathrm{m}$ a $x = 4\ \mathrm{m}$ (zelená)}
+}
+
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_p5_etendue1.png}{Vizualizace pf-diagramu pro levou detekční přímku $x = 0\ \mathrm{m}$ v předchozím obrázku}
+}{
+    \image[scale=0.15]{analyzasystemu_p5_etendue2.png}{Vizualizace pf-diagramu pro pravou detekční přímku $x = 4\ \mathrm{m}$ v předchozím obrázku}
+}
+
+
+
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_p6_scena.png}{Úsečkový zdroj světla s několika znázorněnými paprsky (červená), clona (šedá) a vyznačená detekční přímka $x = 4\ \mathrm{m}$ (zelená)}
+}{
+    \image[scale=0.15]{analyzasystemu_p6_etendue.png}{Vizualizace pf-diagramu scény na předchozím obrázku}
+}
+
+
+
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_p7_scena.png}{Úsečkový zdroj světla s několika znázorněnými paprsky (červená), zrcadlo (modrá) a vyznačená detekční přímka $x = 4\ \mathrm{m}$ (zelená)}
+}{
+    \image[scale=0.15]{analyzasystemu_p7_etendue.png}{Vizualizace pf-diagramu scény na předchozím obrázku, obsahuje neodražené paprsky (červená) a odražené paprsky (modrá)}
+}
+
+
+\subsection{Étendue}
 
 Z důvodu přehlednosti budeme osu $x$ popisovat pomocí stupňů $^{\circ}$. Ovšem, abychom dosáhli zobrazení sin $\alpha$, použité měřítko nebude lineární.
 

@@ -6,7 +6,9 @@ Příkladem, na kterém si ukážeme postupné zjednodušení, budiž tento jedn
 
 V prvním kroku se omezíme pouze na podélný řez této soustavy, jinými slovy budeme se pohybovat pouze ve 2D. Zdrojem světla bude nyní jen úsečka a celý světlovod se zjednoduší na dvě úsečky reprezentující zrcadla:
 
-\image[scale=0.7]{vymezeniproblemu_priklad.png}{Jednoduchý 2D světlovod tvořený dvěma zrcadly (modrá) s úsečkovým zdrojem světla a několika znázorněnými paprsky (červená)}
+\singleimage{
+    \image[scale=0.15]{vymezeniproblemu_priklad.png}{Jednoduchý 2D světlovod tvořený dvěma zrcadly (modrá) s úsečkovým zdrojem světla a několika znázorněnými paprsky (červená)}
+}
 
 V návaznosti je nutné podotknout, že výsledky simulace ve 2D se mohou v určitých směrech zásadně lišit od těch pro 3D. Jako jeden z rozdílů můžeme uvést fyzikální veličinu osvětlenost ( $ [\ E\ ] = 1 \ \mathrm{\frac{lm}{m^2}} $ ). Ve třech prostorových dimenzích se snižuje s druhou mocninou vzdálenosti (podle \emph{zákona převrácených čtverců}, anglicky \emph{inverse-square law}), zatímco její dvourozměrný protějšek se bude zmenšovat pouze lineárně.
 
@@ -18,13 +20,19 @@ Budeme předpokládat, že všechny paprsky mají stejný, \emph{elementární},
 
 Pro jednoduchost budeme v demonstračním programu pracovat pouze se dvěma typy interakcí mezi systémem a paprskem, \emph{dokonalým zrcadlovým odrazem} a \emph{dokonalou absorpci}. Pro praktické využití by se hodilo zahrnout i \emph{lom světla}, \emph{rozptyl} (odraz od matného povrchu), \emph{částečný odraz} aj. Zanedbáme též závislost zmíněných jevů na polarizaci nebo vlnové délce (barvě) světla.
 
-\image[scale=0.7]{vymezeniproblemu_reflektor.png}{Příklad dokonalého odrazu na zrcadle (modrá) s bodovým zdrojem světla a několika znázorněnými paprsky (červená)}
+\singleimage{
+    \image[scale=0.15]{vymezeniproblemu_reflektor.png}{Příklad dokonalého odrazu na zrcadle (modrá) s bodovým zdrojem světla a několika znázorněnými paprsky (červená)}
+}
 
-\image[scale=0.7]{vymezeniproblemu_absorber.png}{Příklad dokonalé absorbce na cloně (šedá) s bodovým zdrojem světla a několika znázorněnými paprsky (červená)}
+\singleimage{
+    \image[scale=0.15]{vymezeniproblemu_absorber.png}{Příklad dokonalé absorbce na cloně (šedá) s bodovým zdrojem světla a několika znázorněnými paprsky (červená)}
+}
 
 Reálné optické prvky bývají ve většině případů tvarované podle nejrůznějších matematických předpisů (např. často $y = k \cdot x^2$). Ovšem jelikož výpočty s mnoha typy křivek a funkcí nebývají vždy snadné, budeme připouštět pouze aproximaci těchto tvarů pomocí lomených čar (série mnoha krátkých úseček). Při budoucím použití bylo vhodné podporovat alespoň některé hojně používané útvary (\emph{kvadratická funkce}, \emph{bezierovy křivky} aj.).
 
-\image[scale=0.7]{vymezeniproblemu_aproximace.png}{Aproximace zrcadla ve tvaru kvadratické funkce (modrá) s úsečkovým zdrojem světla a několika znázorněnými paprsky (červená)}
+\singleimage{
+    \image[scale=0.15]{vymezeniproblemu_aproximace.png}{Aproximace parabolického zrcadla (modrá) s úsečkovým zdrojem světla a několika znázorněnými paprsky (červená)}
+}
 
 Podstatný rozdíl je, že v nezobrazovací systémech zpravidla není zřejmé, jak přesně bude který paprsek postupovat optickou soustavou. Oproti tomu v rámci zobrazovací optiky je to velmi jednoduše vyvoditelné. Jako příklad si vezměme teleskop se dvěma čočkami. U něj je na první pohled jasné, že paprsek světla nejdříve projde přes přední, a pak zadní plochu první čočky, a poté to samé pro čočku druhou. Zejména díky této znalosti je analýza i návrh zobrazovacích soustav podstatně jednodušší, než je tomu u systémů nezobrazovacích.
 

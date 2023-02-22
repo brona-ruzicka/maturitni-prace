@@ -1,22 +1,54 @@
 \usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+
 \graphicspath{{images/}}
 
+\renewcommand{\figurename}{Obr.}
+\renewcommand{\thefigure}{\arabic{figure}}
+\captionsetup[figure]{font=small}
+
+\renewcommand*{\listfigurename}{Seznam obrázků}
+
 \newcommand{\image}[3][\@nil]{
+    \def\tmp{#1}
+    \ifx\tmp\@nnil
+        \includegraphics{#2}
+    \else
+        \includegraphics[#1]{#2}
+    \fi
+    \caption{#3}
+}
+
+\newcommand{\singleimage}[1]{
     \vspace{\parskip}
-    \begin{minipage}{\textwidth} {
-        \small
-        \setstretch{1.2}
-        \begin{quote}       
-            \begin{center} {
-                    \def\tmp{#1}
-                    \ifx\tmp\@nnil
-                        \includegraphics{#2}
-                    \else
-                        \includegraphics[#1]{#2}
-                    \fi
-            } \end{center}
-            #3
-        \end{quote}
-    } \end{minipage}
+    \begin{figure}[H]
+        \begin{center}
+            \begin{minipage}{0.8\textwidth}
+                {
+                    \centering
+                    #1
+                }
+            \end{minipage}
+        \end{center}
+    \end{figure}
+    \vspace{\parskip}
+}
+
+\newcommand{\doubleimage}[2]{
+    \vspace{\parskip}
+    \begin{figure}[H]
+        {
+            \begin{minipage}[t]{0.45\textwidth}
+                \centering
+                #1
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{0.45\textwidth}
+                \centering
+                #2
+            \end{minipage}
+        }
+    \end{figure}
     \vspace{\parskip}
 }
