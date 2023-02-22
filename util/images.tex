@@ -20,11 +20,17 @@
     \caption{#3}
 }
 
+\newcommand{\imageblock}[1]{
+    \begin{minipage}[t]{\textwidth}
+        #1
+    \end{minipage}
+}
+
 \newcommand{\singleimage}[1]{
     \vspace{\parskip}
     \begin{figure}[H]
         \begin{center}
-            \begin{minipage}{0.8\textwidth}
+            \begin{minipage}[t]{0.8\textwidth}
                 {
                     \centering
                     #1
