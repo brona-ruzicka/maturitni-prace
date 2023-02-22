@@ -1,59 +1,63 @@
 
-\newcommand{\withfontsettings}[5]{ {
+\newcommand{\withfontsettings}[6]{ {
     \fontfamily{#1}
-    \fontsize{#2pt}{1}
-    \fontseries{#3}
-    \fontshape{#4}
+    \fontsize{#2pt}{#3pt}
+    \fontseries{#4}
+    \fontshape{#5}
     \selectfont
-    #5
+    #6
+    \par
 } }
 
 \begin{titlepage} {
     \centering
     \setstretch{1.0}
 
-    \vspace*{0.3mm}
+    \vspace*{0mm}
 
-    \withfontsettings{\sfdefault}{18}{m}{n} {
+    \withfontsettings{\sfdefault}{20}{0}{m}{n} {
         GYMNÁZIUM A STŘEDNÍ ODBORNÁ ŠKOLA
     }
 
-    \vspace*{6.7mm}
+    \vspace*{5mm}
 
-    \withfontsettings{\sfdefault}{14}{m}{n} {
+    \withfontsettings{\sfdefault}{15}{0}{m}{n} {
         ul. Mládežníků 1115, Rokycany
     }
 
-    \vspace*{14.6mm}
-
     \includegraphics[width=283.42pt,height=166.95pt]{gasos_logo.png}
 
-    \vspace*{22.5mm}
+    \vspace*{0mm}
 
-    \withfontsettings{\sfdefault}{21}{b}{n} {
+    \vfill
+
+    \withfontsettings{\sfdefault}{22}{27}{b}{n} {
         \expandafter \uppercase \expandafter{\thetitle}
+    
     }
 
-    \vspace*{4mm}
+    \vspace*{2mm}
 
-    \withfontsettings{\sfdefault}{12}{m}{n} {
+    \withfontsettings{\sfdefault}{15}{0}{m}{n} {
         MATURITNÍ PRÁCE
     }
 
     \vfill
 
-    \withfontsettings{\sfdefault}{12}{b}{n} {
+    \vspace*{20mm}
+
+    \withfontsettings{\sfdefault}{13}{0}{b}{n} {
         Autor práce: \theauthor
         \hfill
         Vedoucí práce: Mgr. Helena Čížková
     }
 
-    \vspace*{30mm}
+    \vspace*{35mm}
 
-    \withfontsettings{\sfdefault}{12}{m}{it} {
+    \withfontsettings{\sfdefault}{13}{0}{m}{it} {
         Rokycany 2023
     }
 
-    \vspace*{20.4mm}
+    \vspace*{20mm}
 
 } \end{titlepage}
