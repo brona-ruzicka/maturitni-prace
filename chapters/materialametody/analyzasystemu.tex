@@ -8,13 +8,13 @@ Nejprve je nutné si zvolit vztažnou soustavu pro analýzu systému. Použijeme
 
 Přičemž $x$ a $y$ jsou souřadnice bodů, jimiž paprsek prochází, $q$ je $y$-souřadnice průsečíku paprsku se zvolenou osou $y$ a $k$ je směrnice paprsku. Ta se dá definovat i v závislosti na úhlu $\alpha$ mezi paprskem a osou $x$:
 
-\[ k = tan\ \alpha \]
+\[ k = \tan\ \alpha \]
 
-Problémy s nejednoznačností nastávají, když se některé paprsky šíří ve směru $-x$. Zároveň paprsky rovnoběžné s osou $y$ nelze pomocí výše uvedené rovnice definovat. Tyto případy však zpravidla nehrají velkou roli v nezobrazovacích optických systémech, proto je z analýzy vypouštíme.
+Problémy s nejednoznačností nastávají, když se některé paprsky šíří ve směru $-x$. Zároveň paprsky rovnoběžné s osou $y$ nelze pomocí výše uvedené rovnice definovat. Budeme se proto zabývat pouze systémy, pro než není analýza ve směru osy $y$ zásadně důležitá, popř. můžeme celý optický systém otočit o 90°.
 
 
 \subsection{Znázornění chodu paprsků}
-První částí analýzy světelného systému je neodmyslitelně prozkoumání samotné geometrie optických prvků a chodu jednotlivých paprsků. Toho docílíme pomocí zobrazení základní 2D vizualizace scény. Použijeme již zvolenou soustavu $Oxy$ a pouze doplníme, že jednotky na obou osách budou metry ($\mathrm{m}$).
+První částí analýzy světelného systému je neodmyslitelně prozkoumání samotné geometrie optických prvků a chodu jednotlivých paprsků. Toho docílíme pomocí zobrazení jednoduché 2D vizualizace scény. Použijeme již zvolenou soustavu $Oxy$ a pouze doplníme, že obou osách budou (libovolné) jednotky délky. V našem případě zvolíme metry ($\mathrm{m}$).
 
 Jako příklad poslouží jednoduchý světlovod již jednou popsaný na začátku této kapitoly:
 
@@ -25,21 +25,24 @@ Jako příklad poslouží jednoduchý světlovod již jednou popsaný na začát
 
 \subsection{Definice prostorovo-fázového diagramu}
 
-\emph{Prostorovo-fázový diagram} (\emph{pf-diagram}) zkoumá chování paprsků v blízkém okolí osy $y$. Tento diagram je tvořen body, které reprezentují jednotlivé paprsky.
+\emph{Prostorovo-fázový diagram} (\emph{pf-diagram}) zkoumá chování paprsků v blízkém okolí osy $y$.
+Pf-diagram je kartézský, tj. má vodorovnou a svislou osu. Každý jeho bod jednoznačně určuje nějaký paprsek.
 
-Souřadnice $y$ těchto bodů je rovna hodnotě $q$ z předchozí definice, neboli souřadnici průsečíku paprsku s osou $y$. Z toho vyplývá, že jednotky (a pro uživatelskou přívětivost často i měřítko) osy $y$ pf-diagramu budou shodné jako u osy $y$ systému $Oxy$.
+Svislá souřadnice těchto bodů je rovna hodnotě $q$ z předchozí definice, neboli souřadnici průsečíku paprsku s osou $y$. Z toho vyplývá, že jednotky (a pro uživatelskou přívětivost často i měřítko) svislé osy pf-diagramu budou shodné jako u osy $y$ systému $Oxy$.
 
-Naproti tomu, souřadnice $x$ vyjadřuje sklon paprsku, ať už ve formě úhlu $\alpha$, směrnice $k$, nebo sinu úhlu $sin\ \alpha$ apod.
+Naproti tomu, vodorovná souřadnice vyjadřuje sklon paprsku, ať už ve formě úhlu $\alpha$, směrnice $k$, nebo sinu úhlu $\sin\ \alpha$ apod.
 
-V této části práce budeme využívat diagramy, které na ose $x$ zobrazují směrnici $k$. Jinými slovy, pro $n$-tý paprsek $p_n$, definovaný jako:
+V této části práce budeme využívat diagramy, které na vodorovné ose zobrazují směrnici $k$. Jinými slovy, pro $n$-tý paprsek $p_n$, definovaný jako:
 
 \[ p_n:\ \ y = k_n \cdot x + q_n \]
 
 zakreslíme do pf-diagramu bod $X_n$: 
 
-\[ X_n\ [\ k_n,\ q_n\ ] \]
+\[ X_n = [\ k_n,\ q_n\ ] \]
 
-Příklad takového pf-diagramu je znázorněn na následujících obrázcích:
+V dalším textu budeme proto vodorovnou osu pf-diagramu nazývat $k$ a svislou osu $q$.
+
+Jednoduchý příklad pf-diagramu je znázorněn na následujících obrázcích:
 
 \doubleimage{
     \image[scale=0.15]{analyzasystemu_p1_scena.png}{Scéna s několika barevně označenými paprsky}
@@ -47,35 +50,37 @@ Příklad takového pf-diagramu je znázorněn na následujících obrázcích:
     \image[scale=0.15]{analyzasystemu_p1_etendue.png}{Vizualizace paprsků z předchozího obrázku v pf-diagramu}
 }
 
-Všimněme si, že modrý paprsek je rovnoběžný s paprskem fialovým. To má za následek shodnost $x$-souřadnic bodů, jež tyto paprsky reprezentují v pf-diagramu. Podobně, průsečík červeného paprsku s osou $y$ je totožný s průsečíkem modrého paprsku s osou $y$. To způsobuje, že odpovídající body mají stejnou $y$-souřadnici.
+Všimněme si, že modrý paprsek je rovnoběžný s paprskem fialovým. To má za následek shodnost (vodorovných) $k$-souřadnic bodů, jež tyto paprsky reprezentují v pf-diagramu. Podobně, průsečík červeného paprsku s osou $y$ je totožný s průsečíkem modrého paprsku s osou $y$. To způsobuje, že odpovídající body mají stejnou $q$-souřadnici.
 
 Pro lepší pochopení optických systémů se hodí možnost odpoutat pf-diagram od osy $y$ a vypočítávat jej pro libovolnou s ní rovnoběžnou přímku. Takovouto \emph{detekční přímku} $d$ lze definovat:
 
 \[ d:\ \ x = c \]
 
-kde $c$ je konstanta, o kterou je přímka posunutá od osy $y$. Bod tohoto pf-diagramu pak má souřadnice:
+kde $c$ je konstanta, o kterou je přímka posunutá od osy $y$. Bod odpovídajícího pf-diagramu pak má souřadnice:
 
-\[ X_n\ [\ k_n,\ p_n(\ c\ )\ ] \]
+\[ X_n = [\ k_n,\ p_n(\ c\ )\ ] \]
 
 Příkladem bude tatáž scéna jako výše, ovšem s detekční přímkou pro $x = 1\ \mathrm{m}$:
 
 \doubleimage{
     \image[scale=0.15]{analyzasystemu_p2_scena.png}{Scéna s několika barevně označenými paprsky a detekční přímkou (zelená) pro $x = 1\ \mathrm{m}$}
 }{
-    \image[scale=0.15]{analyzasystemu_p2_etendue.png}{Vizualizace paprsků z předchozího obrázku v pf-diagramu pro přímku $x = 1\ \mathrm{m}$}
+    \image[scale=0.15]{analyzasystemu_p2_etendue.png}{Vizualizace paprsků z předchozího obrázku v pf-diagramu pro detekční přímku $x = 1\ \mathrm{m}$}
 }
 
 V diagramu samozřejmě zobrazujeme pouze ty sekce paprsků, které opravu protínají detekční přímku.
 
-Je také vhodné zmínit, že pro 2D simulace je pf-diagram, jak již víme, taktéž dvourozměrný. Ovšem pro 3D systémy potřebujeme k zobrazení pf-diagramu dimenze celkem 4. Dvě prostorové veličiny, pro přesné určení průsečíku s detekční rovinou, a dvě úhlové pro jednoznačné určení směru paprsku. To výrazně komplikuje vizualizaci, což je i jeden z dalších důvodů, proč se v této práci omezujeme jen na 2D systémy. Lze tvrdit, že pokud bude rovinná analýza neužitečná, bude težko použitelný i rozbor v prostoru.
+Je také vhodné zmínit, že pro 2D simulace je pf-diagram, jak již víme, taktéž dvourozměrný. Ovšem pro 3D systémy potřebujeme k zobrazení pf-diagramu dimenze celkem 4. Dvě prostorové veličiny, pro přesné určení průsečíku s detekční rovinou, a dvě úhlové pro jednoznačné určení směru paprsku. To výrazně komplikuje vizualizaci, což je i jeden z dalších důvodů, proč se v této práci omezujeme jen na 2D systémy. Lze tvrdit, že pokud bude rovinná analýza neužitečná, bude těžko použitelný i rozbor v prostoru.
 
 
 \subsection{Vlastnosti prostorovo-fázového diagramu}
 
-Pokud detekční přímka prochází přímo \emph{bodovým zdrojem} (resp. \emph{vějířovým}), pokud uvažujeme pouze paprsky $+x$, ten se na pf-diagramu zobrazí jako vodorovná úsečka. Všechny paprsky jsou totiž koncentrovány do jednoho bodu, průsečíku, zatímco jejich směrnice se podstatně liší. To je patrné i na následujících dvou obrázcích.
+Pokud detekční přímka prochází přímo \emph{bodovým zdrojem} (resp. \emph{vějířovým}, uvažujeme-li pouze paprsky šířící se z leva do prava), zobrazí se na pf-diagramu vodorovná úsečka. Všechny paprsky jsou totiž koncentrovány do jednoho bodu, průsečíku, zatímco jejich směrnice se podstatně liší. To je patrné i na následujících dvou obrázcích.
+
+Poukažme na to, že pro nakreslení přesného pf-diagramu je nutné počítat s desítkami tisíc až miliony paprsků. Ovšem v obrázcích s optickou soustavou je zobrazení takového množství paprsků naprosto nepřehledné, proto do nich vždy zakreslujeme pouze malý výběr z celkového počtu.
 
 \doubleimage{
-    \image[scale=0.15]{analyzasystemu_p3_scena.png}{Vějířovitý zdroj světla s několika znázorněnými paprsky (červená) a tři vyznačené detekční přímky, pro $x = 0\ \mathrm{m}$, $x = 2\ \mathrm{m}$ a $x = 4\ \mathrm{m}$ (zelená)}
+    \image[scale=0.15]{analyzasystemu_p3_scena.png}{Vějířový zdroj světla s několika znázorněnými paprsky (červená) a tři vyznačené detekční přímky, pro $x = 0\ \mathrm{m}$, $x = 2\ \mathrm{m}$ a $x = 4\ \mathrm{m}$ (zelená)}
 }{
     \image[scale=0.15]{analyzasystemu_p3_etendue1.png}{Vizualizace pf-diagramu pro levou detekční přímku $x = 0\ \mathrm{m}$ v předchozím obrázku, procházející zdrojem světla}
 }
@@ -102,7 +107,7 @@ Oproti tomu zdroj, jež vyzařuje rovnoběžný svazek paprsků se zobrazí jako
 
 Specificky pro tento případ, kdy mají paprsky nulový sklon, zůstává pf-diagram neměnný bez ohledu na vzdálenosti detekční přímky od zdroje. Při návrhu systému s nízkým rozptylem se snažíme co nejvíce přiblížit právě takovému rozložení.
 
-Pokud zkombinujeme obě zmíněné zákonitosti, dokážeme odvodit pf-diagramy i pro složitější zdroje světla, např. pro \emph{plošný zdroj}, resp. \emph{úsečkový} ve 2D. Základní útvar, který tento zářič v pf-diagramu vytváří, je obdélník a při posouvání detekční přímky opět dochází ke zkosení.
+Pokud zkombinujeme obě zmíněné zákonitosti, dokážeme odvodit pf-diagramy i pro složitější zdroje světla, např. pro \emph{plošný zdroj}, resp. \emph{úsečkový} ve 2D. Základní útvar, který tento zářič v pf-diagramu vytváří, je obdélník a při posouvání detekční přímky opět dochází ke zkosení. To lze pozorovat na následujících obrázcích.
 
 \singleimage{
     \image[scale=0.15]{analyzasystemu_p5_scena.png}{Úsečkový zdroj světla s několika znázorněnými paprsky (červená) a dvě vyznačené detekční přímky, pro $x = 0\ \mathrm{m}$ a $x = 4\ \mathrm{m}$ (zelená)}
@@ -114,7 +119,11 @@ Pokud zkombinujeme obě zmíněné zákonitosti, dokážeme odvodit pf-diagramy 
     \image[scale=0.15]{analyzasystemu_p5_etendue2.png}{Vizualizace pf-diagramu pro pravou detekční přímku $x = 4\ \mathrm{m}$ v předchozím obrázku, znázorňuje zkosení obrazce}
 }
 
-Nutno dodat, že pojmy plošný resp. úsečkový zdroj obecně myslíme tzv. \emph{Lambertovské zářiče} odpovídajícího tvaru. Tj. zářič, u něhož je počet vyzářených paprsků určitým směrem přímo úměrný jeho zdánlivé ploše při pohledu z daného směru. Díky použití těchto zdrojů můžeme v pf-diagramu pozorovat nerovnoměrné rozprostření paprsků. To je naznačeno různou sytostí barvy jednotlivých bodů. Platí čím je barva sytější, tím více reprezentuje pixel paprsků.
+Pro levou detekční přímku a levý pf-diagram platí, že bodem na detekční přímce (odpovídá vodorovné čáře v pf-diagramu) buďto neprochází žádný paprsek (např. $y = 2\ \mathrm{m}$), nebo jím naopak prochází paprsky všemi směry (např. $y = 0\ \mathrm{m}$).
+
+Pro pravou detekční přímku a pravý pf-diagram platí, že každým bodem na detekční přímce prochází paprsky v omezeném sklonovém (úhlovém) rozsahu. Např. bodem $y = 0\ \mathrm{m}$ prochází pouze paprsky se směrnicemi v intervalu $k \in (-0.25, 0.25)$ a obdobně bodem $y = 1\ \mathrm{m}$ pouze paprsky se směrnicemi $k \in (0.0, 0.5)$. Z diagramu lze taktéž vyčíst, že paprsky se sklonem $\alpha = 45^{\circ}$, čemuž odpovídá směrnice $k = 1$, protínají detekční přímku jen v rozmezí od $y_{min} = 3\ \mathrm{m}$ do $y_{max} = 5\ \mathrm{m}$.
+
+Dále je nutno též dodat, že pod pojmy plošný resp. úsečkový zdroj obecně myslíme tzv. \emph{lambertovské zářiče} odpovídajícího tvaru. Tj. zářič, u něhož je počet vyzářených paprsků určitým směrem přímo úměrný jeho zdánlivé ploše při pohledu z daného směru. Díky použití těchto zdrojů můžeme v pf-diagramu pozorovat nerovnoměrné rozprostření paprsků. To je naznačeno různou sytostí barvy jednotlivých bodů. Platí čím je barva sytější, tím více reprezentuje pixel paprsků.
 
 Zatím jsme rozebrali systémy skládající se pouze ze zdrojů světla. Nyní se podíváme, jak pf-diagram reaguje na optické prvky. Nejprve se podíváme na clonu. To je docela jednoduché, část obrazce v diagramu je jednoduše uříznuta, bez náhrady (srov. s předchozími diagramy):
 
@@ -137,9 +146,9 @@ Pro zrcadla je situace o něco složitější, ty totiž, obdobně jako clony, �
 
 Doteď jsme se zabývali pf-diagramem typu \emph{směrnice-průsečík}, a to zejména pro jednoduchost pochopeni základních konceptů a vlastností. Ovšem zmiňovali jsme i jiné druhy pf-diagramů a jedním z nich je typ \emph{sinus-průsečík}. V takovém diagramu je bod reprezentující $n$-tý paprsek popsán:
 
-\[ X_n\ [\ sin\ \alpha_n,\ p_n(\ c\ )\ ] \]
+\[ X_n = [\ \sin\ \alpha_n,\ p_n(\ c\ )\ ] \]
 
-Z důvodu přehlednosti nebudeme osu $x$ takového diagramu popisovat jako bezjednotkový $sin\ \alpha$, namísto toho použijeme úhel $\alpha$ ve stupních ($^{\circ}$), který daným hodnotám sinu odpovídá. Ovšem, abychom dosáhli lineárního rozprostření hodnot $sin\ \alpha$ po ose $x$, odpovídající hodnoty úhlu $\alpha$ lineárně rozprostřené nebudou. Budeme tedy de-facto používat nelineární měřítko.
+Z důvodu přehlednosti nebudeme osu $x$ takového diagramu popisovat jako bezjednotkový $\sin\ \alpha$, namísto toho použijeme úhel $\alpha$ ve stupních ($^{\circ}$), který daným hodnotám sinu odpovídá. Ovšem, abychom dosáhli lineárního rozprostření hodnot $\sin\ \alpha$ po ose $x$, odpovídající hodnoty úhlu $\alpha$ lineárně rozprostřené nebudou. Budeme tedy de-facto používat nelineární měřítko.
 
 Rozdílů mezi zmíněnými druhy zobrazení není mnoho, ale některé se přeci jen najdou. Jednak samozřejmě nebude platit, že při posouvání detekční přímky dochází ke zkosení obrazce, tady se budeme muset omezit na obecnější termín deformace. To je patrné z následujících obrázků:
 
@@ -157,7 +166,7 @@ Pro situaci, kdy detekční přímka protíná zdroj, se obrazec nijak výrazně
     \image[scale=0.15]{analyzasystemu_p8_etendue3.png}{Vizualizace pf-diagramu sinus-průsečík pro pravou detekční přímku $x = 4\ \mathrm{m}$ v předchozím obrázku, znázorňuje deformaci obrazce}
 }
 
-Dále si můžeme všimnout, že v tomto zobrazení se paprsky zdají být rovnoměrně rozložené. Nezapomeňme ovšem, že stále používáme \emph{Lambertovské zářiče}. Tento způsob zakreslení pf-diagramu tedy jistým způsobem působí proti nerovnoměrnému rozložení paprsků vyzářených z úsečkového zdroje.
+Dále si můžeme všimnout, že v tomto zobrazení se paprsky zdají být rovnoměrně rozložené. Nezapomeňme ovšem, že stále používáme \emph{lambertovské zářiče}. Tento způsob zakreslení pf-diagramu tedy jistým způsobem působí proti nerovnoměrnému rozložení paprsků vyzářených z úsečkového zdroje.
 
 Dalším specifikem tohoto typu pf-diagramu je tato následující vlastnost:
 
@@ -169,12 +178,15 @@ Zmíněná plocha obraze v pf-diagramu typu \emph{sinus-průsečík} se nazývá
 
 Étendue může být definováno i jako jistý součin prostorového a úhlového rozsahu. Pro svazek paprsků diferenciální velikosti (reprezentováno jedním pixelem v našem diagramu) je tento součin konstantní (všechny pixely mají stejnou plochu). Jelikož étendue je pouze součtem těchto součinů, platí tato vlastnost i pro všechny paprsky jako celek.
 
-Např. na následujícím obrázku je vidět, že přímo u zdroje jsou sice velké rozdíly ve sklonu paprsků (vysoký úhlový rozsah), ale všechny paprsky jsou velmi blízko u sebe (nízký prostorový rozsah). Pokud se posuneme dále od zářiče, paprsky se rozprostřou a prostorový rozsah se zvětší, ale lokálně je úhlový rozsah v těchto místech minimální. Étendue je tedy zachováno.
+Např. na následujícím obrázku je vidět, že přímo u zdroje jsou sice velké rozdíly ve sklonu paprsků (vysoký úhlový rozsah), ale všechny paprsky jsou velmi blízko u sebe (nízký prostorový rozsah). Pokud se posuneme dále od zářiče, paprsky se rozprostřou a prostorový rozsah se zvětší, avšak lokálně je úhlový rozsah v těchto místech minimální. Étendue je tedy zachováno.
 
 \singleimage{
-    \image[scale=0.15]{analyzasystemu_priklad_soucin.png}{Vějířovitý zdroj světla s několika znázorněnými paprsky (červená)}
+    \image[scale=0.15]{analyzasystemu_priklad_soucin.png}{Vějířový zdroj světla s několika znázorněnými paprsky (červená)}
 }
 
+S touto znalostí můžeme odvodit základní informace pro některé optické systémy. Jestliže je součin úhlového a prostorového rozsahu konstantní, lze odvodit, že úhlový rozsah je nepřímo úměrný rozsahu prostorovému. 
+
+Na příkladu již několikrát zmíněného světlovodu to znamená, že čím větší je hrdlo světlovodu, tím menší rozptyl paprsků budeme pozorovat. To je patrné i na následujícíh obrázcích.
 
 \doubleimage{
     \image[scale=0.15]{analyzasystemu_priklad_svetlovod_uzky.png}{Jednoduchý 2D světlovod s užším hrdlem tvořený dvěma zrcadly (modrá) s úsečkovým zdrojem světla a znázorněným světelným kuželem (červená)}
@@ -182,30 +194,21 @@ Např. na následujícím obrázku je vidět, že přímo u zdroje jsou sice vel
     \image[scale=0.15]{analyzasystemu_priklad_svetlovod_siroky.png}{Jednoduchý 2D světlovod s širším hrdlem tvořený dvěma zrcadly (modrá) s úsečkovým zdrojem světla a znázorněným světelným kuželem (červená)}
 }
 
+Pokud ovšem chceme za světlovod umístit další optický člen, je užitečné znát nejen globální chování světla, ale i specifické detaily pro paprsky vystupující uprostřed nebo naopak na okrajích hrdla. K tomu by měl pomoci právě pf-diagram.
 
 
-\subsection{Úhlová distribuce paprsků}
+\subsection{Graf rozložení svítivosti}
 
+Doplňujícím typem diagramu, který se často v oblasti nezobrazovací optiky používá, je \emph{graf rozložení svítivosti}. Ten ve zkratce ukazuje, jak velká část celkového množství paprsků míří daným směrem (neboli pod daným úhlem). Přičemž se opět zabýváme paprsky v okolí \emph{dekteční přímky}. Je ovšem nutné zdůraznit, že svítivost ( $[\ I\ ] = 1\ \mathrm{cd}$ ) je základní \emph{fotometrická veličina} (tj. přihlížející k lišící se citlivosti lidského oka na různé vlnové délky světla), proto je možné toto zjednodušení zavést pouze pokud předpokládáme, že všechny paprsky nesou stejný světelný tok.
 
+Graf rozložení svítivosti lze také chápat jako jisté zjednodušení pf-diagramu. Pokud bychom sečetli počty paprsků pro jednotlivé hodnoty na ose $k$ (vyjadřující úhel) a zakreslili je do grafu, dostali bychom právě graf svítivosti. Obecně se pf-diagram zabývá jak směrem, tak i pozicí paprsku, naproti tomu graf rozložení svítivosti se zaměřuje pouze na směr. Je proto vhodný při studiu optického soustavy z velké vzdálenosti, kdy jsou rozměry celého systému zanedbatelné.
 
+Vodorovná osa grafu je popsána úhlem, pod kterým se paprsky šíří. A na svislou osu budeme nanášet poměr počtu paprsků pro tento úhel $\alpha$ vůči maximálnímu napočítanému počtu paprsků ( $ N_\alpha / N_{max} $ ), v procentech ($\mathrm{\%}$). Příklad takového grafu je na těchto obrázcích:
 
-\newpage
-\section*{[OLD] Analýza systému}
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_distribuce_scena.png}{Úsečkový zdroj světla s několika znázorněnými paprsky (červená) s detekční přímkou pro $x = 0\ \mathrm{m}$ (zelená)}
+}{
+    \image[scale=0.15]{analyzasystemu_distribuce_graf.png}{Graf rozložení svítivosti pro předchozí obrázek}
+}
 
-\fixme{Vlastními slovy}
-
-Z toho se dá například pro náš jednoduchý světlovod odhadnout, že čím
-bude výstupní otvor větší, tím bude mít vystupující světlo menší úhlový
-rozsah -- tady by bylo dobré dát obrázky.
-
-Pokud ale chceme za jednoduchý světlovod umístit další optický člen, je
-užitečné znát nejenom globální chování veškerého světla vycházejícího ze
-světlovodu, ale i lokální detaily chování -- například jaké světlo
-vystupuje ze středu výstupního otvoru, poblíž okrajů apod. To by měl
-zodpovědět prostorovo-fázový diagram.
-
-Kromě vizuálního hodnocení prostorovo-fázového diagramu je při analýze
-optického systému vhodné znát i další údaje, a to:
--- étendue
--- celkový světelný tok procházející osou y v systému Oxy
--- rozložení svítivosti, tj. kolik světelného toku jde do kterého směru
+Je též vhodné poukázat na fakt, že rozložení svítivosti se mění pouze pokud je některý z paprsků odražen zrcadlem nebo pohlcen clonou. Např. v systému na obrázku výše by byl pro libovolnou detekční přímku $x = c,\ c \geq -1\ \mathrm{m}$ vytvořen identický graf rozložení.

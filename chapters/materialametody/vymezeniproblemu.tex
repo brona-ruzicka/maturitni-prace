@@ -2,7 +2,7 @@
 
 Smyslem této práce je pouze demonstrovat jistý koncept. Zaměříme proto jen na úplné jádro problému, a pokud se výsledek prokáže jako užitečný, můžeme uvažovat o nějakém zobecnění. Připomeňme si, že cílem je jednak samozřejmě pochopení celkové funkce navrhovaného systému, ovšem neméně nás zajímají i detaily o vystupujícím světle.
 
-Příkladem, na kterém si ukážeme postupné zjednodušení, budiž tento jednoduchý světlovod. Bude mít tvar \emph{pláště komolého jehlanu (případně hranolu) s odříznutými podstavami}. Namísto horní podstavy umístíme \emph{plošný zdroj světla}. Vysílané paprsky se z něj šíří skrz kužel, a to jednak přímo, ale i s pomocí odrazů od stěn.
+Příkladem, na kterém si ukážeme postupné zjednodušení, budiž tento jednoduchý světlovod. Bude mít tvar \emph{pláště komolého jehlanu (případně hranolu) s odříznutými podstavami}. Namísto horní podstavy umístíme \emph{plošný zdroj světla}. Vysílané paprsky se z něj šíří skrz jehlan, a to jednak přímo, ale i s pomocí odrazů od stěn.
 
 V prvním kroku se omezíme pouze na podélný řez této soustavy, jinými slovy budeme se pohybovat pouze ve 2D. Zdrojem světla bude nyní jen úsečka a celý světlovod se zjednoduší na dvě úsečky reprezentující zrcadla:
 
@@ -14,7 +14,7 @@ V návaznosti je nutné podotknout, že výsledky simulace ve 2D se mohou v urč
 
 Zároveň zdůrazněme, že nebudeme nahrazovat \emph{plošný zdroj} světla \emph{bodovým}. Tato metoda je velmi typická pro zobrazovací optiku, ale v oblasti nezobrazovací optiky se příliš nepoužívá. Hlavním důvodem je velikost světelných zdrojů, která bývá v navrhovaných systémech zpravidla nezanedbatelná vůči velikosti celé soustavy.
 
-Dále se omezíme na studium makroskopických soustav (svítilna, světlomet). V takto velkých systémech se v podstatě neprojevují (resp. projevují, ale zanedbatelně) \emph{vlnové vlastnosti světla}, které proto ze simulace můžeme vypustit. Ve výsledku tedy budeme na světlo nahlížet pouze z pohledu \emph{paprskové optiky}. To by nebylo možné např. při zkoumání optických vláken, které se svými rozměry více přibližují vlnové délce použitého světla.
+Dále se omezíme na studium makroskopických soustav (svítilna, světlomet). Budeme se zajímat především o situace, ve kterých se soustavou šíří velké množství paprsků (ideálně nekonečné). To je další rozdíl oproti zobrazovací optice, kde k pochopení funkce systému stačí znalost chodu maximálně nižší desítky parsků. Zároveň v takto velkých systémech se v podstatě neprojevují (resp. projevují, ale zanedbatelně) \emph{vlnové vlastnosti světla}, které proto ze simulace můžeme vypustit. Ve výsledku tedy budeme na světlo nahlížet pouze z pohledu \emph{paprskové optiky}. To by nebylo možné např. při zkoumání optických vláken, které se svými rozměry více přibližují vlnové délce použitého světla.
 
 Budeme předpokládat, že všechny paprsky mají stejný, \emph{elementární}, optický výkon. Optický výkon celého světelného zdroje je pak jasně dán pouhým počtem paprsků, které vyzařuje.
 
@@ -25,13 +25,13 @@ Pro jednoduchost budeme v demonstračním programu pracovat pouze se dvěma typy
 }
 
 \singleimage{
-    \image[scale=0.15]{vymezeniproblemu_absorber.png}{Příklad dokonalé absorbce na cloně (šedá) s bodovým zdrojem světla a několika znázorněnými paprsky (červená)}
+    \image[scale=0.15]{vymezeniproblemu_absorber.png}{Příklad dokonalé absorpce na cloně (šedá) s bodovým zdrojem světla a několika znázorněnými paprsky (červená)}
 }
 
-Reálné optické prvky bývají ve většině případů tvarované podle nejrůznějších matematických předpisů (např. často $y = k \cdot x^2$). Ovšem jelikož výpočty s mnoha typy křivek a funkcí nebývají vždy snadné, budeme připouštět pouze aproximaci těchto tvarů pomocí lomených čar (série mnoha krátkých úseček). Při budoucím použití bylo vhodné podporovat alespoň některé hojně používané útvary (\emph{kvadratická funkce}, \emph{bezierovy křivky} aj.).
+Reálné optické prvky bývají ve většině případů tvarované podle nejrůznějších matematických předpisů (např. $y = k \cdot x^2$). Ovšem jelikož výpočty s mnoha typy křivek a funkcí nebývají vždy snadné, budeme připouštět pouze aproximaci těchto tvarů pomocí lomených čar (série mnoha krátkých úseček). Při budoucím použití bylo vhodné podporovat alespoň některé hojně používané útvary (\emph{kvadratická funkce}, \emph{Bézierovy křivky} aj.).
 
 \singleimage{
     \image[scale=0.15]{vymezeniproblemu_aproximace.png}{Aproximace parabolického zrcadla (modrá) s úsečkovým zdrojem světla a několika znázorněnými paprsky (červená)}
 }
 
-Podstatný rozdíl je, že v nezobrazovací systémech zpravidla není zřejmé, jak přesně bude který paprsek postupovat optickou soustavou. Oproti tomu v rámci zobrazovací optiky je to velmi jednoduše vyvoditelné. Jako příklad si vezměme teleskop se dvěma čočkami. U něj je na první pohled jasné, že paprsek světla nejdříve projde přes přední, a pak zadní plochu první čočky, a poté to samé pro čočku druhou. Zejména díky této znalosti je analýza i návrh zobrazovacích soustav podstatně jednodušší, než je tomu u systémů nezobrazovacích.
+Podstatný rozdíl oproti zobrazovací optice je, že v nezobrazovací systémech zpravidla není zřejmé, jak přesně bude který paprsek postupovat optickou soustavou. Naproti tomu v rámci zobrazovací optiky je to velmi jednoduše vyvoditelné. Jako příklad si vezměme teleskop se dvěma čočkami. U něj je na první pohled jasné, že paprsek světla nejdříve projde přes přední, a pak zadní plochu první čočky, a poté to samé pro čočku druhou. Zejména díky této znalosti je analýza i návrh zobrazovacích soustav podstatně jednodušší, než je tomu u systémů nezobrazovacích.
