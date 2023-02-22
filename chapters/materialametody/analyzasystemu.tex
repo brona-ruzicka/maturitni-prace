@@ -135,16 +135,77 @@ Pro zrcadla je situace o něco složitější, ty totiž, obdobně jako clony, �
 
 \subsection{Étendue}
 
-\fixme{}
+Doteď jsme se zabývali pf-diagramem typu \emph{směrnice-průsečík}, a to zejména pro jednoduchost pochopeni základních konceptů a vlastností. Ovšem zmiňovali jsme i jiné druhy pf-diagramů a jedním z nich je typ \emph{sinus-průsečík}. V takovém diagramu je bod reprezentující $n$-tý paprsek popsán:
 
-\todo{uvést diagram sinus-průsečík}
+\[ X_n\ [\ sin\ \alpha_n,\ p_n(\ c\ )\ ] \]
 
-Z důvodu přehlednosti budeme osu $x$ popisovat pomocí stupňů $^{\circ}$. Ovšem, abychom dosáhli zobrazení sin $\alpha$, použité měřítko nebude lineární.
+Z důvodu přehlednosti nebudeme osu $x$ takového diagramu popisovat jako bezjednotkový $sin\ \alpha$, namísto toho použijeme úhel $\alpha$ ve stupních ($^{\circ}$), který daným hodnotám sinu odpovídá. Ovšem, abychom dosáhli lineárního rozprostření hodnot $sin\ \alpha$ po ose $x$, odpovídající hodnoty úhlu $\alpha$ lineárně rozprostřené nebudou. Budeme tedy de-facto používat nelineární měřítko.
 
-\todo{uvést zachování obsahu}
+Rozdílů mezi zmíněnými druhy zobrazení není mnoho, ale některé se přeci jen najdou. Jednak samozřejmě nebude platit, že při posouvání detekční přímky dochází ke zkosení obrazce, tady se budeme muset omezit na obecnější termín deformace. To je patrné z následujících obrázků:
 
-\todo{uvést velčinu étendue}
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_p8_scena.png}{Úsečkový zdroj světla s několika znázorněnými paprsky (červená) a tři vyznačené detekční přímky, pro $x = 0\ \mathrm{m}$, $x = 2\ \mathrm{m}$ a $x = 4\ \mathrm{m}$ (zelená)}
+}{
+    \image[scale=0.15]{analyzasystemu_p8_etendue1.png}{Vizualizace pf-diagramu sinus-průsečík pro levou detekční přímku $x = 0\ \mathrm{m}$ v předchozím obrázku, procházející zdrojem světla}
+}
+
+Pro situaci, kdy detekční přímka protíná zdroj, se obrazec nijak výrazně nezměnil. Rozdíl je ovšem zřejmý pro ostatní pozice detekční přímky. Závislost mezi vzdáleností bodu od osy $y$ a rychlostí pohybu ve směru osy $y$ již není lineární, proto se na okrajích vytváří jisté špičky.
+
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_p8_etendue2.png}{Vizualizace pf-diagramu sinus-průsečík pro prostřední detekční přímku $x = 2\ \mathrm{m}$ v předchozím obrázku, znázorňuje deformaci obrazce}
+}{
+    \image[scale=0.15]{analyzasystemu_p8_etendue3.png}{Vizualizace pf-diagramu sinus-průsečík pro pravou detekční přímku $x = 4\ \mathrm{m}$ v předchozím obrázku, znázorňuje deformaci obrazce}
+}
+
+Dále si můžeme všimnout, že v tomto zobrazení se paprsky zdají být rovnoměrně rozložené. Nezapomeňme ovšem, že stále používáme \emph{Lambertovské zářiče}. Tento způsob zakreslení pf-diagramu tedy jistým způsobem působí proti nerovnoměrnému rozložení paprsků vyzářených z úsečkového zdroje.
+
+Dalším specifikem tohoto typu pf-diagramu je tato následující vlastnost:
+
+\begin{quote}
+    Pokud platí, že při interakci s optickým povrchem se zachovává počet paprsků (což neplatí např. pro absorpci, nedokonalý odraz apod.), je plocha obrazce tvořeného všemi paprsky konstantní, nezávisle na volbě počátku detekčního souřadného systému (v našem na případě poloze detekční přímky).
+\end{quote}
+
+Zmíněná plocha obraze v pf-diagramu typu \emph{sinus-průsečík} se nazývá \emph{étendue}. A výše popsaná vlastnost se jmenuje \emph{zákon zachování étendue} (anglicky \emph{conservation of etendue}).
+
+Étendue může být definováno i jako jistý součin prostorového a úhlového rozsahu. Pro svazek paprsků diferenciální velikosti (reprezentováno jedním pixelem v našem diagramu) je tento součin konstantní (všechny pixely mají stejnou plochu). Jelikož étendue je pouze součtem těchto součinů, platí tato vlastnost i pro všechny paprsky jako celek.
+
+Např. na následujícím obrázku je vidět, že přímo u zdroje jsou sice velké rozdíly ve sklonu paprsků (vysoký úhlový rozsah), ale všechny paprsky jsou velmi blízko u sebe (nízký prostorový rozsah). Pokud se posuneme dále od zářiče, paprsky se rozprostřou a prostorový rozsah se zvětší, ale lokálně je úhlový rozsah v těchto místech minimální. Étendue je tedy zachováno.
+
+\singleimage{
+    \image[scale=0.15]{analyzasystemu_priklad_soucin.png}{Vějířovitý zdroj světla s několika znázorněnými paprsky (červená)}
+}
+
+
+\doubleimage{
+    \image[scale=0.15]{analyzasystemu_priklad_svetlovod_uzky.png}{Jednoduchý 2D světlovod s užším hrdlem tvořený dvěma zrcadly (modrá) s úsečkovým zdrojem světla a znázorněným světelným kuželem (červená)}
+}{
+    \image[scale=0.15]{analyzasystemu_priklad_svetlovod_siroky.png}{Jednoduchý 2D světlovod s širším hrdlem tvořený dvěma zrcadly (modrá) s úsečkovým zdrojem světla a znázorněným světelným kuželem (červená)}
+}
+
+
 
 \subsection{Úhlová distribuce paprsků}
 
 
+
+
+\newpage
+\section*{[OLD] Analýza systému}
+
+\fixme{Vlastními slovy}
+
+Z toho se dá například pro náš jednoduchý světlovod odhadnout, že čím
+bude výstupní otvor větší, tím bude mít vystupující světlo menší úhlový
+rozsah -- tady by bylo dobré dát obrázky.
+
+Pokud ale chceme za jednoduchý světlovod umístit další optický člen, je
+užitečné znát nejenom globální chování veškerého světla vycházejícího ze
+světlovodu, ale i lokální detaily chování -- například jaké světlo
+vystupuje ze středu výstupního otvoru, poblíž okrajů apod. To by měl
+zodpovědět prostorovo-fázový diagram.
+
+Kromě vizuálního hodnocení prostorovo-fázového diagramu je při analýze
+optického systému vhodné znát i další údaje, a to:
+-- étendue
+-- celkový světelný tok procházející osou y v systému Oxy
+-- rozložení svítivosti, tj. kolik světelného toku jde do kterého směru

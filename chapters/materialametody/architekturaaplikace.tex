@@ -1,0 +1,43 @@
+\section{Architektura aplikace}
+
+\fixme{Vlastními slovy}
+
+\todo{Předpokládám, že tohle bude hodně v mé režii}
+
+Popis by měl být přizpůsobený Vaší implementaci; níže je, jak bych to
+implementoval já. Pokud to uznáte za vhodné, můžete jít až na
+matematické vztahy, kterými něco počítáte, ale odkaz na literaturu je
+dostatečný -- jde o standardní operace, které není nutné rozpitvávat.
+Uznáte-li za vhodné přidat obrázky, přidejte.
+
+Sledování paprsku (ray tracing) - ze zdroje světla se vyšle paprsek,
+spočítá se průsečík se všemi objekty, vybere se nejbližší, vypočítá se
+interakce (odraz, absorpce) a případně se ve sledování paprsku pokračuje
+dál, dokud se nedosáhne limitního počtu interakcí (např. 1000), nebo
+paprsek neopustí scénu (průsečík neexistuje).
+
+Vizualizace chodu paprsků simulovaným systémem - tady asi jen napsat, že
+k pochopení chování optického systému je užitečné vidět nejenom
+abstraktní prostorovo-fázový diagram, ale i jednotlivé optické členy a
+chod paprsků mezi nimi. A důležitá drobnost: pro výpočet
+prostorovo-fázového diagramu potřebujete třeba statisíce paprsků, ale
+pro vizualizaci chodu paprsků je vhodné nakreslit jich *maximálně* pár
+set, jinak je z toho nepřehledná změť čar. Máte-li ve vizualizaci nějaký
+implementačně zajímavý detail, klidně jej samozřejmě uveďte.
+
+Výpočet prostorovo-fázového diagramu - výpočet průsečíku každého z
+paprsků (jak polopřímek, tak úseček) s osou y zvoleného souřadného
+systému Oxy; pokud existuje, zaznamenat průsečík + směr paprsku do
+pomocného pole. Následně určit rozsah prostorovo-fázového diagramu,
+rozdělit na pixely, do každého určit, kolik paprsků obsahuje.
+Alternativně: rozsah prostorovo-fázového diagramu určit předem
+(uživatelsky), aby byl během vizualizace rozsah pořád stejný.
+
+Étendue: počet neprázdných pixelů. Tok: celkový počet paprsků v pomocném
+poli průsečíků. Rozložení svítivosti: součet počtu paprsků v každém
+diskrétním úhlu (šířky 1 pixel) prostorovo-fázového diagramu. Někde
+hlásit, kolik paprsků z pomocného pole průsečíků není v
+prostorovo-fázovém diagramu obsaženo.
+
+Nevím, jestli něco obecného psát k obecné architektuře programu - to
+musíte posoudit sám, jestli je tam něco mimořádně zajímavého.

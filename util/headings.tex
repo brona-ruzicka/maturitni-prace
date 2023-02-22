@@ -1,8 +1,14 @@
 \usepackage{titlesec}
+\usepackage{etoolbox}
 
 \renewcommand{\chaptername}{}
 \titleformat{\chapter}[block]{\fontsize{14pt}{14pt}\sffamily\bfseries}{\chaptertitlename\thechapter}{1em}{}
 \titlespacing*{\chapter}{0pt}{-30pt}{0pt}
+
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
 
 \titleformat*{\section}{\fontsize{13pt}{13pt}\sffamily\bfseries}
 \titlespacing*{\section}{0pt}{15pt}{7.5pt}

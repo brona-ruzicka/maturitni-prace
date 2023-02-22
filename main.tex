@@ -4,7 +4,7 @@
 
 
 \input{util/titling.tex}
-\title{Vizualizace étendue planárního optického systému}
+\title{Vizualizace prostorovo-fázového diagramu planárního optického systému}
 \author{Bronislav Růžička}
 
 
@@ -29,25 +29,25 @@
 
     \pagenumbering{gobble}
 
-    \input{pages/titulnistrana.tex}
-    \input{pages/prohlaseni.tex}
-    \input{pages/podekovani.tex}
-    \tableofcontents
-    \input{pages/abstrakt.tex}
+    \newpage \input{pages/titulnistrana.tex}
+    \newpage \input{pages/prohlaseni.tex}
+    \newpage \input{pages/podekovani.tex}
+    \newpage \tableofcontents
+    \newpage \input{pages/abstrakt.tex}
 
     
     \newpage
     \pagenumbering{arabic}
     \setcounter{page}{6}
     
-    \input{chapters/uvod.tex}
-    \input{chapters/materialametody.tex}
-    \input{chapters/vysledky.tex}
-    \input{chapters/diskuze.tex}
-    \input{chapters/zaver.tex}
+    \newpage \input{chapters/uvod.tex}
+    \newpage \input{chapters/materialametody.tex}
+    \newpage \input{chapters/vysledky.tex}
+    \newpage \input{chapters/diskuze.tex}
+    \newpage \input{chapters/zaver.tex}
 
-    % \printbibliography[title={Seznam použité literatury}]
+    % \newpage \printbibliography[title={Seznam použité literatury}]
 
-    \listoffigures
+    \newpage \listoffigures
 
 \end{document}
