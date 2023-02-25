@@ -1,9 +1,19 @@
 \section{Implementační prostředky}
 
-\fixme{Vlastními slovy}
+Vzhledem k zejména demonstrativní funkci vytvářené aplikace, přihlíželo se při výběru implementačních prostředků ke dvěma hlavním faktorům.
 
-Tady bych se moc nerozepisoval. Java + Swing proto, že Javu znáte a na
-Swing existuje dobrá dokumentace a je ve standardním SDK. Ad IDE - není
-důležité, můžete zmínit; jediný důvod pro výběr asi je, že jej znáte.
-Cílem bylo rychle prověřit použitelnost nápadu, nikoliv vytvořit
-produkční software.
+Jednak to byla vhodnost daného prostředku pro samotný úkol. Např. pro aplikace provádějící velká množství výpočtů se hodí použít rychlý programovací jazyk (zpravidla kompilovaný do strojového kódu).
+
+Ale také to byla předpokládaná jednoduchosti a rychlost implementace z pohledu autora práce. Tzn. bylo vhodné používat prostředky, se kterými se již setkal, a nemusel se tak kromě samotné implementace ještě seznamovat s novým prostředím.
+
+\subsection{Programovací jazyk}
+
+Pro vývoj aplikace byl zvolen programovací jazyk \emph{Java}\src. Jednak autor s tímto programovacím jazykem už v minulosti pracoval.
+
+Další důvodem je i to, že standardní \emph{SDK} (zkratka \emph{software development kit}, volně česky \emph{standardní knihovna}) tohoto jazyka obsahuje poměrně dobře popsaně \emph{API} (zkratka \emph{application programming interface}, volně česky \emph{rozhraní pro programování aplikací}), které programům umožňuje jednoduché vytváření \emph{GUI} (zkratka \emph{graphical user interface}, česky \emph{grafické uživatelské rozhraní}). To zahrnuje zejména zobrazování počítačových oken a různé způsoby jak obsah těchto oken definovat a vykreslovat. Zmíněné \emph{API} se v \emph{Javě} nazývá \emph{Java Swing}.\src
+
+Pro produkční software by byla samozřejmě důležitá především rychlost simulace. Z tohoto hlediska by bylo vhodnější použít např. programovací jazyky \emph{C++} nebo \emph{Rust}, které jsou na rozdíl od \emph{Javy} kompilované přímo do strojového kódu, a proto jsou schopné jednoduché aritmetické výpočty provádět podstatně rychleji.
+
+\subsection{Vývojové prostředí}
+
+Vývoj aplikace probíhal v prostředí \emph{IntelliJ IDEA} od české firmy \emph{JetBrains}. Pro kompilaci a správu závislostí (anglicky \emph{dependency management}, tj. hlavně externí knihovny) byl použit nástroj \emph{Maven}. Důvodem byla čistě jen autova znalost těchtowa software. 

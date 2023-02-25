@@ -19,37 +19,35 @@
 \input{util/biblatex.tex}
 \input{util/pdfa.tex}
 
-
-\input{util/todo.tex}
-% \disabletodo
+\input{util/notes.tex}
+% \disablenotes
 
 
 \begin{document}
 
     \input{util/mathmode.tex}
 
-
-    \pagenumbering{gobble}
-
-    \newpage \input{pages/titulnistrana.tex}
-    \newpage \input{pages/prohlaseni.tex}
-    \newpage \input{pages/podekovani.tex}
-    \newpage \tableofcontents
-    \newpage \input{pages/abstrakt.tex}
-
-    
     \newpage
-    \pagenumbering{arabic}
-    \setcounter{page}{6}
+    \pagestyle{empty}
+
+    \clearpage \input{pages/titulnistrana.tex}
+    \clearpage \input{pages/prohlaseni.tex}
+    \clearpage \input{pages/podekovani.tex}
+    \clearpage \tableofcontents
+    \clearpage \input{pages/abstrakt.tex}
+    \clearpage \notes
+
+    \newpage
+    \pagestyle{plain}
     
-    \newpage \input{chapters/uvod.tex}
-    \newpage \input{chapters/materialametody.tex}
-    \newpage \input{chapters/vysledky.tex}
-    \newpage \input{chapters/diskuze.tex}
-    \newpage \input{chapters/zaver.tex}
+    \clearpage \input{chapters/uvod.tex}
+    \clearpage \input{chapters/materialametody.tex}
+    \clearpage \input{chapters/vysledky.tex}
+    \clearpage \input{chapters/diskuze.tex}
+    \clearpage \input{chapters/zaver.tex}
 
-    % \newpage \printbibliography[title={Seznam použité literatury}]
+    % \clearpage \printbibliography[title={Seznam použité literatury}]
 
-    \newpage \listoffigures
+    \clearpage \listoffigures
 
 \end{document}

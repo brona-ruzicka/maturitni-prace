@@ -7,6 +7,7 @@
 
 \makeatletter
 \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\patchcmd{\chapter}{\thispagestyle{plain}}{}{}{}
 \makeatother
 
 

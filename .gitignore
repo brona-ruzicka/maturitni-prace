@@ -5,6 +5,7 @@
 # Except the two only root files we want to include
 !/.gitignore
 !/*.tex
+!/*.txt
 
 # Include all files in all subdirectories
 !/**/

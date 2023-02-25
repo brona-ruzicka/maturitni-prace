@@ -1,0 +1,56 @@
+\usepackage{xcolor}
+\definecolor{picturetodo}{HTML}{008800}
+
+
+\newcommand{\hiddennote}[1]{}
+\newcommand{\enablenotes}{
+    \renewcommand{\hiddennote}[1]{{##1}}
+}
+\newcommand{\disablenotes}{
+    \renewcommand{\hiddennote}[1]{}
+}
+\enablenotes
+
+
+\newcommand{\notesname}{Notes}
+\newcommand{\notes}{
+    \IfFileExists{notes.txt}{
+        \hiddennote{
+            \chapter*{\notesname}
+            \input{notes.txt}
+        }
+    }{}
+}
+
+
+\newcommand{\todo}[1]{\hiddennote{
+    {   
+        \color{blue}
+        \fontfamily{\sfdefault}
+        \fontseries{b}
+        \selectfont
+        TODO
+    } #1
+}}
+\newcommand{\fixme}[1]{\hiddennote{
+    {   
+        \color{red}
+        \fontfamily{\sfdefault}
+        \fontseries{b}
+        \selectfont
+        FIXME
+    } #1
+}}
+\newcommand{\pic}[1]{\hiddennote{
+    {   
+        \color{picturetodo}
+        \fontfamily{\sfdefault}
+        \fontseries{b}
+        \selectfont
+        PICTURE
+    } #1
+}}
+\newcommand{\src}[0]{\hiddennote{
+    \color{red}\fontfamily{\sfdefault}\fontseries{b}\selectfont
+    \textsuperscript{SOURCE}
+}}
