@@ -15,6 +15,7 @@ Když aplikace dokončí simulaci paprsků, dokreslí je do okna se scénou. Kro
 V ten samý okamžik se ovšem také otevřou další dvě okna, jedno obsahující \emph{prostorovo-fázový diagram} a druhé \emph{graf rozložení svítivosti}. Vizualizace těchto grafů reagují na změny pozice \emph{detekční přímky} v okně se scénou.
 
 \subsection{Zadání scény}
+\label{sub:architekturaaplikace_zadanisceny}
 
 Z důvodu jednoduchosti implementace a snížení komplexity vývoje se scéna do aplikace zadává přímo jako kód, tj. pomocí funkcí definujících jednotlivé součásti optického systému. Když uživatel nadefinuje scénu, je nutné program zkompilovat a spustit, což by se mohlo zdát jako složitý postup, ale např. v autorem použitém prostředí IntelliJ IDEA k tomu v dnešní době stačí stisknutí jednoho tlačítka.
 
@@ -75,7 +76,7 @@ Emitters.single(
     point(1, 1),
     // Směrový vektor
     vector(1, -1)
-);
+)
 \end{lstlisting}\end{quote}\end{minipage}
 
 \singleimage{

@@ -1,11 +1,36 @@
 \chapter{Diskuze}
 
-\todo{Další diskuse se bude odvíjet od toho, co uvidíme.}
+Celkově můžeme pozorovat, že vytvořená aplikace má několik nedostatků, které by se daly rozdělit do dvou hlavních kategorii. Vzhledem k cíli této práce, jímž je pouze ověřit praktičnost jim však nepřikládáme velkou váhu.
+
+\section{Nedostatky návrhu aplikace}
+
+Tyto problémy se týkají samotného konceptu aplikace.
+
+Prvním mírným nedostatkem je samozřejmě již několikrát zmiňovaná absence pokročilejších funkcí, tj. složitější geometrie, další typy interakcí apod. (viz kapitola \fullref{sec:vymezeniproblemu}). Ovšem aplikace je navržena tak, že šikovný uživatel je schopen bez většího zásahu potřebné možnosti doplnit.
+
+Dalším problémem je nutnost definice scény přímo v kódu a nikoli nějakém externím souboru (podkapitola \fullref{sub:architekturaaplikace_zadanisceny}), jako tomu často bývá u podobných simulačních aplikací. To má za následek nutnost kompilovat program při každém spuštění a vyžaduje po uživateli minimálně základní znalost programování. V ideálním případě by náš program měl podporovat alespoň některé hojně používané formáty v oblati simulace optiky.\src
+
+V souvislosti s tím bylo též vhodné umožnit uživateli kromě změny pozice detekční přímky i změnu zadání scény, aby se opět nemusela celá aplikace pouštět znovu. V případě kompatibility s externími formáty souborů by se pak dala naše aplikace použít i jako editor scén pro jiné programy.
+
+\section{Nedostatky implementace aplikace}
+
+Tato kategorie se zabývá problémy, které vyvstaly v průběhu vývoje aplikace. Mohou být způsobeny buďto limitacemi přímo programovacího jazyka \emph{Java} nebo neoptimálním řešením samotného autora aplikace.
+
+První z nich je dobře viditelný na některých vizualizacích pf-diagramu. Specificky to jsou obr. \ref{fig:vysledky_1a_etendue.png} a \ref{fig:vysledky_1b_etendue.png}.
+
+
+
+
 
 Chci zmínit nepřesnosti co se týče floating-point arithmetics. To je vidět na obrázcích 34 a 37.
 
 Zdůraznit, že pro stejný zdroj (1.1 a 1.2 resp. 2.1, 2.2 a 2.3) by mělo etendue vycházet stejně, ale není tomu tak vždy + vysvětlení.
 
+\section{Celková užitečnost}
+
+I přes zmíněné nedostatky se aplikace prokázala jako užitečná
+
 Předpokládám, že vysvětlím, že pf-diagramu naznačuje, že konfigurace parabolického reflektoru "pod ohniskem" stojí za další prozkoumání.
+
 
 A napíšu, že celkové se tato vizualizace zdá být užitečnou. A nebylo by od věci udělat nějakou pořádnou aplikaci a ne jen takovýto demostrátor(?)
