@@ -1,6 +1,8 @@
 \section{Architektura a funkce aplikace}
 
-V této kapitole nejprve obecně popíšeme postup použití aplikace a poté rozebereme jednotlivé fáze. Celý proces popíšeme na příkladu světlometu uvedeném v kapitole \fullref{sec:vymezeniproblemu}.
+V této kapitole nejprve obecně popíšeme postup použití aplikace a poté rozebereme jednotlivé fáze. % Celý proces popíšeme na příkladu světlometu uvedeném v kapitole \fullref{sec:vymezeniproblemu}.
+
+Zmiňme, že celý zdrojový kód programu uveden v je \emph{příloze č. 1} této práce. Pro potřeby této práce myslíme pod slovem \emph{třída} (anglicky \emph{class}) spíše \emph{Javovský} pojem \emph{typ} (anglicky \emph{type}). Ten zahrnuje jednak samotné \texttt{class}, ale i \texttt{interface} a \texttt{enum}.\src
 
 \subsection{Typické použití aplikace}
 
@@ -8,13 +10,151 @@ Začneme tím, že uživatel definuje scénu, kterou chce prozkoumat, a následn
 
 V podstatě ihned poté se otevře počítačové okno zobrazující všechny prvky scény a zároveň se \emph{na pozadí} (tzn. uživatel nevidí žádnou indikaci a nemá žádnou přímou zpětnou vazbu) zahájí i simulace průchodu paprsků scénou (anglicky \emph{ray tracing}). Zatímco se čeká, než proběhne tato fáze, je možné a vhodné zkontrolovat, zda-li skutečně zadaná a zobrazená scéna odpovídá záměru.
 
-Když program dokončí simulaci paprsků, dokreslí je do okna se scénou. Kromě nich ale i na výchozí pozici odpovídající $ x = 0 $ zobrazí svislou zelenou čáru, která naznačuje polohu \emph{detekční přímku}. Tuto čáru lze posouvat doprava a doleva s pomocí myši.
+Když aplikace dokončí simulaci paprsků, dokreslí je do okna se scénou. Kromě nich ale i na výchozí pozici odpovídající $ x = 0 $ zobrazí svislou zelenou čáru, která naznačuje polohu \emph{detekční přímky}. Tuto čáru lze posouvat doprava a doleva s pomocí myši.
 
 V ten samý okamžik se ovšem také otevřou další dvě okna, jedno obsahující \emph{prostorovo-fázový diagram} a druhé \emph{graf rozložení svítivosti}. Vizualizace těchto grafů reagují na změny pozice \emph{detekční přímky} v okně se scénou.
 
 \subsection{Zadání scény}
 
-\todo{Popsat možnosti a některé základní geometrie}
+Z důvodu jednoduchosti implementace a snížení komplexity vývoje se scéna do aplikace zadává přímo jako kód, tj. pomocí funkcí definujících jednotlivé součásti optického systému. Když uživatel nadefinuje scénu, je nutné program zkompilovat a spustit, což by se mohlo zdát jako složitý postup, ale např. v autorem použitém prostředí IntelliJ IDEA k tomu v dnešní době stačí stisknutí jednoho tlačítka.
+
+Pro spuštění aplikace je nutné zavolat funkci \texttt{EtendueApp\#run}, která vyžaduje jediný argument, a to objekt popisující simulovanou scénu. Právě třída \texttt{EtendueApp} sdružuje všechny části tohoto programu, ať se týkají simulace nebo zobrazení. Jednotlivé součásti popisujeme podrobněji dále v této kapitole.
+
+K definici optického systému využíváme třídu \texttt{Scene}, což je v podstatě jen množina členů simulovaného optického systému. Ty jsou popsány třídou \texttt{Member}. Přičemž je můžeme rozdělit do dvou kategorií, jednak to jsou zdroje světla (třída \texttt{Emitter}) a druhou kategorii tvoří opticky interagující prvky (třída \texttt{Interactor}).
+
+V kódu definujeme scénu pomocí funkce \texttt{Scene\#create}, jejíž argumenty jsou instance výše zmíněné třídy \texttt{Member}:
+
+\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
+// Vytvoření scény
+Scene scene = Scene.create(
+
+        // Zde budou definovány jednotlivé členy této scény
+);
+
+// Samotné spuštění simulace
+EtendueApp.run(scene);
+\end{lstlisting}\end{quote}\end{minipage}
+
+Doplňme, že v jazyce \emph{Java} je potřeba pro úspěšné spuštění programu doplnit ještě několik dalších neměnných instrukcí. Pro úplnost je v tomto případě uvedeme, ale v dalších výňatcích obsahujících definice scén je vynecháme:
+
+\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
+// Obsah souboru Main.java
+
+// Tady vynecháváme ještě tzv. import statements,
+// které se mění v závislosti na použitých třídách
+
+public class Main {
+    public static void main(String[] args) {
+        // Zde budou výňatky začínat
+
+        // Vytvoření scény
+        Scene scene = Scene.create(
+                // Definice jednotlivých členů
+        );
+
+        // Samotné spuštění simulace
+        EtendueApp.run(scene);
+
+        // Zde budou výňatky končit
+    }
+}
+\end{lstlisting}\end{quote}\end{minipage}
+
+\subsubsection{Světelné zdroje}
+
+Jediným úkolem instance třídy \texttt{Emitter} je vytvořit jakýsi seznam paprsků, které daný objekt vysílá. V našem případě jde o množinu dvojic \emph{počáteční bod} -- \emph{směrový vektor}.
+
+V aplikaci je definováno několik základních druhů světelných zdrojů. Se všemi z nich jsme se již v této práci setkali.
+
+\paragraph{Jednoduchý zdroj} je definován bodem a vektorem. Vysílá právě jeden paprsek.
+
+\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
+// Funkce vytvářející jednoduchý zdroj
+Emitters.single(
+    // Počáteční bod
+    point(1, 1),
+    // Směrový vektor
+    vector(1, -1)
+);
+\end{lstlisting}\end{quote}\end{minipage}
+
+\singleimage{
+    \image[scale=0.15]{architekturaaplikace_emitters_simple.png}{Příklad scény obsahující pouze jednoduchý zdroj světla}
+}
+
+Kromě již popsaných částí kódu si všimněme použití pomocných funkcí \texttt{point} a \texttt{vector}, které vytvářejí objekty reprezentující bod resp. vektor (v obou případech jde de facto o uspořádanou dvojici čísel). Tyto funkce se hodí zejména pro vyšší čitelnost a jednodušší porozumění definice z pohledu uživatele.
+
+\paragraph{Bodový zdroj} je definován bodem a počtem paprsků. Vysílá daný počet paprsků rovnoměrně rozložený do všech směrů.
+
+\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
+// Funkce vytvářející bodový zdroj
+Emitters.point(
+    // Střed zdroje
+    point(1, 1),
+    // Počet paprsků
+    10
+)
+\end{lstlisting}\end{quote}\end{minipage}
+
+\singleimage{
+    \image[scale=0.15]{architekturaaplikace_emitters_point.png}{Příklad scény obsahující pouze bodový zdroj světla}
+}
+
+\paragraph{Úsečkový zdroj} je definován středem, délkou a počtem paprsků. Je vždy orientován svisle a paprsky vysílá vždy směrem doprava. O vlastnostech tohoto typu zářiče jsme se již zmiňovali v kapitole \fullref{sub:analyzasystemu_vlastnostipfdiagramu}, ale pro jistotu zopakujme, že jej považujeme za \emph{lambertovský zářič}.\src
+
+\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
+// Funkce vytvářející úsečkový zdroj
+Emitters.line(
+    // Střed zdroje
+    point(1, 0),
+    // Délka zářiče
+    2,
+    // Počet paprsků
+    10
+)
+\end{lstlisting}\end{quote}\end{minipage}
+
+\singleimage{
+    \image[scale=0.15]{architekturaaplikace_emitters_line.png}{Příklad scény obsahující pouze úsečkový zdroj světla}
+}
+
+Uživateli je samozřejmě umožněno definovat vlastní světelné zářiče. Např. vějířový zdroj (viz obr. \ref{fig:analyzasystemu_priklad_soucin.png}) je velmi jednoduchou úpravou bodového zdroje.
+
+
+\subsubsection{Typy optických prvků}
+
+Obecně instance třídy \texttt{Interactor} nesou dvě informace. Jednak samozřejmě svůj tvar, a pak také nějaký předpis, který říká, co se děje s dopadajícími paprsky.
+
+Jak je vysvětleno již v kapitole \fullref{sec:vymezeniproblemu}, v této aplikaci jsme se omezili pouze na dva typy optických členů, \emph{dokonalé clony} a \emph{dokonalá zrcadla}. Funkce, které je vytvářejí, vyžadují pouze jeden argument, a tím je objekt popisující tvar. Různým vyjádřením tvaru se věnujeme v následující podkapitole.
+
+\paragraph{Dokonalá clona} je definováno takto:
+
+\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
+// Funkce vytvářející dokonalou clonu
+Interactors.absorbing(
+    // Zde je definice tvaru
+)
+\end{lstlisting}\end{quote}\end{minipage}
+    
+
+\paragraph{Dokonalé zracadlo} je definováno takto:
+
+\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
+// Funkce vytvářející dokonalé zrcadlo
+Interactors.reflecting(
+    // Zde je definice tvaru
+)
+\end{lstlisting}\end{quote}\end{minipage}
+
+
+\subsubsection{Geometrie optických prvků}
+
+
+
+
+\subsubsection{Vybrané příklady scén}
+
+
 
 \subsection{Simulace paprsků}
 

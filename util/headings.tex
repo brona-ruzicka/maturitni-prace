@@ -1,6 +1,8 @@
 \usepackage{titlesec}
 \usepackage{etoolbox}
 
+\setcounter{secnumdepth}{3}
+
 \renewcommand{\chaptername}{}
 \titleformat{\chapter}[block]{\fontsize{14pt}{14pt}\sffamily\bfseries}{\chaptertitlename\thechapter}{1em}{}
 \titlespacing*{\chapter}{0pt}{-30pt}{0pt}
@@ -16,3 +18,9 @@
 
 \titleformat*{\subsection}{\fontsize{12pt}{12pt}\sffamily\bfseries}
 \titlespacing*{\subsection}{0pt}{15pt}{7.5pt}
+
+\titleformat*{\subsubsection}{\fontsize{12pt}{12pt}\sffamily\bfseries}
+\titlespacing*{\subsubsection}{0pt}{15pt}{7.5pt}
+
+\titleformat*{\paragraph}{\fontsize{12pt}{12pt}\sffamily\bfseries}
+\titlespacing*{\paragraph}{0pt}{15pt}{7.5pt}
