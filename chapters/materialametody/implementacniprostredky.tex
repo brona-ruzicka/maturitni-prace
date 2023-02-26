@@ -2,18 +2,18 @@
 
 Vzhledem k zejména demonstrativní funkci vytvářené aplikace, přihlíželo se při výběru implementačních prostředků ke dvěma hlavním faktorům.
 
-Jednak to byla vhodnost daného prostředku pro samotný úkol. Např. pro aplikace provádějící velká množství výpočtů se hodí použít rychlý programovací jazyk (zpravidla kompilovaný do strojového kódu).
+Jednak hrála roli vhodnost daného prostředku pro samotný úkol. Např. programovací jazyk hojně používaný na serverech se nemusí hodit pro vytváření uživatelských aplikací.
 
-Ale také to byla předpokládaná jednoduchosti a rychlost implementace z pohledu autora práce. Tzn. bylo vhodné používat prostředky, se kterými se již setkal, a nemusel se tak kromě samotné implementace ještě seznamovat s novým prostředím.
+Za druhé pak rozhodovala také předpokládaná jednoduchost a rychlost implementace z pohledu autora práce. Tzn. bylo vhodné používat prostředky, se kterými se již setkal, a nemusel se tak kromě samotné implementace ještě seznamovat s novým prostředím.
 
 \subsection{Programovací jazyk}
 
-Pro vývoj aplikace byl zvolen programovací jazyk \emph{Java}\src. Jednak autor s tímto programovacím jazykem už v minulosti pracoval.
+Pro vývoj aplikace byl zvolen programovací jazyk \emph{Java}.\src Jedním z důvodů je i to, že autor práce s tímto programovacím jazykem už v minulosti pracoval.
 
-Další důvodem je i to, že standardní \emph{SDK} (zkratka \emph{software development kit}, volně česky \emph{standardní knihovna}) tohoto jazyka obsahuje poměrně dobře popsaně \emph{API} (zkratka \emph{application programming interface}, volně česky \emph{rozhraní pro programování aplikací}), které programům umožňuje jednoduché vytváření \emph{GUI} (zkratka \emph{graphical user interface}, česky \emph{grafické uživatelské rozhraní}). To zahrnuje zejména zobrazování počítačových oken a různé způsoby jak obsah těchto oken definovat a vykreslovat. Zmíněné \emph{API} se v \emph{Javě} nazývá \emph{Java Swing}.\src
+Dalším bodem je, že standardní \emph{SDK} (zkr. \emph{software development kit}, volně česky \emph{standardní knihovna}) tohoto jazyka obsahuje poměrně dobře popsaně \emph{API} (zkr. \emph{application programming interface}, česky \emph{rozhraní pro programování aplikací}), které programům umožňuje jednoduché vytváření \emph{GUI} (zkr. \emph{graphical user interface}, česky \emph{grafické uživatelské rozhraní}). To zahrnuje zobrazování počítačových oken a různé způsoby jak jejich obsah definovat a vykreslovat. Zmíněné \emph{API} se v \emph{Javě} nazývá \emph{Java Swing}.\src
 
-Pro produkční software by byla samozřejmě důležitá především rychlost simulace. Z tohoto hlediska by bylo vhodnější použít např. programovací jazyky \emph{C++} nebo \emph{Rust}, které jsou na rozdíl od \emph{Javy} kompilované přímo do strojového kódu, a proto jsou schopné jednoduché aritmetické výpočty provádět podstatně rychleji.
+Pro produkční software by byla samozřejmě důležitá především rychlost simulace. Z tohoto hlediska by bylo vhodnější použít např. programovací jazyky \emph{C++} nebo \emph{Rust}, které jsou na rozdíl od \emph{Javy} kompilované přímo do strojového kódu, a proto jsou schopny jednoduché aritmetické výpočty provádět podstatně rychleji.
 
 \subsection{Vývojové prostředí}
 
-Vývoj aplikace probíhal v prostředí \emph{IntelliJ IDEA} od české firmy \emph{JetBrains}. Pro kompilaci a správu závislostí (anglicky \emph{dependency management}, tj. hlavně externí knihovny) byl použit nástroj \emph{Maven}. Důvodem byla čistě jen autova znalost těchtowa software. 
+Vývoj aplikace probíhal v prostředí \emph{IntelliJ IDEA} od české firmy \emph{JetBrains}. Pro kompilaci a správu závislostí (anglicky \emph{dependency management}, tj. především externí knihovny) byl použit program \emph{Maven}. Důvodem byla čistě jen autova znalost těchto nástrojů. 

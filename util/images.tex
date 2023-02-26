@@ -15,9 +15,10 @@
     \ifx\tmp\@nnil
         \includegraphics{#2}
     \else
-        \includegraphics[#1]{#2}
+        \includegraphics[#1]{#2}        
     \fi
     \caption{#3}
+    \label{fig:#2}
 }
 
 \newcommand{\block}[1]{

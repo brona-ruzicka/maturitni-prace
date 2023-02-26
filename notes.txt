@@ -7,3 +7,5 @@ hyphenation
 podpis?
 
 změna názvu?
+
+rozvést popis výsledků

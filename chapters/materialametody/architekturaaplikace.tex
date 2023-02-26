@@ -1,18 +1,36 @@
-\section{Architektura aplikace}
+\section{Architektura a funkce aplikace}
+
+V této kapitole nejprve obecně popíšeme postup použití aplikace a poté rozebereme jednotlivé fáze. Celý proces popíšeme na příkladu světlometu uvedeném v kapitole \fullref{sec:vymezeniproblemu}.
+
+\subsection{Typické použití aplikace}
+
+Začneme tím, že uživatel definuje scénu, kterou chce prozkoumat, a následně spustí samotnou aplikaci.
+
+V podstatě ihned poté se otevře počítačové okno zobrazující všechny prvky scény a zároveň se \emph{na pozadí} (tzn. uživatel nevidí žádnou indikaci a nemá žádnou přímou zpětnou vazbu) zahájí i simulace průchodu paprsků scénou (anglicky \emph{ray tracing}). Zatímco se čeká, než proběhne tato fáze, je možné a vhodné zkontrolovat, zda-li skutečně zadaná a zobrazená scéna odpovídá záměru.
+
+Když program dokončí simulaci paprsků, dokreslí je do okna se scénou. Kromě nich ale i na výchozí pozici odpovídající $ x = 0 $ zobrazí svislou zelenou čáru, která naznačuje polohu \emph{detekční přímku}. Tuto čáru lze posouvat doprava a doleva s pomocí myši.
+
+V ten samý okamžik se ovšem také otevřou další dvě okna, jedno obsahující \emph{prostorovo-fázový diagram} a druhé \emph{graf rozložení svítivosti}. Vizualizace těchto grafů reagují na změny pozice \emph{detekční přímky} v okně se scénou.
+
+\subsection{Zadání scény}
+
+\todo{Popsat možnosti a některé základní geometrie}
+
+\subsection{Simulace paprsků}
 
 \fixme{Vlastními slovy}
-
-Popis by měl být přizpůsobený Vaší implementaci; níže je, jak bych to
-implementoval já. Pokud to uznáte za vhodné, můžete jít až na
-matematické vztahy, kterými něco počítáte, ale odkaz na literaturu je
-dostatečný -- jde o standardní operace, které není nutné rozpitvávat.
-Uznáte-li za vhodné přidat obrázky, přidejte.
 
 Sledování paprsku (ray tracing) - ze zdroje světla se vyšle paprsek,
 spočítá se průsečík se všemi objekty, vybere se nejbližší, vypočítá se
 interakce (odraz, absorpce) a případně se ve sledování paprsku pokračuje
 dál, dokud se nedosáhne limitního počtu interakcí (např. 1000), nebo
 paprsek neopustí scénu (průsečík neexistuje).
+
+\todo{Zmínit trik s homogeními souřadnicemi}
+
+\subsection{Vizualizace scény}
+
+\fixme{Vlastními slovy}
 
 Vizualizace chodu paprsků simulovaným systémem - tady asi jen napsat, že
 k pochopení chování optického systému je užitečné vidět nejenom
@@ -23,10 +41,22 @@ pro vizualizaci chodu paprsků je vhodné nakreslit jich *maximálně* pár
 set, jinak je z toho nepřehledná změť čar. Máte-li ve vizualizaci nějaký
 implementačně zajímavý detail, klidně jej samozřejmě uveďte.
 
-Výpočet prostorovo-fázového diagramu - výpočet průsečíku každého z
+\subsection{Detekce paprsků}
+
+\fixme{Vlastními slovy}
+
+Výpočet průsečíku každého z
 paprsků (jak polopřímek, tak úseček) s osou y zvoleného souřadného
 systému Oxy; pokud existuje, zaznamenat průsečík + směr paprsku do
-pomocného pole. Následně určit rozsah prostorovo-fázového diagramu,
+pomocného pole.
+
+\todo{Zmínit optimalizaci triku s homogeními souřadnicemi}
+
+\subsection{Vizualizace prostorovo-fázového diagramu}
+
+\fixme{Vlastními slovy}
+
+Následně určit rozsah prostorovo-fázového diagramu,
 rozdělit na pixely, do každého určit, kolik paprsků obsahuje.
 Alternativně: rozsah prostorovo-fázového diagramu určit předem
 (uživatelsky), aby byl během vizualizace rozsah pořád stejný.
@@ -37,5 +67,6 @@ diskrétním úhlu (šířky 1 pixel) prostorovo-fázového diagramu. Někde
 hlásit, kolik paprsků z pomocného pole průsečíků není v
 prostorovo-fázovém diagramu obsaženo.
 
-Nevím, jestli něco obecného psát k obecné architektuře programu - to
-musíte posoudit sám, jestli je tam něco mimořádně zajímavého.
+\subsection{Vizualizace grafu rozložení svítivosti}
+
+\todo{}

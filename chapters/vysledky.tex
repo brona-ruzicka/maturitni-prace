@@ -4,6 +4,7 @@
 
 Vybrali jsme celkem pět různých optických systémů. Celkově by bylo možné je rozdělit rozdělit do dvou kategorií, \emph{světlovody} a \emph{parabolické reflektory}. Pro každý z těchto systémů jsme spustili náš program a poté uložili vypočtené vizualizace a grafy.
 
+
 \section{Světlovody}
 
 \subsection{Krátký světlovod}
@@ -109,7 +110,8 @@ Tuto scénu jsme definovali následujícím způsobem. Poukažme na to, že jsou
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Délka reflektoru
 float length = 5f;
-// Poměr vzdáleností ohniska a vstupu reflektoru od vrcholu paraboly
+// Poměr vzdáleností ohniska paraboly a vstupu reflektoru
+// od vrcholu paraboly
 float offsetRatio = 1f;
 
 
@@ -119,7 +121,7 @@ float offsetRatio = 1f;
 
 // Vypočtený parametr obecné rovnice paraboly
 float param = (float) Math.sqrt(1 / offsetRatio);
-// Posunutí po ose x, abychom začínali na x = 0
+// Posunutí po ose x, aby reflektor začínal na x = 0
 float offset = param/2 * offsetRatio;
 // Maximální hodnota, pro kterou počítáme tvar reflektoru
 float max = (float) Math.sqrt( (length+offset) * 2*param );
