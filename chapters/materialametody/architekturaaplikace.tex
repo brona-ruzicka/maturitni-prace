@@ -30,6 +30,7 @@ V kódu definujeme scénu pomocí funkce \texttt{Scene\#create}, jejíž argumen
 Scene scene = Scene.create(
 
         // Zde budou definovány jednotlivé členy této scény
+
 );
 
 // Samotné spuštění simulace
@@ -46,7 +47,6 @@ Doplňme, že v jazyce \emph{Java} je potřeba pro úspěšné spuštění progr
 
 public class Main {
     public static void main(String[] args) {
-        // Zde budou výňatky začínat
 
         // Vytvoření scény
         Scene scene = Scene.create(
@@ -56,7 +56,6 @@ public class Main {
         // Samotné spuštění simulace
         EtendueApp.run(scene);
 
-        // Zde budou výňatky končit
     }
 }
 \end{lstlisting}\end{quote}\end{minipage}
@@ -72,10 +71,10 @@ V aplikaci je definováno několik základních druhů světelných zdrojů. Se 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející jednoduchý zdroj
 Emitters.single(
-    // Počáteční bod
-    point(1, 1),
-    // Směrový vektor
-    vector(1, -1)
+        // Počáteční bod
+        point(1, 1),
+        // Směrový vektor
+        vector(1, -1)
 )
 \end{lstlisting}\end{quote}\end{minipage}
 
@@ -90,10 +89,10 @@ Kromě již popsaných částí kódu si všimněme použití pomocných funkcí
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející bodový zdroj
 Emitters.point(
-    // Střed zdroje
-    point(1, 1),
-    // Počet paprsků
-    10
+        // Střed zdroje
+        point(1, 1),
+        // Počet paprsků
+        10
 )
 \end{lstlisting}\end{quote}\end{minipage}
 
@@ -106,12 +105,12 @@ Emitters.point(
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející úsečkový zdroj
 Emitters.line(
-    // Střed zdroje
-    point(1, 0),
-    // Délka zářiče
-    2,
-    // Počet paprsků
-    10
+        // Střed zdroje
+        point(1, 0),
+        // Délka zářiče
+        2,
+        // Počet paprsků
+        10
 )
 \end{lstlisting}\end{quote}\end{minipage}
 
@@ -133,7 +132,7 @@ Jak je vysvětleno již v kapitole \fullref{sec:vymezeniproblemu}, v této aplik
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející dokonalou clonu
 Interactors.absorbing(
-    // Zde je definice tvaru
+        // Zde je definice tvaru
 )
 \end{lstlisting}\end{quote}\end{minipage}
     
@@ -143,7 +142,7 @@ Interactors.absorbing(
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející dokonalé zrcadlo
 Interactors.reflecting(
-    // Zde je definice tvaru
+        // Zde je definice tvaru
 )
 \end{lstlisting}\end{quote}\end{minipage}
 
@@ -153,62 +152,64 @@ Interactors.reflecting(
 
 
 
-\subsubsection{Vybrané příklady scén}
-
-
 
 \subsection{Simulace paprsků}
 \label{sub:architekturaaplikace_simulacepaprsku}
 
-\fixme{Vlastními slovy}
+Simulace chodu paprsků se provede pouze jednou, hned po spuštění programu. Výsledek je uložen pro pozdější detekci průsečíků s detekční přímkou.
 
-Sledování paprsku (ray tracing) - ze zdroje světla se vyšle paprsek,
-spočítá se průsečík se všemi objekty, vybere se nejbližší, vypočítá se
-interakce (odraz, absorpce) a případně se ve sledování paprsku pokračuje
-dál, dokud se nedosáhne limitního počtu interakcí (např. 1000), nebo
-paprsek neopustí scénu (průsečík neexistuje).
+V naší aplikace implementujeme jednoduchý \emph{ray tracing} algoritmus. Nejprve se vyšle paprsek ze zdroje světla. Poté se spočítá jeho průsečík se všemi objekty ve scéně a vybere se ten nejbližší. Následně se vyhodnotí interakce s tímto objektem (odraz nebo absorpce). A pokud se paprsku odráží, postup se opakuje. Sledování paprsku pokračuje, dokud se nedosáhne limitu počtu interakcí (v našem případě 1000), nebo dokud paprsek neopustí scénu, tzn. žádný další průsečík neexistuje.
 
-\todo{Zmínit trik s homogeními souřadnicemi}
+Zajímavostí je, že pro výpočet průsečíku používáme tzv. \emph{homogenní souřadnice} bodu a vzorec pro průsečík dvou přímek definovaný sérii vektorových součinů.\src Po výpočtu průsečíku jen ověříme, zdali se průsečík nachází na správné polopřímce, nebo úsečce.
+
+Dále můžeme uvést, že v zájmu zkrácení celkového času potřebného k výpočtu používáme tzv. \emph{multithreading}, tj. způsob jak spustit více výpočtů paralelně.
 
 \subsection{Vizualizace scény}
 
-\fixme{Vlastními slovy}
+Vizualizace scény proběhne za celou dobu běhu programu pouze dvakrát. Nejprve při spuštění, to se zobrazí pouze jednotlivé členy scény.
 
-Vizualizace chodu paprsků simulovaným systémem - tady asi jen napsat, že
-k pochopení chování optického systému je užitečné vidět nejenom
-abstraktní prostorovo-fázový diagram, ale i jednotlivé optické členy a
-chod paprsků mezi nimi. A důležitá drobnost: pro výpočet
-prostorovo-fázového diagramu potřebujete třeba statisíce paprsků, ale
-pro vizualizaci chodu paprsků je vhodné nakreslit jich *maximálně* pár
-set, jinak je z toho nepřehledná změť čar. Máte-li ve vizualizaci nějaký
-implementačně zajímavý detail, klidně jej samozřejmě uveďte.
+\singleimage{
+        \image[scale=1]{architekturaaplikace_preview.png}{Příklad okna schématu scény, ještě bez nasimulovaných paprsků}
+}
+
+Podruhé se vizualizují všechny členů scény, ale tentokrát společně s několika náhodně vybranými paprsky (zobrazování všech nasimulovaných paprsků by bylo nepřehledné). Tato vizualizace se uloží do paměti programu. Při posunu detekční přímky se do okna se scénou se vždy vykreslí znovu tento předvygenerovaný obrázek a přes něj pouze svislá zelená čára znázorňující detekční přímku.
+
+\singleimage{
+        \image[scale=1]{architekturaaplikace_spaprsky.png}{Příklad okna schématu scény, s nasimulovanými paprsky a detekční přímkou}
+}
+
+Zároveň uveďme, že program sám přizpůsobuje, která část scény se zobrazí a i v jakém měřítku, a to tak, aby se do okna se scénou vešly vždy všechny prvky scény. Dále mřížka a její popisky se taktéž automaticky přizpůsobují různému přiblížení.
+
 
 \subsection{Detekce paprsků}
 
-\fixme{Vlastními slovy}
+Výpočet průsečíků paprsků s detekční přímkou proběhne pokaždé, když se změní její poloha. Přičemž k výpočtu jsou užita uložená data o chodu paprsků z fáze sledování paprsků. Používáme stejný vzorec jako v podkapitole \fullref{sub:architekturaaplikace_simulacepaprsku}. Jen mírně zjednodušený, protože víme, že jedna z přímek bude vždy rovnoběžná s osou $y$.
 
-Výpočet průsečíku každého z
-paprsků (jak polopřímek, tak úseček) s osou y zvoleného souřadného
-systému Oxy; pokud existuje, zaznamenat průsečík + směr paprsku do
-pomocného pole.
+Z důvodu zajištění plynulého chodu aplikace z pohledu uživatele, probíhá i tento výpočet \emph{na pozadí}.
 
-\todo{Zmínit optimalizaci triku s homogeními souřadnicemi}
 
 \subsection{Vizualizace prostorovo-fázového diagramu}
 
-\fixme{Vlastními slovy}
+Ihned po vypočtení průsečíků paprsků s detekční přímkou se spustí část zobrazující prostorovo-fázový diagram.
 
-Následně určit rozsah prostorovo-fázového diagramu,
-rozdělit na pixely, do každého určit, kolik paprsků obsahuje.
-Alternativně: rozsah prostorovo-fázového diagramu určit předem
-(uživatelsky), aby byl během vizualizace rozsah pořád stejný.
+Nejprve si plochu okna pf-diagramu rozdělí na mřížku. A poté pro každý paprsek vypočte, do kterého políčka spadá. Nakonec pro každé políčko vykreslí čtvereček vybarvený odstínem červené odpovídající počtu paprsků v daném políčku.
 
-Étendue: počet neprázdných pixelů. Tok: celkový počet paprsků v pomocném
-poli průsečíků. Rozložení svítivosti: součet počtu paprsků v každém
-diskrétním úhlu (šířky 1 pixel) prostorovo-fázového diagramu. Někde
-hlásit, kolik paprsků z pomocného pole průsečíků není v
-prostorovo-fázovém diagramu obsaženo.
+V tomtéž okně se také zobrazí další dvě veličiny. Jednak étendue, které se vypočte jako plocha neprázdných políček pf-diagramu. A pak průměrný počet paprsků v jednom políčku.
+
+\singleimage{
+        \image[scale=1]{architekturaaplikace_etendue.png}{Příklad okna prostorovo-fázového diagramu}
+}
 
 \subsection{Vizualizace grafu rozložení svítivosti}
 
-\todo{}
+Současně se zobrazením pf-diagramu se spustí i vykreslení grafu rozložení svítivosti. Postup je obdobný jako vizualizace pf-diagramu.
+
+Opět se vytvoří jakási datová struktura, ovšem pro tentokrát je jednorozměrná. Pro každý paprsek se opět vypočte, do které kolonky spadá. Na základě toho pak se zobrazí čára spojující vypočtené hodnoty.
+
+Podotkněme, že ve skutečnosti v tomto grafu zobrazujeme čáry dvě, jednu červenou a jednu fialovou. Červená znázorňuje počty paprsků mířící k $+x$ a fialová směr $-x$:
+
+Dále v okně zobrazíme ještě informace o celkovém počtu paprsků. A dále také maximální hodnotu počtu paprsků v některé z kolonek.
+
+\singleimage{
+        \image[scale=1]{architekturaaplikace_graf.png}{Příklad okna grafu rozložení svítivosti}
+}
