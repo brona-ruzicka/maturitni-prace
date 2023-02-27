@@ -6,13 +6,14 @@ Vybrali jsme celkem pět různých optických systémů. Celkově by bylo možn�
 
 
 \section{Světlovody}
+\label{sec:svetlovody}
 
 \subsection{Krátký světlovod}
 
 První systém je zadán takto:
 
 \begin{quote}
-    Jednoduchý zrcadlový světlovod se šířkou vstupu $2\ \mathrm{m}$ a šířkou výstupu $5\ \mathrm{m}$. Jeho celková délka činí $5\ \mathrm{m}$ a na vstupu do světlovodu je připevněn úsečkový zdroj o délce $2\ \mathrm{m}$.
+    Jednoduchý zrcadlový světlovod se šířkou vstupu $2\ \mathrm{m}$ a šířkou výstupu $5\ \mathrm{m}$. Jeho celková délka činí $5\ \mathrm{m}$ a na vstupu do světlovodu je připevněn úsečkový zdroj o délce $1,95\ \mathrm{m}$.
 \end{quote}
 
 Odpovídající definice scény:
@@ -31,7 +32,7 @@ Scene scene = Scene.create(
         // Zdroj paprsků
         Emitters.line(
                 point(0, 0),
-                1f,
+                1.95f,
                 100000
         )
 );
@@ -56,7 +57,7 @@ Vygenerované vizualizace:
 Druhý systém, taktéž světlovod, se od prvního liší pouze v celkové delce, která je dvojnásobná:
 
 \begin{quote}
-    Jednoduchý zrcadlový světlovod se šířkou vstupu $2\ \mathrm{m}$ a šířkou výstupu $5\ \mathrm{m}$. Jeho celková délka činí $10\ \mathrm{m}$ a na vstupu do světlovodu je připevněn úsečkový zdroj o délce $2\ \mathrm{m}$.
+    Jednoduchý zrcadlový světlovod se šířkou vstupu $2\ \mathrm{m}$ a šířkou výstupu $5\ \mathrm{m}$. Jeho celková délka činí $10\ \mathrm{m}$ a na vstupu do světlovodu je připevněn úsečkový zdroj o délce $1,95\ \mathrm{m}$.
 \end{quote}
 
 Odpovídající definice scény:
@@ -75,7 +76,7 @@ Scene scene = Scene.create(
         // Zdroj paprsků
         Emitters.line(
                 point(0, 0),
-                1f,
+                1.95f,
                 100000
         )
 );
@@ -96,6 +97,7 @@ Vygenerované vizualizace:
 
 
 \section{Parabolické reflektory}
+\label{sec:parabolickereflektory}
 
 \subsection{Parabolický reflektor s ohniskem ve středu vstupního otvoru}
 
@@ -120,9 +122,9 @@ float offsetRatio = 1f;
 // x = 0 m a má velikost 2 m.
 
 // Vypočtený parametr obecné rovnice paraboly
-float param = (float) Math.sqrt(1 / offsetRatio);
+float param = (float) Math.sqrt(offsetRatio);
 // Posunutí po ose x, aby reflektor začínal na x = 0
-float offset = param/2 * offsetRatio;
+float offset = param / (2 * offsetRatio);
 // Maximální hodnota, pro kterou počítáme tvar reflektoru
 float max = (float) Math.sqrt( (length+offset) * 2*param );
 

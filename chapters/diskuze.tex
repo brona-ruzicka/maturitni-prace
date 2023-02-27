@@ -1,6 +1,6 @@
 \chapter{Diskuze}
 
-Celkově můžeme pozorovat, že vytvořená aplikace má několik nedostatků, které by se daly rozdělit do dvou hlavních kategorii. Vzhledem k cíli této práce, jímž je pouze ověřit praktičnost jim však nepřikládáme velkou váhu.
+Celkově můžeme pozorovat, že vytvořená aplikace má několik nedostatků, které by se daly rozdělit do dvou hlavních kategorii. Vzhledem k cíli této práce, kterýmžto je pouze ověřit použitelnost konceptu, jim však nepřikládáme velkou váhu.
 
 \section{Nedostatky návrhu aplikace}
 
@@ -14,23 +14,23 @@ V souvislosti s tím bylo též vhodné umožnit uživateli kromě změny pozice
 
 \section{Nedostatky implementace aplikace}
 
-Tato kategorie se zabývá problémy, které vyvstaly v průběhu vývoje aplikace. Mohou být způsobeny buďto limitacemi přímo programovacího jazyka \emph{Java} nebo neoptimálním řešením samotného autora aplikace.
+Tato kategorie se zabývá výpočetními chybami, které se týkají až hotové aplikace. Mohou být způsobeny buďto limitacemi přímo programovacího jazyka \emph{Java} nebo neoptimálním řešením samotného autora aplikace.
 
-První z nich je dobře viditelný na některých vizualizacích pf-diagramu. Specificky to jsou obr. \ref{fig:vysledky_1a_etendue.png} a \ref{fig:vysledky_1b_etendue.png}.
+První z chyb je dobře viditelná na některých vizualizacích pf-diagramu. Specificky to jsou obr. \ref{fig:vysledky_1a_etendue.png} a \ref{fig:vysledky_1b_etendue.png}. Nad i pod hlavní částí obrazce jsou viditelné nezřetelné čáry. Všimněme si, že podle zadání obou příkladů v související kapitole \fullref{sec:svetlovody} se celý zdroj světla nachází uvnitř reflektoru, ještě s mírnou rezervou. Ovšem paprsky, které jsou zmíněnými čárami znázorněny se zcela jistě nacházejí mimo světlovod. Jediné vysvětlení je, že při sledování chodu tyto paprsky nějakým způsobem prošly skrze zrcadlo, aniž by se odrazili.
 
+To je způsobeno kombinací několika důvodů. Tím prvním je čistě způsob implementace ray tracing procesu (podkapitola \fullref{sub:architekturaaplikace_simulacepaprsku}). V něm totiž při nalezení dalšího průsečíku program kontroluje, jestli není příliš blízko poslednímu známému bodu. To má za cíl zabránit dvojitému odrazu (tzn. paprsek se odrazí dvakrát od toho stejného zrcadla na stejném místě a vypadá to, jako kdyby jen prošel skrz). Dalo by se říci, že způsob jak zabránit chybám v simulaci sám vytvoří další chyby. Ovšem tento nový druh chyb je podstatně méně početný vyskytuje se jen ve specifických případech.
 
+Druhým důvodem jsou nepřesnosti v počítání s tzv. floating-point číselnými formáty.\src Kvůli nim nemůžeme v při sledování chodu paprsků jednoduše porovnat jestli poslední známý bod je shodný jako právě nalezený průsečík. To protože v mnoha případech není, i když čísla se liší jen o velmi malé zlomky. Proto se musíme uchýlit ke kontrolování vzdáleností těchto dvou bodů.
 
+Druhá chyba implementace programu se tentokrát týká výpočtu étendue. Ze \emph{zákona zachování étendue} (kapitola \fullref{sec:analyzasystemu}) vyplývá, že pro jeden a ten samý zdroj, nehledě na okolní optické prvky a volbu detekční přímky, bude étendue konstantní. Ovšem, jak je vidět na příkladech se světlovodem  (obr. \ref{fig:vysledky_1a_etendue.png} a \ref{fig:vysledky_1b_etendue.png}), ale i s parabolickým reflektorem (obr. \ref{fig:vysledky_2a_etendue.png}, \ref{fig:vysledky_2b_etendue.png} a \ref{fig:vysledky_2c_etendue.png}), námi vypočtené étendue tomu ne vždy odpovídá.
 
+Nepřesnost těchto hodnot je způsobena zvoleným způsobem výpočtu. Étendue počítáme jako plochu pf-diagramu, a ten zobrazujeme po jednotlivých pixelech. Pro lepší kvalitu výpočtu by bylo vhodné snížit velikost jednotlivých, ovšem to by vyžadovalo taktéž zvětšení počtu simulovaných paprsků, což by zase trvalo déle spočítat. V tomto případě tak bylo nutné najít kompromis mezi rychlostí a přesností výpočtu.
 
-Chci zmínit nepřesnosti co se týče floating-point arithmetics. To je vidět na obrázcích 34 a 37.
-
-Zdůraznit, že pro stejný zdroj (1.1 a 1.2 resp. 2.1, 2.2 a 2.3) by mělo etendue vycházet stejně, ale není tomu tak vždy + vysvětlení.
 
 \section{Celková užitečnost}
 
-I přes zmíněné nedostatky se aplikace prokázala jako užitečná
+I přes zmíněné nedostatky se aplikace prokázala jako užitečná. Jako příklad nám poslouží simulace z kapitoly \fullref{sec:parabolickereflektory}. Předpokládejme, že naším cílem soustředit co nejvíce světla ve směru osy paraboly. Pokud porovnáme pf-diagramy pro různé pozice ohnisek, je zřejmé že sám o sobě je pro nás nejlepší reflektor se zdrojem v ohnisku (obr. \ref{fig:vysledky_2a_scena.png}). A to protože centra odražených paprsků jsou přímo uprostřed pf-diagramu, tedy mají sklon blízký nule.
 
-Předpokládám, že vysvětlím, že pf-diagramu naznačuje, že konfigurace parabolického reflektoru "pod ohniskem" stojí za další prozkoumání.
+Ovšem pokud bychom měli možnost napravo od reflektoru umístit ještě spojnou čočku, z pf-diagramu zjistíme, že nejlepších výsledků dosáhneme pokud bude ohnisko posunuté doprava, neboli dovnitř reflektoru (obr. \ref{fig:vysledky_2b_scena.png}). A to z toho důvodu, že útvary odražených paprsků se posunou na stranu směrem ke zbytku paprsků. Takovýto tvar spojná čočka posouvá zpět směrem ke nulovému sklonu, ovšem i společně s odraženými paprsky posune i všechny ty neodražené. A tudíž ve výsledku celý systém soustředí více paprsků ve směru osy $x$. Takováto konfigurace by tedy stála za další prozkoumání.
 
-
-A napíšu, že celkové se tato vizualizace zdá být užitečnou. A nebylo by od věci udělat nějakou pořádnou aplikaci a ne jen takovýto demostrátor(?)
+Na užitečnosti aplikace se shodlo i několik odborníků zabývajících se návrhem nezobrazovací optiky.\src \hiddennote{\emph{*zde budu citovat email, nikoli obsah, pouze kdy byl poslán}}
