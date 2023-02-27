@@ -1,5 +1,7 @@
 doplnit zdroje
 
-hyphenation
+přestrukturovat diskuzi
+
+hezké rozdělení na stránky
 
 podpis
