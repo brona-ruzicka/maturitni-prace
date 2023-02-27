@@ -1,11 +1,11 @@
 \section{Vymezení problému}
 \label{sec:vymezeniproblemu}
 
-Smyslem této práce je pouze demonstrovat jistý koncept. Zaměříme proto jen na úplné jádro problému, a pokud se výsledek prokáže jako užitečný, můžeme uvažovat o nějakém zobecnění. Připomeňme si, že cílem je jednak samozřejmě pochopení celkové funkce navrhovaného systému, ovšem neméně nás zajímají i detaily o vystupujícím světle.
+Smyslem této práce je pouze demonstrovat jistý koncept. Zaměříme se proto jen na úplné jádro problému, a pokud se výsledek prokáže jako užitečný, můžeme uvažovat o nějakém zobecnění. Připomeňme si, že cílem je jednak samozřejmě pochopení celkové funkce navrhovaného systému, ovšem neméně nás zajímá i charakteristika vystupujícího světla.
 
-Příkladem, na kterém si ukážeme postupné zjednodušení, budiž tento jednoduchý světlovod. Bude mít tvar \emph{pláště komolého jehlanu (případně hranolu) s odříznutými podstavami}. Namísto horní podstavy umístíme \emph{plošný zdroj světla}. Vysílané paprsky se z něj šíří skrz jehlan, a to jednak přímo, ale i s pomocí odrazů od stěn.
+Příkladem, na kterém si ukážeme postupné zjednodušení, budiž tento jednoduchý světlovod, jenž bude mít tvar \emph{pláště komolého jehlanu (případně hranolu) s odříznutými podstavami}. Namísto horní podstavy umístíme \emph{plošný zdroj světla}. Vysílané paprsky se z něj šíří skrz jehlan, a jak přímo, tak s pomocí odrazů od stěn.
 
-V prvním kroku se omezíme pouze na podélný řez této soustavy, jinými slovy budeme se pohybovat pouze ve 2D. Zdrojem světla bude nyní jen úsečka a celý světlovod se zjednoduší na dvě úsečky reprezentující zrcadla. To je znázorněno na následujícím obrázku.
+V prvním kroku se omezíme pouze na podélný řez této soustavy, jinými slovy, budeme se pohybovat pouze ve 2D. Zdrojem světla bude nyní jen úsečka a celý světlovod se zjednoduší na dvě úsečky reprezentující zrcadla. To je znázorněno na následujícím obrázku.
 
 Pro zajímavost také uveďme, že veškeré obrázky optických soustav i souvisejících diagramů byly vygenerovány programem, jenž tvoří hlavní část této práce. 
 
@@ -21,7 +21,7 @@ Dále se omezíme na studium makroskopických soustav (svítilna, světlomet). B
 
 Budeme předpokládat, že všechny paprsky mají stejný, \emph{elementární}, optický výkon. Optický výkon celého světelného zdroje je pak jasně dán pouhým počtem paprsků, které vyzařuje.
 
-Pro jednoduchost budeme v demonstračním programu pracovat pouze se dvěma typy interakcí mezi systémem a paprskem, \emph{dokonalým zrcadlovým odrazem} a \emph{dokonalou absorpci}. Pro praktické využití by se hodilo zahrnout i \emph{lom světla}, \emph{rozptyl} (odraz od matného povrchu), \emph{částečný odraz} aj. Zanedbáme též závislost zmíněných jevů na polarizaci nebo vlnové délce (barvě) světla.
+Pro jednoduchost budeme v demonstračním programu pracovat pouze se dvěma typy interakcí mezi systémem a paprskem, \emph{dokonalým zrcadlovým odrazem} a \emph{dokonalou absorpcí}. Pro praktické využití by se hodilo zahrnout i \emph{lom světla}, \emph{rozptyl} (odraz od matného povrchu), \emph{částečný odraz} aj. Zanedbáme též závislost zmíněných jevů na polarizaci nebo vlnové délce (barvě) světla.
 
 \singleimage{
     \image[scale=0.15]{vymezeniproblemu_reflektor.png}{Příklad dokonalého odrazu na zrcadle (modrá) s bodovým zdrojem světla a několika znázorněnými paprsky (červená)}
@@ -31,10 +31,10 @@ Pro jednoduchost budeme v demonstračním programu pracovat pouze se dvěma typy
     \image[scale=0.15]{vymezeniproblemu_absorber.png}{Příklad dokonalé absorpce na cloně (šedá) s bodovým zdrojem světla a několika znázorněnými paprsky (červená)}
 }
 
-Reálné optické prvky bývají ve většině případů tvarované podle nejrůznějších matematických předpisů (např. $y = k \cdot x^2$). Ovšem jelikož výpočty s mnoha typy křivek a funkcí nebývají vždy snadné, budeme připouštět pouze aproximaci těchto tvarů pomocí lomených čar (série mnoha krátkých úseček). Při budoucím rozvoji bylo vhodné podporovat alespoň některé hojně používané útvary (parabola, \emph{Bézierovy křivky} aj.).
+Reálné optické prvky bývají ve většině případů tvarované na základě nejrůznějších matematických popisů (např. $y = k \cdot x^2$). Ovšem jelikož výpočty s mnoha typy křivek a funkcí nebývají vždy snadné, budeme připouštět pouze aproximaci těchto tvarů pomocí lomených čar (série mnoha krátkých úseček). Při budoucím rozvoji bylo vhodné podporovat alespoň některé hojně používané tvary (parabola, \emph{Bézierovy křivky} aj.).
 
 \singleimage{
     \image[scale=0.15]{vymezeniproblemu_aproximace.png}{Aproximace parabolického zrcadla (modrá) s úsečkovým zdrojem světla a několika znázorněnými paprsky (červená)}
 }
 
-Podstatný rozdíl oproti zobrazovací optice je, že v nezobrazovací systémech zpravidla není zřejmé, jak přesně bude který paprsek postupovat optickou soustavou. Naproti tomu v rámci zobrazovací optiky je to velmi jednoduše vyvoditelné. Jako příklad si vezměme teleskop se dvěma čočkami. U něj je na první pohled jasné, že paprsek světla nejdříve projde přes přední, a pak zadní plochu první čočky, a poté totéž pro čočku druhou. Zejména díky této znalosti je analýza i návrh zobrazovacích soustav podstatně jednodušší, než je tomu u systémů nezobrazovacích.
+V nezobrazovací systémech zpravidla není zřejmé, jak přesně bude který paprsek postupovat optickou soustavou. To je podstatný rozdíl od zobrazovací optiky kde je to velmi jednoduše vyvoditelné. Jako příklad si vezměme teleskop se dvěma čočkami. U něj je na první pohled jasné, že paprsek světla nejdříve projde přes přední, a pak zadní plochu první čočky, a poté totéž pro čočku druhou. Zejména díky této znalosti je analýza i návrh zobrazovacích soustav podstatně jednodušší, než je tomu u systémů nezobrazovacích.
