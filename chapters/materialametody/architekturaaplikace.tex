@@ -21,7 +21,7 @@ Z důvodu jednoduchosti implementace a snížení komplexity vývoje se scéna d
 
 Pro spuštění aplikace je nutné zavolat funkci \texttt{EtendueApp\#run}, která vyžaduje jediný argument, a to objekt popisující simulovanou scénu. Právě třída \texttt{EtendueApp} sdružuje všechny části tohoto programu, ať se týkají simulace nebo zobrazení. Jednotlivé součásti popisujeme podrobněji dále v této kapitole.
 
-K definici optického systému využíváme třídu \texttt{Scene}, což je v podstatě jen množina členů simulovaného optického systému. Ty jsou popsány třídou \texttt{Member}. Přičemž je můžeme rozdělit do dvou kategorií, jednak to jsou zdroje světla (třída \texttt{Emitter}) a druhou kategorii tvoří opticky interagující prvky (třída \texttt{Interactor}).
+K definici optického systému využíváme třídu \texttt{Scene}, což je v podstatě jen množina členů simulovaného optického systému. Ty jsou popsány třídou \texttt{Member}, přičemž je můžeme rozdělit do dvou kategorií, jednak to jsou zdroje světla (třída \texttt{Emitter}) a druhou kategorii tvoří opticky interagující prvky (třída \texttt{Interactor}).
 
 V kódu definujeme scénu pomocí funkce \texttt{Scene\#create}, jejíž argumenty jsou instance výše zmíněné třídy \texttt{Member}:
 
@@ -127,7 +127,7 @@ Obecně instance třídy \texttt{Interactor} nesou dvě informace. Jednak samoz�
 
 Jak je vysvětleno již v kapitole \fullref{sec:vymezeniproblemu}, v této aplikaci jsme se omezili pouze na dva typy optických členů, \emph{dokonalé clony} a \emph{dokonalá zrcadla}. Funkce, které je vytvářejí, vyžadují pouze jeden argument, a tím je objekt popisující tvar. Různým vyjádřením tvaru se věnujeme v následující podkapitole.
 
-\paragraph{Dokonalá clona} je definováno takto:
+\paragraph{Dokonalá clona} je definována takto:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející dokonalou clonu
@@ -137,7 +137,7 @@ Interactors.absorbing(
 \end{lstlisting}\end{quote}\end{minipage}
     
 
-\paragraph{Dokonalé zracadlo} je definováno takto:
+\paragraph{Dokonalé zracadlo} je vytvořeno následujícím způsobem:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející dokonalé zrcadlo
@@ -168,7 +168,7 @@ Geometries.line(
 }
 
 
-\paragraph{Geometrie podle fuknce} je poněkud složitější. Parametry jsou popsány přímo v kódu.
+\paragraph{Geometrie podle matematické fuknce} je zadávána poněkud složitěji. Parametry jsou popsány přímo v následujícím kódu.
 
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
@@ -195,7 +195,7 @@ Geometries.formula(
 
 \subsubsection{Příklad kompletní scény}
 
-Jak příklad nám poslouží jednoduchý světlomet, zmíněný v kapitole \fullref{sec:vymezeniproblemu}.
+Jako příklad nám poslouží jednoduchý světlomet, zmíněný v kapitole \fullref{sec:vymezeniproblemu}.
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 Scene scene = Scene.create(

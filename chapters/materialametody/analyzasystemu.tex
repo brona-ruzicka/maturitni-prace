@@ -76,7 +76,7 @@ Je také vhodné zmínit, že pro 2D simulace je pf-diagram, jak již víme, tak
 \subsection{Vlastnosti prostorovo-fázového diagramu}
 \label{sub:analyzasystemu_vlastnostipfdiagramu}
 
-Pokud detekční přímka prochází přímo \emph{bodovým zdrojem} (resp. \emph{vějířovým}, uvažujeme-li pouze paprsky šířící se z leva do prava), zobrazí se na pf-diagramu vodorovná úsečka. Všechny paprsky jsou totiž koncentrovány do jednoho bodu, průsečíku, zatímco jejich směrnice se podstatně liší. To je patrné i na následujících dvou obrázcích.
+Pokud detekční přímka prochází přímo \emph{bodovým zdrojem} (resp. \emph{vějířovým}, uvažujeme-li pouze paprsky šířící se zleva doprava), zobrazí se na pf-diagramu vodorovná úsečka. Všechny paprsky jsou totiž koncentrovány do jednoho bodu, průsečíku, zatímco jejich směrnice se podstatně liší. To je patrné i na následujících dvou obrázcích.
 
 Poukažme na to, že pro nakreslení přesného pf-diagramu je nutné počítat s desítkami tisíc až miliony paprsků. Ovšem v obrázcích s optickou soustavou je zobrazení takového množství paprsků naprosto nepřehledné, proto do nich vždy zakreslujeme pouze malý výběr z celkového počtu.
 
@@ -124,9 +124,9 @@ Pro levou detekční přímku a levý pf-diagram platí, že bodem na detekční
 
 Pro pravou detekční přímku a pravý pf-diagram platí, že každým bodem na detekční přímce prochází paprsky v omezeném sklonovém (úhlovém) rozsahu. Např. bodem $y = 0\ \mathrm{m}$ prochází pouze paprsky se směrnicemi v intervalu $k \in (-0.25, 0.25)$ a obdobně bodem $y = 1\ \mathrm{m}$ pouze paprsky se směrnicemi $k \in (0.0, 0.5)$. Z diagramu lze taktéž vyčíst, že paprsky se sklonem $\alpha = 45^{\circ}$, čemuž odpovídá směrnice $k = 1$, protínají detekční přímku jen v rozmezí od $y_{min} = 3\ \mathrm{m}$ do $y_{max} = 5\ \mathrm{m}$.
 
-Dále je nutno též dodat, že pod pojmy plošný resp. úsečkový zdroj obecně myslíme tzv. \emph{lambertovské zářiče} odpovídajícího tvaru. Tj. zářič, u něhož je počet vyzářených paprsků určitým směrem přímo úměrný jeho zdánlivé ploše při pohledu z daného směru. Díky použití těchto zdrojů můžeme v pf-diagramu pozorovat nerovnoměrné rozprostření paprsků. To je naznačeno různou sytostí barvy jednotlivých bodů. Platí čím je barva sytější, tím více reprezentuje pixel paprsků.
+Dále je nutno též dodat, že pod pojmy plošný resp. úsečkový zdroj obecně myslíme tzv. \emph{lambertovské zářiče} odpovídajícího tvaru.\src Tj. zářič, u něhož je počet vyzářených paprsků určitým směrem přímo úměrný jeho zdánlivé ploše při pohledu z daného směru. Díky použití těchto zdrojů můžeme v pf-diagramu pozorovat nerovnoměrné rozprostření paprsků. To je naznačeno různou sytostí barvy jednotlivých bodů. Platí čím je barva sytější, tím více paprsků je daným pixelem reprezentováno.
 
-Zatím jsme rozebrali systémy skládající se pouze ze zdrojů světla. Nyní se podíváme, jak pf-diagram reaguje na optické prvky. Nejprve se podíváme na clonu. To je docela jednoduché, část obrazce v diagramu je jednoduše uříznuta, bez náhrady (srov. s předchozími diagramy):
+Zatím jsme rozebrali systémy skládající se pouze ze zdrojů světla. Nyní se podíváme, jak pf-diagram reaguje na optické prvky. Nejprve se zaměříme na clonu. To je docela jednoduché, část obrazce v diagramu je jednoduše uříznuta, bez náhrady (srov. s předchozími diagramy):
 
 \doubleimage{
     \image[scale=0.15]{analyzasystemu_p6_scena.png}{Úsečkový zdroj světla s několika znázorněnými paprsky (červená), clona (šedá) a vyznačená detekční přímka $x = 4\ \mathrm{m}$ (zelená)}
@@ -149,9 +149,9 @@ Doteď jsme se zabývali pf-diagramem typu \emph{směrnice-průsečík}, a to ze
 
 \[ X_n = [\ \sin\ \alpha_n,\ p_n(\ c\ )\ ] \]
 
-Z důvodu přehlednosti nebudeme osu $x$ takového diagramu popisovat jako bezjednotkový $\sin\ \alpha$, namísto toho použijeme úhel $\alpha$ ve stupních ($^{\circ}$), který daným hodnotám sinu odpovídá. Ovšem, abychom dosáhli lineárního rozprostření hodnot $\sin\ \alpha$ po ose $x$, odpovídající hodnoty úhlu $\alpha$ lineárně rozprostřené nebudou. Budeme tedy de-facto používat nelineární měřítko.
+Z důvodu přehlednosti nebudeme osu $x$ takového diagramu popisovat jako bezjednotkový $\sin\ \alpha$, namísto toho použijeme úhel $\alpha$ ve stupních ($^{\circ}$), který daným hodnotám sinu odpovídá. Ovšem, abychom dosáhli lineárního rozprostření hodnot $\sin\ \alpha$ po ose $x$, odpovídající hodnoty úhlu $\alpha$ lineárně rozprostřené nebudou. Budeme tedy de facto používat nelineární měřítko.
 
-Rozdílů mezi zmíněnými druhy zobrazení není mnoho, ale některé se přeci jen najdou. Jednak samozřejmě nebude platit, že při posouvání detekční přímky dochází ke zkosení obrazce, tady se budeme muset omezit na obecnější termín deformace. To je patrné z následujících obrázků:
+Rozdílů mezi zmíněnými druhy zobrazení není mnoho, ale některé přeci jen zmíníme. Jednak samozřejmě nebude platit, že při posouvání detekční přímky dochází ke zkosení obrazce, tady se budeme muset omezit na obecnější termín deformace. To je patrné z následujících obrázků:
 
 \doubleimage{
     \image[scale=0.15]{analyzasystemu_p8_scena.png}{Úsečkový zdroj světla s několika znázorněnými paprsky (červená) a tři vyznačené detekční přímky, pro $x = 0\ \mathrm{m}$, $x = 2\ \mathrm{m}$ a $x = 4\ \mathrm{m}$ (zelená)}
@@ -175,7 +175,7 @@ Dalším specifikem tohoto typu pf-diagramu je tato následující vlastnost:
     Pokud platí, že při interakci s optickým povrchem se zachovává počet paprsků (což neplatí např. pro absorpci, nedokonalý odraz apod.), je plocha obrazce tvořeného všemi paprsky konstantní, nezávisle na volbě počátku detekčního souřadného systému (v našem na případě poloze detekční přímky).
 \end{quote}
 
-Zmíněná plocha obrazce v pf-diagramu typu \emph{sinus-průsečík} se nazývá \emph{étendue}. A výše popsaná vlastnost se jmenuje \emph{zákon zachování étendue} (anglicky \emph{conservation of etendue}).
+Zmíněná plocha obrazce v pf-diagramu typu \emph{sinus-průsečík} se nazývá \emph{étendue}. A výše popsaná vlastnost se jmenuje \emph{zákon zachování étendue} (anglicky \emph{conservation of etendue}).\src
 
 Étendue může být definováno i jako jistý součin prostorového a úhlového rozsahu. Pro svazek paprsků diferenciální velikosti (reprezentováno jedním pixelem v našem diagramu) je tento součin konstantní (všechny pixely mají stejnou plochu). Jelikož étendue je pouze součtem těchto součinů, platí tato vlastnost i pro všechny paprsky jako celek.
 
