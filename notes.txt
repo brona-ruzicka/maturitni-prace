@@ -2,8 +2,8 @@ doplnit zdroje
 
 hyphenation
 
-podpis?
+podpis
 
-změna názvu?
+upravit texty v kapitole Architektura aplikace
 
 rozvést popis výsledků

@@ -149,8 +149,72 @@ Interactors.reflecting(
 
 \subsubsection{Geometrie optických prvků}
 
+Aplikace podporuje několik různých typů geometrií optických prvků. My se zde zmíníme o dvou.
+
+\paragraph{Úsečka} je definována pomocí dvou bodů:
+
+\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
+// Funkce vytvářející úsečkovou geometrii
+Geometries.line(
+        // První bod
+        point(0,1),
+        // Druhý bod
+        point(5,2)
+)
+\end{lstlisting}\end{quote}\end{minipage}
+
+\singleimage{
+    \image[scale=0.15]{architekturaaplikace_line.png}{Příklad scény obsahující úsečkovou geometrii}
+}
 
 
+\paragraph{Geometrie podle fuknce} je poněkud složitější. Parametry jsou popsány přímo v kódu.
+
+
+\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
+// Funkce vytvářející geometrii podle funkce
+Geometries.formula(
+        // x v závislosti na y
+        true,
+        // Počáteční bod
+        point(1, 2),
+        // Výchozí hodnota parametru
+        -3,
+        // Koncová hodnota parametru
+        3,
+        // Krok parametru
+        0.1f,
+        // Samotná funkce
+        x -> x*x / 2
+)
+\end{lstlisting}\end{quote}\end{minipage}
+
+\singleimage{
+    \image[scale=0.15]{architekturaaplikace_parabola.png}{Příklad scény obsahující prouze aproximaci paraboly}
+}
+
+\subsubsection{Příklad kompletní scény}
+
+Jak příklad nám poslouží jednoduchý světlomet, zmíněný v kapitole \fullref{sec:vymezeniproblemu}.
+
+\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
+Scene scene = Scene.create(
+        // Horní část
+        Interactors.reflecting(
+                Geometries.line(point(0, 1), point(5, 2))
+        ),
+        // Spodní část
+        Interactors.reflecting(
+                Geometries.line(point(0, -1), point(5, -2))
+        ),
+        // Zdroj světla
+        Emitters.line(point(0, 0), 2, 10)
+);
+
+EtendueApp.run(scene);
+\end{lstlisting}\end{quote}\end{minipage}
+
+Tento systém použijeme jako příklad i v následujících podkapitolách.
 
 
 \subsection{Simulace paprsků}
@@ -208,7 +272,7 @@ Opět se vytvoří jakási datová struktura, ovšem pro tentokrát je jednorozm
 
 Podotkněme, že ve skutečnosti v tomto grafu zobrazujeme čáry dvě, jednu červenou a jednu fialovou. Červená znázorňuje počty paprsků mířící k $+x$ a fialová směr $-x$:
 
-Dále v okně zobrazíme ještě informace o celkovém počtu paprsků. A dále také maximální hodnotu počtu paprsků v některé z kolonek.
+Dále v okně zobrazíme ještě informace o celkovém počtu paprsků. A také maximální hodnotu počtu paprsků v některé z kolonek.
 
 \singleimage{
         \image[scale=1]{architekturaaplikace_graf.png}{Příklad okna grafu rozložení svítivosti}
