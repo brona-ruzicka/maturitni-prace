@@ -3,7 +3,3 @@ doplnit zdroje
 hyphenation
 
 podpis
-
-upravit texty v kapitole Architektura aplikace
-
-rozvést popis výsledků
