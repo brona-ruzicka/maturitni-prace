@@ -1,0 +1,11 @@
+\newcommand{\beautification}[1]{}
+\newcommand{\enablebeautify}{
+    \renewcommand{\beautification}[1]{{##1}}
+}
+\newcommand{\disablebeautify}{
+    \renewcommand{\beautification}[1]{}
+}
+\enablebeautify
+
+
+\newcommand{\beautypage}{\beautification{\clearpage}}
