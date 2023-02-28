@@ -17,11 +17,11 @@ V souvislosti s tímto zjednodušením je nutné podotknout, že výsledky simul
 
 Zároveň zdůrazněme, že nebudeme nahrazovat \emph{plošný zdroj} světla \emph{bodovým}. Tato metoda je velmi typická pro zobrazovací optiku, ale v oblasti nezobrazovací optiky se příliš nepoužívá. Hlavním důvodem je velikost světelných zdrojů, která bývá v navrhovaných systémech zpravidla nezanedbatelná vůči velikosti celé soustavy.
 
-Dále se omezíme na studium makroskopických soustav (svítilna, světlomet). Budeme se zajímat především o situace, ve kterých se soustavou šíří velké množství paprsků (ideálně nekonečné). To je další rozdíl oproti zobrazovací optice, kde k pochopení fun\-kce systému stačí znalost chodu maximálně nižší desítky paprsků.\src Zároveň v takto velkých systémech se v podstatě neprojevují (resp. projevují, ale zanedbatelně) \emph{vlnové vlastnosti světla}, které proto ze simulace můžeme vypustit. Ve výsledku tedy budeme na světlo nahlížet pouze z pohledu \emph{paprskové optiky}, což by nebylo možné např. při zkoumání optických vláken, které se svými rozměry více přibližují vlnové délce použitého světla.
+Dále se omezíme na studium makroskopických soustav (svítilna, světlomet). Budeme se zajímat především o situace, ve kterých se soustavou šíří velké množství paprsků (ideálně nekonečné). To je další rozdíl oproti zobrazovací optice, kde k pochopení fun\-kce systému stačí znalost chodu maximálně nižší desítky paprsků. \parencite{chaves2017introduction} Zároveň v takto velkých systémech se v podstatě neprojevují (resp. projevují, ale zanedbatelně) \emph{vlnové vlastnosti světla}, které proto ze simulace můžeme vypustit. Ve výsledku tedy budeme na světlo nahlížet pouze z pohledu \emph{paprskové optiky}, což by nebylo možné např. při zkoumání optických vláken, které se svými rozměry více přibližují vlnové délce použitého světla.
 
 Budeme předpokládat, že všechny paprsky mají stejný, \emph{elementární}, optický výkon. Optický výkon celého světelného zdroje je pak jasně dán pouhým počtem paprsků, které vyzařuje.
 
-Pro jednoduchost budeme v demonstračním programu pracovat pouze se dvěma typy interakcí mezi systémem a paprskem, \emph{dokonalým zrcadlovým odrazem} a \emph{dokonalou absorpcí}. Pro praktické využití by se hodilo zahrnout i \emph{lom světla}, \emph{rozptyl} (odraz od matného povrchu), \emph{částečný odraz} aj. Zanedbáme též závislost zmíněných jevů na polarizaci nebo vlnové délce (barvě) světla.
+Pro jednoduchost budeme v demonstračním programu pracovat pouze se dvěma typy interakcí mezi systémem a paprskem, \emph{dokonalým zrcadlovým odrazem} a \emph{dokonalou absorpcí}. Pro praktické využití by se hodilo zahrnout i \emph{lom světla}, \emph{rozptyl} (odraz od matného povrchu), \emph{částečný odraz} aj. \parencite{zara2005moderni} Zanedbáme též závislost zmíněných jevů na polarizaci nebo vlnové délce (barvě) světla.
 
 \singleimage{
     \image[scale=0.15]{vymezeniproblemu_reflektor.png}{Příklad dokonalého odrazu na zrcadle (modrá) s bodovým zdrojem světla a několika znázorněnými paprsky (červená)}
@@ -31,7 +31,7 @@ Pro jednoduchost budeme v demonstračním programu pracovat pouze se dvěma typy
     \image[scale=0.15]{vymezeniproblemu_absorber.png}{Příklad dokonalé absorpce na cloně (šedá) s bodovým zdrojem světla a několika znázorněnými paprsky (červená)}
 }
 
-Reálné optické prvky bývají ve většině případů tvarované na základě nejrůznějších matematických popisů (např. $y = k \cdot x^2$). Ovšem jelikož výpočty s mnoha typy křivek a funkcí nebývají vždy snadné, budeme připouštět pouze aproximaci těchto tvarů pomocí lomených čar (série mnoha krátkých úseček). Při budoucím rozvoji bylo vhodné podporovat alespoň některé hojně používané tvary (parabola, \emph{Bézierovy křivky} aj.).
+Reálné optické prvky bývají ve většině případů tvarované na základě nejrůznějších matematických popisů (např. $y = k \cdot x^2$). Ovšem jelikož výpočty s mnoha typy křivek a funkcí nebývají vždy snadné, budeme připouštět pouze aproximaci těchto tvarů pomocí lomených čar (série mnoha krátkých úseček). Při budoucím rozvoji bylo vhodné podporovat alespoň některé hojně používané tvary, např.parabola, \emph{Bézierovy křivky}. \parencite{zara2005moderni}
 
 \singleimage{
     \image[scale=0.15]{vymezeniproblemu_aproximace.png}{Aproximace parabolického zrcadla (modrá) s úsečkovým zdrojem světla a několika znázorněnými paprsky (červená)}

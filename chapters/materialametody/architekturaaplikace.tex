@@ -2,7 +2,7 @@
 
 V této kapitole nejprve obecně popíšeme postup použití aplikace a poté rozebereme jednotlivé součásti programu.
 
-Zmiňme, že celý zdrojový kód programu je uveden v \emph{příloze č. 1} této práce. Pro potřeby této práce používáme termín \emph{třída} (anglicky \emph{class}) spíše pro \emph{Javovský} pojem \emph{typ} (anglicky \emph{type}). Ten zahrnuje jednak samotné \texttt{class}, ale i \texttt{interface} a \texttt{enum}.\src
+Zmiňme, že celý zdrojový kód programu je uveden v \emph{příloze č. 1} této práce. Pro potřeby této práce používáme termín \emph{třída} (anglicky \emph{class}) spíše pro \emph{Javovský} pojem \emph{typ} (anglicky \emph{type}). Ten zahrnuje jednak samotné \texttt{class}, ale i \texttt{interface} a \texttt{enum}.
 
 \subsection{Typické použití aplikace}
 
@@ -224,7 +224,7 @@ Simulace průchodu paprsků scénou se provede pouze jednou, hned po spuštění
 
 V naší aplikaci implementujeme jednoduchý \emph{ray tracing} algoritmus. Nejprve se vyšle paprsek ze zdroje světla. Poté se spočítá jeho průsečík se všemi objekty ve scéně a vybere se ten nejbližší. Následně se vyhodnotí interakce s tímto objektem (odraz nebo absorpce). A pokud se paprsek odráží, postup se opakuje. Sledování paprsku pokračuje, dokud se nedosáhne limitu počtu interakcí (v našem případě 1000), nebo dokud paprsek neopustí scénu, tzn. žádný další průsečík neexistuje.
 
-Zajímavostí je, že pro výpočet průsečíku používáme tzv. \emph{homogenní souřadnice} bodu a vzorec pro průsečík dvou přímek definovaný sérií vektorových součinů, jak je popsáno zde.\src Pro získaný bod poté jen ověříme, že se nachází na správné polopřímce resp. úsečce.
+Zajímavostí je, že pro výpočet průsečíku používáme tzv. \emph{homogenní souřadnice} bodu a vzorec pro průsečík dvou přímek definovaný sérií vektorových součinů, jak popsal \textcite{skala2008intersection}. Pro získaný bod poté jen ověříme, že se nachází na správné polopřímce resp. úsečce.
 
 Dále můžeme uvést, že v zájmu zkrácení celkového času potřebného k výpočtu používáme tzv. \emph{multithreading}, tj. způsob jak spustit více výpočtů paralelně.
 
