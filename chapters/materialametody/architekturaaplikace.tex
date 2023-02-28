@@ -1,29 +1,27 @@
-\section{Architektura a funkce aplikace}
+\section{Architektura a~funkce aplikace}
 
-V této kapitole nejprve obecně popíšeme postup použití aplikace a poté rozebereme jednotlivé součásti programu.
+V této kapitole nejprve obecně popíšeme postup použití aplikace a~poté rozebereme jednotlivé součásti programu.
 
-Zmiňme, že celý zdrojový kód programu je uveden v \emph{příloze č. 1} této práce. Pro potřeby této práce používáme termín \emph{třída} (anglicky \emph{class}) spíše pro \emph{Javovský} pojem \emph{typ} (anglicky \emph{type}). Ten zahrnuje jednak samotné \texttt{class}, ale i \texttt{interface} a \texttt{enum}.
+Zmiňme, že celý zdrojový kód programu je uveden v~\emph{příloze č. 1} této práce. Pro~potřeby této práce používáme termín \emph{třída} (anglicky \emph{class}) spíše pro~\emph{Javovský} pojem \emph{typ} (anglicky \emph{type}). Ten zahrnuje jednak samotné \texttt{class}, ale i~\texttt{interface} a~\texttt{enum}.
 
 \subsection{Typické použití aplikace}
 
-Začneme tím, že uživatel definuje scénu, kterou chce prozkoumat, a následně spustí samotnou aplikaci.
+Začneme tím, že uživatel definuje scénu, kterou chce prozkoumat, a~následně spustí samotnou aplikaci.
 
-V podstatě ihned poté se otevře hlavní okno aplikace zobrazující všechny prvky scény a zároveň se \emph{na pozadí} (tzn. uživatel nevidí žádnou indikaci a nemá žádnou přímou zpětnou vazbu) zahájí i simulace průchodu paprsků scénou (anglicky \emph{ray tracing}). Během této fáze (zatímco probíhá simulace) je možné a vhodné zkontrolovat, zda-li skutečně zadaná a zobrazená scéna odpovídá záměru.
+V podstatě ihned poté se~otevře hlavní okno aplikace zobrazující všechny prvky scény a~zároveň se~\emph{na pozadí} (tzn. uživatel nevidí žádnou indikaci a~nemá žádnou přímou zpětnou vazbu) zahájí i~simulace průchodu paprsků scénou (anglicky \emph{ray tracing}). Během této fáze (zatímco probíhá simulace) je možné a~vhodné zkontrolovat, zda-li skutečně zadaná a~zobrazená scéna odpovídá záměru.
 
-V momentě kdy aplikace dokončí simulaci paprsků, dokreslí je do okna se scénou. Kromě nich ale i na pozici odpovídající $ x = 0 $ zobrazí svislou zelenou čáru, která určuje polohu \emph{detekční přímky}. Touto čárou lze posouvat doprava a doleva s pomocí myši.
+V momentě kdy aplikace dokončí simulaci paprsků, dokreslí je do~okna se~scénou. Kromě nich ale i~na pozici odpovídající $ x = 0 $ zobrazí svislou zelenou čáru, která určuje polohu \emph{detekční přímky}. Touto čárou lze posouvat doprava a~doleva s~pomocí myši.
 
-V ten samý okamžik se otevřou ještě další dvě okna, jedno obsahující \emph{prostorovo-fázový diagram} a druhé \emph{graf rozložení svítivosti}. Vizualizace těchto grafů reagují na změ\-ny pozice \emph{detekční přímky} v okně se scénou.
+V ten samý okamžik se~otevřou ještě další dvě okna, jedno obsahující \emph{prostorovo-fázový diagram} a~druhé \emph{graf rozložení svítivosti}. Vizualizace těchto grafů reagují na~změ\-ny pozice \emph{detekční přímky} v~okně se~scénou.
 
 \subsection{Zadání scény}
 \label{sub:architekturaaplikace_zadanisceny}
 
-Z důvodu jednoduchosti implementace a snížení komplexity vývoje se scéna do aplikace zadává přímo jako kód, tj. pomocí funkcí definujících jednotlivé součásti optického systému. Když uživatel nadefinuje scénu, je nutné program zkompilovat a spustit, což by se mohlo zdát jako složitý postup, ale např. v autorem použitém prostředí IntelliJ IDEA k tomu v dnešní době stačí stisknutí jednoho tlačítka.
+Z důvodu jednoduchosti implementace a~snížení komplexity vývoje se~scéna do~aplikace zadává přímo jako kód, tj. pomocí funkcí definujících jednotlivé součásti optického systému. Když uživatel nadefinuje scénu, je nutné program zkompilovat a~spustit, což by se~mohlo zdát jako složitý postup, ale např. v~autorem použitém prostředí IntelliJ IDEA k~tomu v~dnešní době stačí stisknutí jednoho tlačítka.
 
-Pro spuštění aplikace je nutné zavolat funkci \texttt{EtendueApp.run()}, která vyžaduje jediný argument, a to objekt popisující simulovanou scénu. Právě třída \texttt{EtendueApp} propojuje všechny části aplikace, ať se týkají simulace nebo zobrazení. Podrobněji je popisujeme dále v této kapitole.
+Pro spuštění aplikace je nutné zavolat funkci \texttt{EtendueApp.run()}, která vyžaduje jediný argument, a~to objekt popisující simulovanou scénu. Právě třída \texttt{EtendueApp} propojuje všechny části aplikace, ať se~týkají simulace nebo zobrazení. Podrobněji je popisujeme dále v~této kapitole.
 
-K definici optického systému využíváme třídu \texttt{Scene}, což je v podstatě jen množina členů simulovaného optického systému. Ty jsou popsány třídou \texttt{Member}, přičemž je můžeme rozdělit do dvou kategorií, na zdroje světla (třída \texttt{Emitter}) a na opticky interagující prvky (třída \texttt{Interactor}).
-
-V kódu definujeme scénu pomocí funkce \texttt{Scene.create()}, jejíž argumenty jsou instance výše zmíněné třídy \texttt{Member}:
+K definici optického systému využíváme třídu \texttt{Scene}, což je v~podstatě jen množina členů simulovaného optického systému, které jsou popsány třídou \texttt{Member}. V~kódu definujeme scénu pomocí funkce \texttt{Scene.create()}, jejíž argumenty jsou instance výše zmíněné třídy \texttt{Member}:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Vytvoření scény
@@ -37,15 +35,15 @@ Scene scene = Scene.create(
 EtendueApp.run(scene);
 \end{lstlisting}\end{quote}\end{minipage}
 
-Jednotlivým implementacím třídy \texttt{Member}, neboli de facto podporovaným druhům optických členů, se věnujeme podrobněji v kapitole \fullref{sec:podporovaneoptickeprvky}.
+Jednotlivým implementacím třídy \texttt{Member}, neboli de facto podporovaným druhům optických členů, se~věnujeme podrobněji v~kapitole \fullref{sec:podporovaneoptickeprvky}.
 
-Doplňme, že v jazyce \emph{Java} je potřeba pro úspěšné spuštění programu doplnit ještě několik dalších neměnných instrukcí. Pro úplnost je v tomto případě uvedeme, ale v dalších výňatcích obsahujících definice scén je vynecháme:
+Doplňme, že v~jazyce \emph{Java} je potřeba pro~úspěšné spuštění programu doplnit ještě několik dalších neměnných instrukcí. Pro~úplnost je v~tomto případě uvedeme, ale v~dalších výňatcích obsahujících definice scén je vynecháme:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Obsah souboru Main.java
 
 // Tady vynecháváme ještě tzv. import statements,
-// které se mění v závislosti na použitých třídách
+// které se mění v závislosti na~použitých třídách
 
 public class Main {
     public static void main(String[] args) {
@@ -61,7 +59,9 @@ public class Main {
 }
 \end{lstlisting}\end{quote}\end{minipage}
 
-Např. jednoduchý světlovod, zmíněný v kapitole \fullref{sec:vymezeniproblemu}, byl definován takto:
+\beautypage
+
+Např. jednoduchý světlovod, zmíněný v~kapitole \fullref{sec:vymezeniproblemu}, byl definován takto:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 Scene scene = Scene.create(
@@ -80,19 +80,19 @@ Scene scene = Scene.create(
 EtendueApp.run(scene);
 \end{lstlisting}\end{quote}\end{minipage}
 
-S touto soustavou pracujeme i v následujících podkapitolách.
+S~touto soustavou pracujeme i~v~následujících podkapitolách.
 
 
 \subsection{Simulace paprsků}
 \label{sub:architekturaaplikace_simulacepaprsku}
 
-Simulace průchodu paprsků scénou se provede pouze jednou, hned po spuštění programu. Výsledek je uložen do paměti pro pozdější použití, tedy zejména výpočet průsečíků s detekční přímkou.
+Simulace průchodu paprsků scénou se~provede pouze jednou, hned po~spuštění programu. Výsledek je uložen do~paměti pro~pozdější použití, tedy zejména výpočet průsečíků s~detekční přímkou.
 
-V naší aplikaci implementujeme jednoduchý \emph{ray tracing} algoritmus. Nejprve se vyšle paprsek ze zdroje světla. Poté se spočítá jeho průsečík se všemi objekty ve scéně a vybere se ten nejbližší. Následně se vyhodnotí interakce s tímto objektem (odraz nebo absorpce). A pokud se paprsek odráží, postup se opakuje. Sledování paprsku pokračuje, dokud se nedosáhne limitu počtu interakcí (v našem případě 1000), nebo dokud paprsek neopustí scénu, tzn. žádný další průsečík neexistuje.
+V naší aplikaci implementujeme jednoduchý \emph{ray tracing} algoritmus. Nejprve se~vyšle paprsek ze~zdroje světla. Poté se~spočítá jeho průsečík se~všemi objekty ve~scéně a~vybere se~ten nejbližší. Následně se~vyhodnotí interakce s~tímto objektem (odraz nebo absorpce). A~pokud se~paprsek odráží, postup se~opakuje. Sledování paprsku pokračuje, dokud se~nedosáhne limitu počtu interakcí (v našem případě 1000), nebo dokud paprsek neopustí scénu, tzn. žádný další průsečík neexistuje.
 
-Zajímavostí je, že pro výpočet průsečíku používáme tzv. \emph{homogenní souřadnice} bodu a vzorec pro průsečík dvou přímek definovaný sérií vektorových součinů, jak popsal \textcite{skala2008intersection}. Pro získaný bod poté jen ověříme, že se nachází na správné polopřímce resp. úsečce.
+Zajímavostí je, že pro~výpočet průsečíku používáme tzv. \emph{homogenní souřadnice} bodu a~vzorec pro~průsečík dvou přímek definovaný sérií vektorových součinů, jak popsal \textcite{skala2008intersection}. Pro~získaný bod poté jen ověříme, že se~nachází na~správné polopřímce resp. úsečce.
 
-Dále můžeme uvést, že v zájmu zkrácení celkového času potřebného k výpočtu používáme tzv. \emph{multithreading}, tj. způsob jak spustit více výpočtů paralelně.
+Dále můžeme uvést, že v~zájmu zkrácení celkového času potřebného k~výpočtu používáme tzv. \emph{multithreading}, tj. způsob jak spustit více výpočtů paralelně.
 
 \subsection{Vizualizace scény}
 
@@ -102,30 +102,33 @@ Vizualizace scény proběhne za celou dobu běhu programu pouze dvakrát. Nejprv
         \image[scale=1]{architekturaaplikace_preview.png}{Příklad okna schématu scény, ještě bez nasimulovaných paprsků}
 }
 
-Podruhé jsou vykresleny opět všechny členy scény, ale tentokrát společně s několika náhodně vybranými paprsky (zobrazování všech simulovaných paprsků by bylo nepřehledné). Tato vizualizace se uloží do paměti programu. Když uživatel posune detekční přímku, do okna se scénou už vykreslí jen tento předvygenerovaný obrázek (nemusíme kreslit znova každý paprsek) a navrh se pouze dokreslí svislá čára znázorňující detekční přímku.
+Podruhé jsou vykresleny opět všechny členy scény, ale tentokrát společně s~několika náhodně vybranými paprsky (zobrazování všech simulovaných paprsků by bylo nepřehledné). Tato vizualizace se~uloží do~paměti programu. Když uživatel posune detekční přímku, do~okna se~scénou už vykreslí jen tento předvygenerovaný obrázek (nemusíme kreslit znova každý paprsek) a~navrh se~pouze dokreslí svislá čára znázorňující detekční přímku.
 
 \singleimage{
-        \image[scale=1]{architekturaaplikace_spaprsky.png}{Příklad okna schématu scény, s nasimulovanými paprsky a detekční přímkou}
+        \image[scale=1]{architekturaaplikace_spaprsky.png}{Příklad okna schématu scény, s~nasimulovanými paprsky a~detekční přímkou}
 }
 
-Pro zobrazení scény jsme zvolili následující barvy: červená pro zdroje a paprsky, modrá pro zrcadla a tmavě šedá pro clony. Dále zelenou barvou je vykreslena detekční přímka a černými a světle šedými čárami je vyznačena vztažná soustava.
+Pro zobrazení scény jsme zvolili následující barvy: červená pro~zdroje a~paprsky, modrá pro~zrcadla a~tmavě šedá pro~clony. Dále zelenou barvou je vykreslena detekční přímka a~černými a~světle šedými čárami je vyznačena vztažná soustava.
 
-Zároveň uveďme, že program sám přizpůsobuje, která část scény se zobrazí a i v jakém měřítku, a to tak, aby všechny prvky scény byly vždy kompletně viditelné. Dále mřížka a její popisky se taktéž automaticky uzpůsobí zvolenému přiblížení.
+Zároveň uveďme, že program sám přizpůsobuje, která část scény se~zobrazí a~i v~jakém měřítku, a~to tak, aby všechny prvky scény byly vždy kompletně viditelné. Dále mřížka a~její popisky se~taktéž automaticky uzpůsobí zvolenému přiblížení.
+
+\beautypage
 
 \subsection{Detekce paprsků}
 
-Výpočet průsečíků paprsků s detekční přímkou proběhne pokaždé, když se změní její poloha. Přičemž k výpočtu jsou užita uložená data o chodu paprsků z fáze sledování paprsků. Používáme stejný vzorec jako v podkapitole \fullref{sub:architekturaaplikace_simulacepaprsku}. Jen mírně zjednodušený, protože víme, že jedna z přímek bude vždy rovnoběžná s osou $y$.
+Výpočet průsečíků paprsků s~detekční přímkou proběhne pokaždé, když se~změní její poloha. Přičemž k~výpočtu jsou užita uložená data o~chodu paprsků z~fáze sledování paprsků. Používáme stejný vzorec jako v~podkapitole \fullref{sub:architekturaaplikace_simulacepaprsku}. Jen mírně zjednodušený, protože víme, že jedna z~přímek bude vždy rovnoběžná s~osou $y$.
 
-Z důvodu zajištění plynulého chodu aplikace z pohledu uživatele, probíhá i tento výpočet \emph{na pozadí}.
+Z důvodu zajištění plynulého chodu aplikace z~pohledu uživatele, probíhá i~tento výpočet \emph{na pozadí}.
 
+\beautypage
 
 \subsection{Vizualizace prostorovo-fázového diagramu}
 
-Ihned po vypočtení průsečíků paprsků s detekční přímkou se spustí část zobrazující prostorovo-fázový diagram.
+Ihned po~vypočtení průsečíků paprsků s~detekční přímkou se~spustí část zobrazující prostorovo-fázový diagram.
 
-Nejprve si plochu okna pf-diagramu rozdělí na mřížku. A poté pro každý paprsek vypočte, do kterého políčka spadá. Nakonec pro každé políčko vykreslí čtvereček vybarvený odstínem červené odpovídající počtu paprsků v daném políčku.
+Nejprve si plochu okna pf-diagramu rozdělí na~mřížku. A~poté pro~každý paprsek vypočte, do~kterého políčka spadá. Nakonec pro~každé políčko vykreslí čtvereček vybarvený odstínem červené odpovídající počtu paprsků v~daném políčku.
 
-V tomtéž okně se také zobrazí další dvě veličiny. Jednak étendue, které se vypočte jako plocha neprázdných políček pf-diagramu. A pak průměrný počet paprsků v jednom políčku (položka \emph{Average}).
+V tomtéž okně se~také zobrazí další dvě veličiny. Jednak étendue, které se~vypočte jako plocha neprázdných políček pf-diagramu. A~pak průměrný počet paprsků v~jednom políčku (položka \emph{Average}).
 
 \singleimage{
         \image[scale=1]{architekturaaplikace_etendue.png}{Příklad okna prostorovo-fázového diagramu}
@@ -133,13 +136,13 @@ V tomtéž okně se také zobrazí další dvě veličiny. Jednak étendue, kter
 
 \subsection{Vizualizace grafu rozložení svítivosti}
 
-Současně se zobrazením pf-diagramu se spustí i vykreslení grafu rozložení svítivosti. Postup je obdobný jako vizualizace pf-diagramu.
+Současně se~zobrazením pf-diagramu se~spustí i~vykreslení grafu rozložení svítivosti. Postup je obdobný jako vizualizace pf-diagramu.
 
-Opět se nejprve vytvoří datová struktura jako podklad pro vykreslení grafu, ovšem tentokrát je pouze jednorozměrná. Pro každý paprsek se vypočte, do kterého intervalu spadá. Na základě toho pak se zobrazí čára spojující vypočtené hodnoty.
+Opět se~nejprve vytvoří datová struktura jako podklad pro~vykreslení grafu, ovšem tentokrát je pouze jednorozměrná. Pro~každý paprsek se~vypočte, do~kterého intervalu spadá. Na~základě toho pak se~zobrazí čára spojující vypočtené hodnoty.
 
-Poznamenejme, že v tomto grafu zobrazujeme čáry dvě, jednu červenou a jednu fialovou. Červená znázorňuje počty paprsků mířící ve směru $+x$ a fialová směr $-x$.
+Poznamenejme, že v~tomto grafu zobrazujeme čáry dvě, jednu červenou a~jednu fialovou. Červená znázorňuje počty paprsků mířící ve~směru $+x$ a~fialová směr $-x$.
 
-Dále v okně vypíšeme ještě informaci o celkovém počtu paprsků (položka \emph{Total}). A také maximální hodnotu počtu paprsků v jednom intervalu (položka \emph{Maximum}).
+Dále v~okně vypíšeme ještě informaci o~celkovém počtu paprsků (položka \emph{Total}). A~také maximální hodnotu počtu paprsků v~jednom intervalu (položka \emph{Maximum}).
 
 \singleimage{
         \image[scale=1]{architekturaaplikace_graf.png}{Příklad okna grafu rozložení svítivosti}

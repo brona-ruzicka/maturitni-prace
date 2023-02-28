@@ -1,6 +1,6 @@
 \chapter{Výsledky}
 
-Vybrali jsme celkem pět různých optických systémů, které je možné rozdělit do dvou kategorií, \emph{světlovody} a \emph{parabolické reflektory}. Pro každý z těchto soustav jsme spustili náš program a poté uložili vypočtené vizualizace a grafy.
+Vybrali jsme celkem pět různých optických systémů, které je možné rozdělit do~dvou kategorií, \emph{světlovody} a~\emph{parabolické reflektory}. Pro~každý z~těchto soustav jsme spustili náš program a~poté uložili vypočtené vizualizace a~grafy.
 
 
 \section{Světlovody}
@@ -11,7 +11,7 @@ Vybrali jsme celkem pět různých optických systémů, které je možné rozd�
 První systém je zadán takto:
 
 \begin{quote}
-    Jednoduchý zrcadlový světlovod se šířkou vstupu $2\ \mathrm{m}$ a šířkou výstupu $5\ \mathrm{m}$. Jeho celková délka činí $5\ \mathrm{m}$ a na vstupu do světlovodu je připevněn úsečkový zdroj o délce $1,95\ \mathrm{m}$.
+    Jednoduchý zrcadlový světlovod se~šířkou vstupu $2\ \mathrm{m}$ a~šířkou výstupu $5\ \mathrm{m}$. Jeho celková délka činí $5\ \mathrm{m}$ a~na vstupu do~světlovodu je připevněn úsečkový zdroj o~délce $1,95\ \mathrm{m}$.
 \end{quote}
 
 Odpovídající definice scény:
@@ -37,6 +37,8 @@ Scene scene = Scene.create(
 EtendueApp.run(scene);
 \end{lstlisting}\end{quote}\end{minipage}
 
+\beautypage
+
 Vygenerované vizualizace:
 
 \singleimage{
@@ -44,18 +46,19 @@ Vygenerované vizualizace:
 }
 
 \doubleimage{
-    \image[scale=0.15]{vysledky_1a_etendue.png}{Pf-diagram na výstupu z krátkého světlovodu}
+    \image[scale=0.15]{vysledky_1a_etendue.png}{Pf-diagram na~výstupu z~krátkého světlovodu}
 }{
-    \image[scale=0.15]{vysledky_1a_graf.png}{Rozložení svítivosti po průchodu krátkým světlovodem}
+    \image[scale=0.15]{vysledky_1a_graf.png}{Rozložení svítivosti po~průchodu krátkým světlovodem}
 }
 
+\beautypage
 
 \subsection{Dlouhý světlovod}
 
-Druhý systém, taktéž světlovod, se od prvního liší pouze v celkové délce, která je dvojnásobná:
+Druhý systém, taktéž světlovod, se~od prvního liší pouze v~celkové délce, která je dvojnásobná:
 
 \begin{quote}
-    Jednoduchý zrcadlový světlovod se šířkou vstupu $2\ \mathrm{m}$ a šířkou výstupu $5\ \mathrm{m}$. Jeho celková délka činí $10\ \mathrm{m}$ a na vstupu do světlovodu je připevněn úsečkový zdroj o délce $1,95\ \mathrm{m}$.
+    Jednoduchý zrcadlový světlovod se~šířkou vstupu $2\ \mathrm{m}$ a~šířkou výstupu $5\ \mathrm{m}$. Jeho celková délka činí $10\ \mathrm{m}$ a~na vstupu do~světlovodu je připevněn úsečkový zdroj o~délce $1,95\ \mathrm{m}$.
 \end{quote}
 
 Odpovídající definice scény:
@@ -88,24 +91,26 @@ Vygenerované vizualizace:
 }
 
 \doubleimage{
-    \image[scale=0.15]{vysledky_1b_etendue.png}{Pf-diagram na výstupu z dlouhého světlovodu}
+    \image[scale=0.15]{vysledky_1b_etendue.png}{Pf-diagram na~výstupu z~dlouhého světlovodu}
 }{
-    \image[scale=0.15]{vysledky_1b_graf.png}{Rozložení svítivosti po průchodu dlouhým světlovodem}
+    \image[scale=0.15]{vysledky_1b_graf.png}{Rozložení svítivosti po~průchodu dlouhým světlovodem}
 }
 
 
 \section{Parabolické reflektory}
 \label{sec:parabolickereflektory}
 
-\subsection{Parabolický reflektor s ohniskem ve středu vstupního otvoru}
+\subsection{Parabolický reflektor s~ohniskem ve~středu vstupního otvoru}
 
-Pokračujeme do kategorie parabolických reflektorů. První takový systém je popsán takto:
+Pokračujeme do~kategorie parabolických reflektorů. První takový systém je popsán takto:
 
 \begin{quote}
-    Parabolický reflektor se vstupem šířky $2\ \mathrm{m}$ a délkou $5\ \mathrm{m}$. Parabola je umístěna tak, aby její ohnisko leželo na středu vstupního otvoru. Ve něm je také připevněn úsečkový zdroj o délce $1\ \mathrm{m}$.
+    Parabolický reflektor se~vstupem šířky $2\ \mathrm{m}$ a~délkou $5\ \mathrm{m}$. Parabola je umístěna tak, aby její ohnisko leželo na~středu vstupního otvoru. Ve~něm je také připevněn úsečkový zdroj o~délce $1\ \mathrm{m}$.
 \end{quote}
 
-Tuto scénu jsme definovali následujícím způsobem. Poukažme na to, že jsou použity proměnné za účelem zjednodušení případné změny v zadání:
+\beautypage
+
+Tuto scénu jsme definovali následujícím způsobem. Poukažme na~to, že jsou použity proměnné za účelem zjednodušení případné změny v~zadání:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Délka reflektoru
@@ -156,28 +161,31 @@ Scene scene = Scene.create(
 EtendueApp.run(scene);
 \end{lstlisting}\end{quote}\end{minipage}
 
+\beautypage
+
 Vygenerované vizualizace:
 
 \singleimage{
-    \image[scale=0.15]{vysledky_2a_scena.png}{Schéma parabolického reflektoru s ohniskem ve středu vstupního otvoru}
+    \image[scale=0.15]{vysledky_2a_scena.png}{Schéma parabolického reflektoru s~ohniskem ve~středu vstupního otvoru}
 }
 
 \doubleimage{
-    \image[scale=0.15]{vysledky_2a_etendue.png}{Pf-diagram na výstupu z parabolického reflektoru s ohniskem ve středu vstupního otvoru}
+    \image[scale=0.15]{vysledky_2a_etendue.png}{Pf-diagram na~výstupu z~parabolického reflektoru s~ohniskem ve~středu vstupního otvoru}
 }{
-    \image[scale=0.15]{vysledky_2a_graf.png}{Rozložení svítivosti po průchodu parabolickým reflektorem s ohniskem ve středu vstupního otvoru}
+    \image[scale=0.15]{vysledky_2a_graf.png}{Rozložení svítivosti po~průchodu parabolickým reflektorem s~ohniskem ve~středu vstupního otvoru}
 }
 
+\beautypage
 
-\subsection[Parabolický reflektor s ohniskem za vstupním otvorem]{Parabolický reflektor s ohniskem za vstupním otvorem (uvnitř těla reflektoru)}
+\subsection[Parabolický reflektor s~ohniskem za vstupním otvorem]{Parabolický reflektor s~ohniskem za vstupním otvorem (uvnitř těla reflektoru)}
 
-Dalším systémem je podobný parabolický reflektor jako v předchozím případě, ohnisko paraboly je jen posunuto mírně doprava, zatímco ostatní podmínky zůstávají stejné:
+Dalším systémem je podobný parabolický reflektor jako v~předchozím případě, ohnisko paraboly je jen posunuto mírně doprava, zatímco ostatní podmínky zůstávají stejné:
 
 \begin{quote}
-    Parabolický reflektor se vstupem šířky $2\ \mathrm{m}$ a délkou $5\ \mathrm{m}$. Parabola je umístěna tak, aby její ohnisko leželo uvnitř těla reflektoru. Ve vstupním otvoru je připevněn úsečkový zdroj o délce $1\ \mathrm{m}$.
+    Parabolický reflektor se~vstupem šířky $2\ \mathrm{m}$ a~délkou $5\ \mathrm{m}$. Parabola je umístěna tak, aby její ohnisko leželo uvnitř těla reflektoru. Ve~vstupním otvoru je připevněn úsečkový zdroj o~délce $1\ \mathrm{m}$.
 \end{quote}
 
-Zdůrazněme, že v tomto kontextu nemá posun ohniska za následek posun celé paraboly, nýbrž v tomto případě je nutné celou rovnici paraboly přepočítat. Zde se nám vyplatí výše zmíněná definice pomocí několika proměnných, díky ní stačí změnit pouze jedno číslo:
+Zdůrazněme, že v~tomto kontextu nemá posun ohniska za následek posun celé paraboly, nýbrž v~tomto případě je nutné celou rovnici paraboly přepočítat. Zde se~nám vyplatí výše zmíněná definice pomocí několika proměnných, díky ní stačí změnit pouze jedno číslo:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Délka reflektoru
@@ -192,22 +200,22 @@ float offsetRatio = 7 / 5f;
 Vygenerované vizualizace:
 
 \singleimage{
-    \image[scale=0.15]{vysledky_2b_scena.png}{Schéma parabolického reflektoru s ohniskem za vstupním otvorem}
+    \image[scale=0.15]{vysledky_2b_scena.png}{Schéma parabolického reflektoru s~ohniskem za vstupním otvorem}
 }
 
 \doubleimage{
-    \image[scale=0.15]{vysledky_2b_etendue.png}{Pf-diagram na výstupu z parabolického reflektoru s ohniskem za vstupním otvorem}
+    \image[scale=0.15]{vysledky_2b_etendue.png}{Pf-diagram na~výstupu z~parabolického reflektoru s~ohniskem za vstupním otvorem}
 }{
-    \image[scale=0.15]{vysledky_2b_graf.png}{Rozložení svítivosti po průchodu parabolickým reflektorem s ohniskem za vstupním otvorem}
+    \image[scale=0.15]{vysledky_2b_graf.png}{Rozložení svítivosti po~průchodu parabolickým reflektorem s~ohniskem za vstupním otvorem}
 }
 
 
-\subsection[Parabolický reflektor s ohniskem před vstupním otvorem]{Parabolický reflektor s ohniskem před vstupním otvorem (mimo tělo reflektoru)}
+\subsection[Parabolický reflektor s~ohniskem před~vstupním otvorem]{Parabolický reflektor s~ohniskem před~vstupním otvorem (mimo tělo reflektoru)}
 
-Podobná úprava reflektoru jako v předchozím případě, ovšem ohnisko je posunuto doleva:
+Podobná úprava reflektoru jako v~předchozím případě, ovšem ohnisko je posunuto doleva:
 
 \begin{quote}
-    Parabolický reflektor se vstupem šířky $2\ \mathrm{m}$ a délkou $5\ \mathrm{m}$. Parabola je umístěna tak, aby její ohnisko leželo nalevo od těla reflektoru. Ve vstupním otvoru je připevněn úsečkový zdroj o délce $1\ \mathrm{m}$.
+    Parabolický reflektor se~vstupem šířky $2\ \mathrm{m}$ a~délkou $5\ \mathrm{m}$. Parabola je umístěna tak, aby její ohnisko leželo nalevo od~těla reflektoru. Ve~vstupním otvoru je připevněn úsečkový zdroj o~délce $1\ \mathrm{m}$.
 \end{quote}
 
 Odpovídající definice scény:
@@ -222,16 +230,18 @@ float offsetRatio = 3 / 4f;
 // Zbytek kódu je stejný
 \end{lstlisting}\end{quote}\end{minipage}
 
+\beautypage
+
 Vygenerované vizualizace:
 
 \singleimage{
-    \image[scale=0.15]{vysledky_2c_scena.png}{Schéma parabolického reflektoru s ohniskem před vstupním otvorem}
+    \image[scale=0.15]{vysledky_2c_scena.png}{Schéma parabolického reflektoru s~ohniskem před~vstupním otvorem}
 }
 
 \doubleimage{
-    \image[scale=0.15]{vysledky_2c_etendue.png}{Pf-diagram na výstupu z parabolického reflektoru s ohniskem před vstupním otvorem}
+    \image[scale=0.15]{vysledky_2c_etendue.png}{Pf-diagram na~výstupu z~parabolického reflektoru s~ohniskem před~vstupním otvorem}
 }{
-    \image[scale=0.15]{vysledky_2c_graf.png}{Rozložení svítivosti po průchodu parabolickým reflektorem s ohniskem před vstupním otvorem}
+    \image[scale=0.15]{vysledky_2c_graf.png}{Rozložení svítivosti po~průchodu parabolickým reflektorem s~ohniskem před~vstupním otvorem}
 }
 
 

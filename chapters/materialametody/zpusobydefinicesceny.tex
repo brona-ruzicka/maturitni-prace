@@ -1,15 +1,17 @@
-\section{Podporované členy scény}
+\section{Druhy členů scény}
 \label{sec:podporovaneoptickeprvky}
 
-V této kapitole se věnujeme jednotlivým podporovaným členům scény, tedy de facto implementacím třídy \texttt{Member} (viz~kapitola~\fullref{sub:architekturaaplikace_zadanisceny}).
+V této kapitole se~věnujeme jednotlivým podporovaným členům scény, tedy de facto implementacím třídy \texttt{Member} (viz~kapitola~\fullref{sub:architekturaaplikace_zadanisceny}).
+
+Tyto implementace můžeme rozdělit do~dvou kategorií, na~zdroje světla (třída \texttt{Emitter}) a~na opticky interagující prvky (třída \texttt{Interactor}).
 
 \subsection{Světelné zdroje}
 
-Jediným úkolem instance třídy \texttt{Emitter} je vytvořit jakýsi seznam paprsků, které daný objekt vysílá. V našem případě jde o množinu dvojic \emph{počáteční bod} -- \emph{směrový vektor}.
+Jediným úkolem instance třídy \texttt{Emitter} je vytvořit jakýsi seznam paprsků, které daný objekt vysílá. V~našem případě jde o~množinu dvojic \emph{počáteční bod} -- \emph{směrový vektor}.
 
-V aplikaci je definováno několik základních druhů světelných zdrojů. Se všemi z nich jsme se již v této práci setkali.
+V aplikaci je definováno několik základních druhů světelných zdrojů. Se~všemi z~nich jsme se~již v~této práci setkali.
 
-\paragraph{Jednoduchý zdroj} je definován bodem a vektorem. Vysílá právě jeden paprsek.
+\paragraph{Jednoduchý zdroj} je definován bodem a~vektorem. Vysílá právě jeden paprsek.
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející jednoduchý zdroj
@@ -25,9 +27,9 @@ Emitters.single(
     \image[scale=0.15]{architekturaaplikace_emitters_simple.png}{Příklad scény obsahující pouze jednoduchý zdroj světla}
 }
 
-Kromě již popsaných částí kódu si všimněme použití pomocných funkcí \texttt{point} a \texttt{vector}, které vytvářejí objekty reprezentující bod resp. vektor (v obou případech jde de facto o uspořádanou dvojici čísel). Tyto funkce se hodí zejména pro lepší čitelnost a jednodušší porozumění definice z pohledu uživatele.
+Kromě již popsaných částí kódu si všimněme použití pomocných funkcí \texttt{point} a~\texttt{vector}, které vytvářejí objekty reprezentující bod resp. vektor (v obou případech jde de facto o~uspořádanou dvojici čísel). Tyto funkce se~hodí zejména pro~lepší čitelnost a~jednodušší porozumění definice z~pohledu uživatele.
 
-\paragraph{Bodový zdroj} je definován bodem a počtem paprsků. Vysílá daný počet paprsků rovnoměrně rozložený do všech směrů.
+\paragraph{Bodový zdroj} je definován bodem a~počtem paprsků. Vysílá daný počet paprsků rovnoměrně rozložený do~všech směrů.
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející bodový zdroj
@@ -43,7 +45,7 @@ Emitters.point(
     \image[scale=0.15]{architekturaaplikace_emitters_point.png}{Příklad scény obsahující pouze bodový zdroj světla}
 }
 
-\paragraph{Úsečkový zdroj} je definován středem, délkou a počtem paprsků. Je vždy orientován svisle a paprsky vysílá vždy směrem doprava. O vlastnostech tohoto typu zářiče jsme se již zmiňovali v kapitole \fullref{sub:analyzasystemu_vlastnostipfdiagramu}, ale pro jistotu zopakujme, že jej považujeme za \emph{lambertovský zářič}. \parencite{fotometrie}
+\paragraph{Úsečkový zdroj} je definován středem, délkou a~počtem paprsků. Je vždy orientován svisle a~paprsky vysílá vždy směrem doprava. O~vlastnostech tohoto typu zářiče jsme se~již zmiňovali v~kapitole \fullref{sub:analyzasystemu_vlastnostipfdiagramu}, ale pro~jistotu zopakujme, že jej považujeme za \emph{lambertovský zářič}. \parencite{fotometrie}
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející úsečkový zdroj
@@ -66,11 +68,11 @@ Uživateli je samozřejmě umožněno definovat vlastní světelné zářiče. N
 
 \subsection{Typy optických prvků}
 
-Obecně instance třídy \texttt{Interactor} nesou dvě informace. Jednak samozřejmě svůj tvar, a pak také nějaký předpis, který říká, co se děje s dopadajícími paprsky.
+Obecně instance třídy \texttt{Interactor} nesou dvě informace. Jednak samozřejmě svůj tvar, a~pak také nějaký předpis, který říká, co se~děje s~dopadajícími paprsky.
 
-Jak je vysvětleno již v kapitole \fullref{sec:vymezeniproblemu}, v této aplikaci jsme se omezili pouze na dva typy optických členů, \emph{dokonalé clony} a \emph{dokonalá zrcadla}. Funkce, které je vytvářejí, vyžadují pouze jeden argument, a tím je objekt popisující tvar. Různým vyjádřením tvaru se věnujeme v následující podkapitole.
+Jak je vysvětleno již v~kapitole \fullref{sec:vymezeniproblemu}, v~této aplikaci jsme se~omezili pouze na~dva typy optických členů, \emph{dokonalé clony} a~\emph{dokonalá zrcadla}. Funkce, které je vytvářejí, vyžadují pouze jeden argument, a~tím je objekt popisující tvar. Různým vyjádřením tvaru se~věnujeme v~následující podkapitole.
 
-\paragraph{Dokonalá clona} se vytváří takto:
+\paragraph{Dokonalá clona} se~vytváří takto:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející dokonalou clonu
@@ -80,7 +82,7 @@ Interactors.absorbing(
 \end{lstlisting}\end{quote}\end{minipage}
     
 
-\paragraph{Dokonalé zracadlo} se vytváří následujícím způsobem:
+\paragraph{Dokonalé zracadlo} se~vytváří následujícím způsobem:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Funkce vytvářející dokonalé zrcadlo
@@ -92,7 +94,7 @@ Interactors.reflecting(
 
 \subsection{Geometrie optických prvků}
 
-Aplikace podporuje několik různých typů geometrií optických prvků. My se zde zmíníme o dvou.
+Aplikace podporuje několik různých typů geometrií optických prvků. My se~zde zmíníme o~dvou.
 
 \paragraph{Úsečka} je definována pomocí dvou bodů:
 
@@ -110,8 +112,9 @@ Geometries.line(
     \image[scale=0.15]{architekturaaplikace_line.png}{Příklad scény obsahující úsečkovou geometrii}
 }
 
+\beautypage
 
-\paragraph{Geometrie podle matematické fuknce} je zadávána poněkud složitěji. Parametry jsou popsány přímo v následujícím kódu.
+\paragraph{Geometrie podle matematické fuknce} je zadávána poněkud složitěji. Parametry jsou popsány přímo v~následujícím kódu.
 
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}

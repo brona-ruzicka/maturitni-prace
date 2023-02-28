@@ -1,23 +1,23 @@
 \section{Implementační prostředky}
 
-Vzhledem k zejména demonstrativní funkci vytvářené aplikace, se při výběru implementačních prostředků přihlíželo ke dvěma hlavním faktorům.
+Vzhledem k~zejména demonstrativní funkci vytvářené aplikace, se~při výběru implementačních prostředků přihlíželo ke~dvěma hlavním faktorům.
 
-Jednak hrála roli vhodnost daného prostředku pro samotný úkol. Např. programovací jazyk hojně používaný na serverech se nemusí hodit pro vytváření uživatelských aplikací.
+Jednak hrála roli vhodnost daného prostředku pro~samotný úkol. Např. programovací jazyk hojně používaný na~serverech se~nemusí hodit pro~vytváření uživatelských aplikací.
 
-Za druhé pak rozhodovala také předpokládaná jednoduchost a rychlost implementace z pohledu autora práce. Tzn. bylo vhodné používat prostředky, se kterými se již setkal, a nemusel se tak kromě samotné implementace ještě seznamovat s novým prostředím.
+Za druhé pak rozhodovala také předpokládaná jednoduchost a~rychlost implementace z~pohledu autora práce. Tzn. bylo vhodné používat prostředky, se~kterými se~již setkal, a~nemusel se~tak kromě samotné implementace ještě seznamovat s~novým prostředím.
 
 \subsection{Programovací jazyk}
 
 \begin{sloppypar}
-Pro vývoj aplikace byl zvolen programovací jazyk \emph{Java}. (viz~\texttt{\href{https://www.java.com/}{www.java.com}}) Jedním z důvodů je i to, že autor práce s tímto programovacím jazykem už v minulosti pracoval.
+Pro vývoj aplikace byl zvolen programovací jazyk \emph{Java}. (viz~\texttt{\href{https://www.java.com/}{java.com}}) Jedním z~důvodů je i~to, že autor práce s~tímto programovacím jazykem už v~minulosti pracoval.
 \end{sloppypar}
 
-Dalším bodem je, že standardní \emph{SDK} (zkr. \emph{software development kit}, volně česky \emph{standardní knihovna}) tohoto jazyka obsahuje poměrně dobře popsaně \emph{API} (zkr. \emph{application programming interface}, volně česky \emph{aplikační rozhraní}), které programům umožňuje jednoduché vytváření \emph{GUI} (zkr. \emph{graphical user interface}, česky \emph{grafické uživatelské rozhraní}). To zahrnuje zobrazování oken v grafickém rozhraní operačního systému počítače a různé způsoby jak definovat a vykreslovat jejich obsah. Zmíněné \emph{API} se v \emph{Javě} nazývá \emph{Java Swing}.
+Dalším bodem je, že standardní \emph{SDK} (zkr. \emph{software development kit}, volně česky \emph{standardní knihovna}) tohoto jazyka obsahuje poměrně dobře popsaně \emph{API} (zkr. \emph{application programming interface}, volně česky \emph{aplikační rozhraní}), které programům umožňuje jednoduché vytváření \emph{GUI} (zkr. \emph{graphical user interface}, česky \emph{grafické uživatelské rozhraní}). To zahrnuje zobrazování oken v~grafickém rozhraní operačního systému počítače a~rů\-zné způsoby jak definovat a~vykreslovat jejich obsah. Zmíněné \emph{API} se~v \emph{Javě} nazývá \emph{Java Swing}.
 
-Pro produkční software by byla samozřejmě důležitá především rychlost simulace. Z tohoto hlediska by bylo vhodnější použít např. programovací jazyky \emph{C++} nebo \emph{Rust}, které jsou na rozdíl od \emph{Javy} kompilované přímo do strojového kódu, a proto jsou schopny jednoduché aritmetické výpočty provádět podstatně rychleji.
+Pro produkční software by byla samozřejmě důležitá především rychlost simulace. Z~tohoto hlediska by bylo vhodnější použít např. programovací jazyky \emph{C++} nebo \emph{Rust}, které jsou na~rozdíl od~\emph{Javy} kompilované přímo do~strojového kódu, a~proto jsou schopny jednoduché aritmetické výpočty provádět podstatně rychleji.
 
 \subsection{Vývojové prostředí}
 
 \begin{sloppypar}
-Vývoj aplikace probíhal v prostředí \emph{IntelliJ IDEA} od české firmy \emph{JetBrains}. (viz~\texttt{\href{https://www.jetbrains.com/}{www.jetbrains.com}}) Pro kompilaci a správu závislostí (anglicky \emph{dependency management}, tj. především externí knihovny) byl použit program \emph{Maven}. Důvodem byla čistě jen autova znalost těchto nástrojů. 
+Vývoj aplikace probíhal v~prostředí \emph{IntelliJ IDEA} od~české firmy \emph{JetBrains}. (\texttt{\href{https://www.jetbrains.com/idea/}{jetbrains.com/idea}}) Pro~kompilaci a~správu závislostí (anglicky \emph{dependency management}, tj. především externí knihovny) byl použit program \emph{Maven}. Důvodem byla čistě jen autova znalost těchto nástrojů. 
 \end{sloppypar}
