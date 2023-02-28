@@ -12,3 +12,6 @@
 
 # But exclude local vscode settings
 .vscode/
+
+# Finished version
+!main.pdf
