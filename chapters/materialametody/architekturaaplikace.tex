@@ -23,7 +23,7 @@ Pro spuštění aplikace je nutné zavolat funkci \texttt{EtendueApp.run()}, kte
 
 K definici optického systému využíváme třídu \texttt{Scene}, což je v podstatě jen množina členů simulovaného optického systému. Ty jsou popsány třídou \texttt{Member}, přičemž je můžeme rozdělit do dvou kategorií, na zdroje světla (třída \texttt{Emitter}) a na opticky interagující prvky (třída \texttt{Interactor}).
 
-V kódu definujeme scénu pomocí funkce \texttt{Scene\#create}, jejíž argumenty jsou instance výše zmíněné třídy \texttt{Member}:
+V kódu definujeme scénu pomocí funkce \texttt{Scene.create()}, jejíž argumenty jsou instance výše zmíněné třídy \texttt{Member}:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 // Vytvoření scény
@@ -36,6 +36,8 @@ Scene scene = Scene.create(
 // Samotné spuštění simulace
 EtendueApp.run(scene);
 \end{lstlisting}\end{quote}\end{minipage}
+
+Jednotlivým implementacím třídy \texttt{Member}, neboli de facto podporovaným druhům optických členů, se věnujeme podrobněji v kapitole \fullref{sec:podporovaneoptickeprvky}.
 
 Doplňme, že v jazyce \emph{Java} je potřeba pro úspěšné spuštění programu doplnit ještě několik dalších neměnných instrukcí. Pro úplnost je v tomto případě uvedeme, ale v dalších výňatcích obsahujících definice scén je vynecháme:
 
@@ -55,147 +57,11 @@ public class Main {
 
         // Samotné spuštění simulace
         EtendueApp.run(scene);
-
     }
 }
 \end{lstlisting}\end{quote}\end{minipage}
 
-\subsubsection{Světelné zdroje}
-
-Jediným úkolem instance třídy \texttt{Emitter} je vytvořit jakýsi seznam paprsků, které daný objekt vysílá. V našem případě jde o množinu dvojic \emph{počáteční bod} -- \emph{směrový vektor}.
-
-V aplikaci je definováno několik základních druhů světelných zdrojů. Se všemi z nich jsme se již v této práci setkali.
-
-\paragraph{Jednoduchý zdroj} je definován bodem a vektorem. Vysílá právě jeden paprsek.
-
-\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
-// Funkce vytvářející jednoduchý zdroj
-Emitters.single(
-        // Počáteční bod
-        point(1, 1),
-        // Směrový vektor
-        vector(1, -1)
-)
-\end{lstlisting}\end{quote}\end{minipage}
-
-\singleimage{
-    \image[scale=0.15]{architekturaaplikace_emitters_simple.png}{Příklad scény obsahující pouze jednoduchý zdroj světla}
-}
-
-Kromě již popsaných částí kódu si všimněme použití pomocných funkcí \texttt{point} a \texttt{vector}, které vytvářejí objekty reprezentující bod resp. vektor (v obou případech jde de facto o uspořádanou dvojici čísel). Tyto funkce se hodí zejména pro lepší čitelnost a jednodušší porozumění definice z pohledu uživatele.
-
-\paragraph{Bodový zdroj} je definován bodem a počtem paprsků. Vysílá daný počet paprsků rovnoměrně rozložený do všech směrů.
-
-\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
-// Funkce vytvářející bodový zdroj
-Emitters.point(
-        // Střed zdroje
-        point(1, 1),
-        // Počet paprsků
-        10
-)
-\end{lstlisting}\end{quote}\end{minipage}
-
-\singleimage{
-    \image[scale=0.15]{architekturaaplikace_emitters_point.png}{Příklad scény obsahující pouze bodový zdroj světla}
-}
-
-\paragraph{Úsečkový zdroj} je definován středem, délkou a počtem paprsků. Je vždy orientován svisle a paprsky vysílá vždy směrem doprava. O vlastnostech tohoto typu zářiče jsme se již zmiňovali v kapitole \fullref{sub:analyzasystemu_vlastnostipfdiagramu}, ale pro jistotu zopakujme, že jej považujeme za \emph{lambertovský zářič}.\src
-
-\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
-// Funkce vytvářející úsečkový zdroj
-Emitters.line(
-        // Střed zdroje
-        point(1, 0),
-        // Délka zářiče
-        2,
-        // Počet paprsků
-        10
-)
-\end{lstlisting}\end{quote}\end{minipage}
-
-\singleimage{
-    \image[scale=0.15]{architekturaaplikace_emitters_line.png}{Příklad scény obsahující pouze úsečkový zdroj světla}
-}
-
-Uživateli je samozřejmě umožněno definovat vlastní světelné zářiče. Např. vějířový zdroj (viz obr. \ref{fig:analyzasystemu_priklad_soucin.png}) je velmi jednoduchou úpravou bodového zdroje.
-
-
-\subsubsection{Typy optických prvků}
-
-Obecně instance třídy \texttt{Interactor} nesou dvě informace. Jednak samozřejmě svůj tvar, a pak také nějaký předpis, který říká, co se děje s dopadajícími paprsky.
-
-Jak je vysvětleno již v kapitole \fullref{sec:vymezeniproblemu}, v této aplikaci jsme se omezili pouze na dva typy optických členů, \emph{dokonalé clony} a \emph{dokonalá zrcadla}. Funkce, které je vytvářejí, vyžadují pouze jeden argument, a tím je objekt popisující tvar. Různým vyjádřením tvaru se věnujeme v následující podkapitole.
-
-\paragraph{Dokonalá clona} se vytváří takto:
-
-\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
-// Funkce vytvářející dokonalou clonu
-Interactors.absorbing(
-        // Zde je definice tvaru
-)
-\end{lstlisting}\end{quote}\end{minipage}
-    
-
-\paragraph{Dokonalé zracadlo} se vytváří následujícím způsobem:
-
-\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
-// Funkce vytvářející dokonalé zrcadlo
-Interactors.reflecting(
-        // Zde je definice tvaru
-)
-\end{lstlisting}\end{quote}\end{minipage}
-
-
-\subsubsection{Geometrie optických prvků}
-
-Aplikace podporuje několik různých typů geometrií optických prvků. My se zde zmíníme o dvou.
-
-\paragraph{Úsečka} je definována pomocí dvou bodů:
-
-\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
-// Funkce vytvářející úsečkovou geometrii
-Geometries.line(
-        // Počáteční bod
-        point(0,1),
-        // Koncový bod
-        point(5,2)
-)
-\end{lstlisting}\end{quote}\end{minipage}
-
-\singleimage{
-    \image[scale=0.15]{architekturaaplikace_line.png}{Příklad scény obsahující úsečkovou geometrii}
-}
-
-
-\paragraph{Geometrie podle matematické fuknce} je zadávána poněkud složitěji. Parametry jsou popsány přímo v následujícím kódu.
-
-
-\begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
-// Funkce vytvářející geometrii podle funkce
-Geometries.formula(
-        // Vyjadřujeme x v závislosti na y, nebo obráceně
-        true,
-        // Počáteční bod, vyjadřuje, kde se promítne bod [0,0]
-        point(1, 2),
-        // Výchozí hodnota parametru
-        -3,
-        // Koncová hodnota parametru
-        3,
-        // Krok parametru
-        0.1f,
-        // Samotná funkce, do které je dosazován parametr
-        x -> x*x / 2
-)
-\end{lstlisting}\end{quote}\end{minipage}
-
-\singleimage{
-    \image[scale=0.15]{architekturaaplikace_parabola.png}{Příklad scény obsahující aproximaci paraboly}
-}
-
-\subsubsection{Příklad kompletní scény}
-
-Jako příklad nám poslouží jednoduchý světlovod, zmíněný v kapitole \fullref{sec:vymezeniproblemu}.
+Např. jednoduchý světlovod, zmíněný v kapitole \fullref{sec:vymezeniproblemu}, byl definován takto:
 
 \begin{minipage}{\textwidth}\begin{quote}\begin{lstlisting}
 Scene scene = Scene.create(
